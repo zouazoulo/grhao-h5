@@ -24,6 +24,8 @@ seajs.config({
     'search' : 'search.js?v=1000000',
     'seckillGoods' : 'seckillGoods.js?v=1000000',
     'zsCart' : 'zsCart.js?v=1000000',
+    'zipImage': 'zipImage.js?v=1000000',
+    'weixinSDK' : 'weixin.js?v=1000000',
     'package' : 'red_package_rain.js?v=1000000'
   },
   preload: ['mobile-util']
