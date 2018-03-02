@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>帮助中心</title>
+	<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+	<meta name="viewport" content="width=720,user-scalable=0"/>
+    <meta content="telephone=no, address=no" name="format-detection" />
+    <link rel="stylesheet" href="../css/base.min.css" />  
+</head>
+<body module-id="5" class="animation-fadeIn">
+	<div class="header_wrap">
+		<div class="header_contain">
+			<div class="header_left">
+				<span class="triangle-btn green"></span>
+			</div>
+			<h1 class="header_title header_title_color">帮助中心</h1>
+	    </div>
+	</div>
+	<div class="empty"></div>
+	<div class="main_wrap">
+		<div class="main">
+			<ul class="help_wrap">
+				<a href="helpcase.html?help=contact"><li>1.联系方式</li></a>
+				<a href="helpcase.html?help=pre_deal"><li>2.预购协议</li></a>
+				<a href="helpcase.html?help=relevent"><li>3.退换货规则</li></a>
+				<a href="helpcase.html?help=couponUse_rule"><li>4.优惠券使用</li></a>
+				<a href="helpcase.html?help=inspection"><li>5.验货与签收</li></a>
+				<a href="helpcase.html?help=about_us"><li>6.关于我们</li></a>					
+			</ul>														
+			<div class="main_tel">
+				<a href="tel:400-0650-159" style="color: white;">400-0650-159</a>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../seajs/2.1.1/sea.js"></script>
+<script src="../seajs-config.js"></script>
+<script>
+	seajs.use(['personal'],function( zs ){
+		zs.init();
+	});
+</script>
+</html>

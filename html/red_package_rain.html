@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>红包雨</title>
+	<meta name="apple-touch-fullscreen" content="no"/>
+	<meta name="viewport" content="width=750,user-scalable=no,viewport-fit=cover" />
+	<meta content="telephone=no, address=no" name="format-detection" />
+	<link rel="stylesheet" type="text/css" href="../css/base.min.css" />
+</head>
+<body style="position:relative;">
+	<div class="red-rain-box">
+		<div class="package-box">
+			<span class="close-red-rain">&times;</span>
+			<div class="package-header">
+				<div class="swiper-container2">
+					<ul class="swiper-wrapper" id="swiper-wrapper2-data-box"></ul>
+					<div class="swiper-pagination"></div>	
+				</div>
+			</div>
+			<div class="package-undo" style="display:none">
+				<div class="package-footer">
+					<p class="package-btns">
+						<span class="package btn-check"></span>
+						<span class="rule btn-check"></span>
+					</p>
+					<p class="package-time" id="package-time">
+						<span class="hour"></span>
+						<span class="min"></span>
+						<span class="sec"></span>
+					</p>
+				</div>
+				<p class="package-operation"></p>
+				<!-- <p class="package-tip">Tips:下期开奖时间: 12:00</p> -->
+			</div>
+			<div class="package-doing" style="display:none">
+				<div class="package-footer">
+					<p class="package-btns">
+						<span class="package btn-check"></span>
+						<span class="rule btn-check"></span>
+					</p>
+					<p class="package-operation"></p>
+					<div class="package-awardee-box">
+						<img src="../img/red-10.png">
+						<p class="refresh" style="display: none;">下拉可以刷新</p>
+						<div class="awardee-list-box swiper-container" style="height:256px">
+							<ul class="awardee-list swiper-wrapper" id="coupon_rain_rcd_list-data-box">
+								<li class="loadmore swiper-wrapper" style="display:block">上拉加载更多</li>
+							</ul>
+							<div class="swiper-scrollbar"></div>
+						</div>
+					</div>
+					<div class="red-rain-temp"></div>
+				</div>
+			</div>
+		</div>
+		<div class="package-red-rain" id="package-red-rain" >
+			<div class="package-unit" id="package-unit" style="display:none">
+				<div class="unit-box">
+					<p></p>
+					<div class="package-info">
+						<p>恭喜您</p>
+						<p>抽中了抵价券<span class="red-money"></span>元</p>
+					</div>
+					<p><a href="javascript:;" class="confirm-btn" id="confirm-btn"></a></p>
+				</div>
+			</div>
+		</div>
+		<div class="modal-box" id="modal-box">
+			<div class="modal-theme">
+				<div class="modal-content" id="coupon_rain-rule-data-box"></div>
+				<div class="modal-footer">
+					<p>活动所有解释归果然好所有</p>
+					<p>点击任意区域关闭</p>
+				</div>		
+			</div>	
+		</div>
+	</div>
+	<script type="text/x-jquery-tmpl" id="coupon_rain_rcd_list-data">
+		<li class="swiper-slide">恭喜用户<i>${cuserName=='' ? '*****' : cuserName }</i>获得<i>${money}元</i>优惠券</li>
+	</script>
+	<script type="text/x-jquery-tmpl" id="swiper-wrapper2-data">
+		<li class="swiper-slide2 swiper-slide"><img src="${adLogo}"></li>
+	</script>
+	<script src="../seajs/2.1.1/sea.js"></script>
+	<script src="../seajs-config.js"></script>
+	<script>
+		seajs.use(['package'],function( zs ){
+			zs.init();
+		});
+	</script>
+</body>
+
+</html>

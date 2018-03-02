@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+	<meta name="viewport" content="width=720,user-scalable=0"/>
+	<meta content="telephone=no, address=no" name="format-detection" />	
+	<link rel="stylesheet" href="../css/base.min.css" />
+	<style>
+		/*购物车*/
+		#zs-cart{ width: 100%;max-width: 720px;background: #ffffff;padding-top:100px;overflow-y:scroll;height:100%;margin:0 auto;}
+		#zs-cart .ul-box{overflow-x:hidden;width:720px;max-width: 720px;background: #ffffff;}
+		#zs-cart .list{height:206px;width:720px;background: #f7f7f7;margin-top:10px;padding:12px 0;position: relative;-webkit-transform: translateX(0px);}
+		#zs-cart .list .select{ background-position: 18px 78px;}
+		#zs-cart .list.selected .select{background-position: -746px 78px;}
+		#zs-cart .list:last-child{margin-bottom:230px;}
+		#zs-cart .delete-btn{position:absolute;top:0;right:-120px;height:206px;width:120px;color:#ffffff;font-size: 30px;line-height: 206px;background: #ff3b30;text-align:center;}
+		#zs-cart .sub-ul-box{display:inline-block;height:168px;}
+		#zs-cart .sub-list{float:left;height:192px;}
+		#zs-cart .sub-list:nth-child(1){width:72px;}
+		#zs-cart .sub-list:nth-child(2){width:520px;}
+		#zs-cart .sub-list:nth-child(3){width:126px;}
+		.oprate-ele{position:relative;}
+		.goods-type{position:absolute;top:0;left:0;}
+		#zs-cart .logo{float:left;width:178px;height:178px;display:block;}
+		#zs-cart .content{margin-left:200px;width:320px;height:154px;}
+		#zs-cart .dec,#zs-cart .unit{font-size: 28px;margin-top: 15px;}
+		#zs-cart .dec{color:#393737;width:320px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+		#zs-cart .unit{color:#999999;}
+		#zs-cart .oprate{margin-top: 20px;width:176px;height:48px;border:1px solid #999;}
+		#zs-cart .oprate span,#zs-cart .oprate input{display:inline-block;color:#666666;font-size: 30px;text-align: center;line-height: 44px;-webkit-user-select:none}
+		#zs-cart .oprate .minus_num,#zs-cart .oprate .add_num{width:48px;height:48px;display: block;}
+		#zs-cart .oprate .show_num{width:76px;border-left:1px solid #999;border-right:1px solid #999;float:left;height:44px;display:inline-block;}
+		#zs-cart .curPrice{font-size:32px;color:#ff7b29;margin-top: 10px;}
+		#zs-cart .oldPrice{font-size: 28px;color:#c1c1c1;margin-top: 5px;}
+		#total{width:720px;max-width: 720px;background: #ffffff;position: fixed;bottom:110px;left:0;right:0;margin:0 auto;}
+		#total .settle{float:right;width:197px;background: #ff7b29;height:100px;color:#ffffff;font-size: 30px;text-align: center;line-height: 100px;}
+		#total .settle:hover{background: #aaaaaa;}
+		#total .detail{width:523px;border-top:2px solid #dfdfdf;height:98px;float:left;display:inline-block;padding:30px 0;}
+		#total .detail-list:nth-child(1){float:left;width:160px;}
+		#total .detail-list:nth-child(3){float:right;}
+		#total #select-delete{float:left;font-size: 30px;color:#ff7b29;float:left;padding-top:3px;}
+		#total .detail-list p{font-size: 32px;}
+		#total .detail-list:nth-child(1) span:nth-child(2){display:inline-block;margin-left: 7px;}
+		#total #all-select{padding-left:76px;background-position: 30px 4px;}
+		#total #all-select.selected{background-position: -734px 4px;}
+		#total .detail-list:nth-child(3) p{margin-right:18px;}
+		#total .detail-list:nth-child(3) span:nth-child(2){color:#ff7b29;max-width: 295px;display:inline-block;}
+		#empty-cart{ text-align: center; padding-top: 20%;display:none;}
+	</style>
+</head>
+<body id="zs-cart" class="animation-fadeIn">
+	<div class="header_wrap">
+		<div class="header_contain">
+			<div class="header_title">购物车</div>
+		</div>
+	</div>
+	<ul class="ul-box" id="ul-box"></ul>
+	<div class="clearfloat" id="total">
+		<ul class="detail">
+			<li class="detail-list">
+				<p id="all-select"><span>全选</span></p>
+			</li>
+			<li id="select-delete">删除</li>
+			<li class="detail-list">
+				<p><span>合计:&nbsp;</span><span class="totalmoney">¥0.00</span></p>
+			</li>
+		</ul>
+		<div class="settle">结算</div>
+	</div>
+	<div class="footer_wrap">
+		<div class="footer clearfloat" id="foot">
+			<div class="footer_item">首页</div>
+			<div class="footer_item">更多商品</div>
+			<div class="footer_item actived" data-content="0" >购物车</div>
+			<div class="footer_item">我</div>
+		</div>
+	</div>
+	<div id="empty-cart"><a href="moregoods.html"><img src="../img/epmty_cart.png" alt=""></a></div>
+</body>
+	<script src="../seajs/2.1.1/sea.js"></script>
+	<script src="../seajs-config.js"></script>
+	<script>
+		seajs.use(['zsCart'],function( zs ){
+			zs.init();
+		});
+	</script>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>发表评论</title>
+	<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+	<meta name="viewport" content="width=720,user-scalable=0"/>
+    <meta content="telephone=no, address=no" name="format-detection" />
+    <link rel="stylesheet" href="../css/base.min.css" />
+</head>
+<body style="background: #ffffff;" module-id="evaluate">
+	<div class="header_wrap">
+		<div class="header_contain">
+			<div class="header_left"><span class="triangle-btn green"></span></div>
+			<h1 class="header_title header_title_color">发表评论<span class="publish-btn" id="publish-btn">发表</span></h1>
+	    </div>
+	</div>
+	<div class="comment-box" >
+		<ul class="comment-goodsInfo-box" id="comment-goodsInfo-box">
+		</ul>
+		<div class="comment-all">
+			<p class="tit">店铺评分</p>
+			<p class="comment-all-op"><span class="txt">服务态度</span><span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span> <span class="zs-star"></span> </p> 
+			<p class="comment-all-op"><span class="txt">商品评分</span><span class="zs-star"></span><span class="zs-star"></span> <span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span> </p>
+			<p class="comment-all-op"><span class="txt">送货速度</span><span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span><span class="zs-star"></span> 
+			</p>
+		</div>
+	</div>	
+	</div>
+	<script type="text/x-jquery-tmpl" id="comment-goodsInfo-data-box">
+			<li class="comment-gooods-list"  goodId="${goods}" orderCode="${orderCode}">
+				<ul class="ul-box">
+					<li class="ul-box-list"><img src="${goodsLogo}" alt="" width="100px" height="100px"></li>
+					<li class="ul-box-list"><p>${goodsName}</p></li>
+					<li class="ul-box-list">
+						<span class="txt">商品质量</span>
+						<span class="zs-star"></span>
+						<span class="zs-star"></span>
+						<span class="zs-star"></span>
+						<span class="zs-star"></span>
+						<span class="zs-star"></span>
+						<span class="slideDown"></span>
+					</li>
+				</ul>
+				<ul class="upload-box">
+					<textarea placeholder="商品满足了你的期待吗?分享给想买的他们吧"></textarea>
+					<ul class="upload-list-box">
+						<li class="upload-oprate upload-list">
+							<span class="upload-btn">+</span>
+							<input type="file" accept="image/png,image/jpeg">
+						</li>
+					</ul>
+				</ul>
+			</li>
+	</script>
+</body>
+<script src="../seajs/2.1.1/sea.js"></script>
+<script src="../seajs-config.js"></script>
+<script>
+	seajs.use(['other'],function( zs ){
+		zs.init();
+	});
+</script>
+    
+</html>

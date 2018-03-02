@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>订单详情</title>
+	<meta name="viewport" content="width=720,user-scalable=0"/>
+    <meta content="telephone=no, address=no" name="format-detection" />
+    <link rel="stylesheet" href="../css/base.min.css" />
+	<script src="http://webapi.amap.com/maps?v=1.3&key=68f1f7850d75a2c422f417cc77331395&plugin=AMap.DragRoute"></script>
+</head>
+<body  module-id="orderDetail" class="animation-fadeIn">
+	<div class="header_wrap">
+		<div class="header_contain">
+			<div class="header_left"><span class="triangle-btn green"></span></div>
+			<h1 class="header_title header_title_color">订单详情</h1>
+	    </div>
+	</div>
+	<div class="empty"></div>
+	<div class="main_wrap">
+		<div class="main">
+			<ul class="order_details">				
+				<li>
+					<div class="orderDetails_no">订单编号：</div>
+					<div class="order_status"></div>
+				</li>
+				<li class="create_time">下单时间：</li>
+				<li class="pay_time">支付时间：</li>
+				<li class="sendGood_time" >发货时间：</li>
+				<li class="order_money">订单金额：</li>
+				<li class="order_pay">支付方式：</li>		
+				<li class="order_message" style="display:none">留言信息：</li>
+			</ul>
+			<div class="pickUpcode-box" style="display:none">
+				<div class="pickUpcode-label"></div>
+				<div class="pickUpcode">
+					<p class="phoneNumber"></p>
+					<p class="codeNumber"></p>
+				</div>
+				<p class="order_notice">请于今日18:00前去自助售货机取货</p>
+			</div>
+			<div class="position-label-box" style="display:none">
+				<p class="position-txt"></p>
+			</div>
+			<div class="delivery">
+				<div class="deli_style">配送方式：<span class="deli_take_good"></span></div>
+			</div>
+			<div class="take_goods_address_contain">
+				<div class="take_goods_address">
+				    <div class="goods_person_message clearfloat">
+					    <div class="goods_person_name"></div>
+					    <div class="goods_person_phone"></div>
+				    </div>
+			        <div class="goods_person_address"></div>
+			    </div>
+			    <div class="set_charge_address" >
+				    <div class="set_address_top"></div>
+				    <div class="set_address_bottom"></div>
+				    <div class="set_job_time">
+					    <div class="set_job_time_left" style="float: left;"></div>
+				    </div>
+			    </div>
+			</div>			
+			<div class="order_goods_contain_details" >
+			</div>
+			<ul class="order_set_list deli_list" style="display:block;">				
+				<li class="my_order_list1 clearfloat list-group1 list-group2">
+					<div class="order_set_list_left">商品总价</div>
+					<div class="order_set_list_right"></div>
+				</li>
+				<li class="my_order_list2 clearfloat list-group2">
+					<div class="order_set_list_left">运费</div>
+					<div class="order_set_list_right"></div>
+				</li>
+				<li class="my_order_list3 clearfloat list-group2">
+					<div class="order_set_list_left">优惠券金额</div>
+					<div class="order_set_list_right"></div>
+				</li>					
+				<li class="my_order_list5 clearfloat list-group2">
+					<div class="order_set_list_left">立减优惠</div>
+					<div class="order_set_list_right"></div>
+				</li>
+				<li class="my_order_list7 clearfloat list-group1 list-group2">
+					<div class="order_set_list_left">总计</div>
+					<div class="order_set_list_right" style="color: #fe7831;">￥39.80</div>
+				</li>								
+			</ul>
+			<div class="order_situation show">
+		    	<div class="oprate-btn unite-deal">删除</div>
+		    	<div class="situation_pay clearfloat">
+		    		<button class="sit_cancel order-cancel unite-deal">取消</button>
+		    		<button class="sit_pay paying">去支付</button>
+		    	</div>
+		    </div>
+		</div>
+	</div>	
+	<div id="map-container"></div> 
+</body>
+<script src="../seajs/2.1.1/sea.js"></script>
+<script src="../seajs-config.js"></script>
+<script>
+	seajs.use(['order_management'],function( zs ){
+		zs.init();
+	});
+</script>
+</html>

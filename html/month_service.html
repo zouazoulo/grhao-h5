@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>充值优惠</title>
+<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+<meta name="viewport" content="width=720,user-scalable=0"/>
+<meta content="telephone=no, address=no" name="format-detection" />
+<link rel="stylesheet" href="../css/base.min.css" />
+<style>
+	/*包月充值*/
+	.month_service_banner{width:100%;height:320px;background-color: #FFFFFF; background-image: url(../img/pic_logo_load.png);background-repeat: no-repeat;background-position: center;background-size: 250px 250px;}
+	.month_service_banner img{width: 100%;height: 100%;display: none;}
+	.month_service_intro{width:100%;padding:35px 40px;background:white;font-size:26px;line-height:40px;color:rgb(51,51,51);margin: 20px 0;}
+	.month_service_contain{width:100%;padding:60px 20px 0;background:url(../img/tab_point.png) no-repeat 280px 20px;}
+	.month_discount_detail{width:100%;height:100px;border:1px solid #b2b2b2;}
+	.discount_detail_intr{float:left;width:50%;height:100px;font-size:30px;color:rgb(51,51,51);text-align:center;line-height:100px;}
+	.month_service_goPay{width:100%;height:120px;background:#ffffff;padding:20px 65px;border:1px solid #b2b2b2;}
+	.discount_pay{width:100%;height:100%;font-size:30px;color:white;border-radius:10px;background:#fe7831;}
+	.month_service_instruction{margin-top:30px;width:100%;padding:20px 0 0;}
+	.month_instruction_title{width:100%;height:80px;line-height:80px;text-align:center;font-size:34px;}
+	.month_copon_instruction{width:100%;font-size:26px;color:rgb(51,51,51);line-height:40px;padding:30px 40px;background:white;}
+	.month_discount_detail:nth-child(odd){background:#eef2f3;}
+	.month_discount_detail:nth-child(even){background:#ffffff;}
+</style>
+</head>
+<body module-id="rechargeExplain" class="animation-fadeIn">
+	<div class="header_wrap">
+		<div class="header_contain">
+			<div class="header_left">
+				<span class="triangle-btn green"></span>
+			</div>
+			<h1 class="header_title header_title_color">充值优惠</h1>
+	    </div>
+	</div>
+	<div class="empty"></div>
+	<div class="main_wrap">
+		<div class="main">
+			<div class="month_service_banner"></div>
+			<div class="month_service_intro" style="display:none"></div>
+			<div class="month_service_contain">				
+				<div class="month_service_discount">
+					<div class="month_discount_detail clearfloat" style="background: #93c01d;">
+						<div class="discount_detail_intr" style="color: white;">充值金额</div>
+						<div class="discount_detail_intr" style="color: white;">赠送金额</div>
+					</div>
+					<div class="month_discount_content">
+					</div>									
+					<div class="month_service_goPay">
+						<button class="discount_pay">去充值</button>
+					</div>
+				</div>				
+			</div>
+			<div class="month_service_instruction">	
+			    <div class="month_copon_instruction" style="display:none"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../seajs/2.1.1/sea.js"></script>
+<script src="../seajs-config.js"></script>
+<script>
+	seajs.use(['other'], function( zs ){
+		zs.init();
+	});
+</script>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我</title>
+<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+<meta name="viewport" content="width=720,user-scalable=0"/>
+<meta content="telephone=no, address=no" name="format-detection" />    	
+<link rel="stylesheet" href="../css/base.min.css" />
+<style>
+	.main_top{width:100%;height:320px;background:url('../img/1.jpg') no-repeat top left;background-size:100% 100%;position:relative;}
+	.main_bottom dl,.main_center dl,.main_top_right,.main_bottom dl dd,.main_top_middle{background: url(../img/4.png) no-repeat;}
+	.main_top_right{width:50px;height:40px;background-position: 0 -900px;float:right;}
+	.main_top_roof{position:absolute;top:0;left:0;width:100%;height:90px;padding:20px;}
+	.main_top_left{height:90px;float:left;}
+	.my_nologin{padding-top:66px ; height:320px;display: none;}
+	.main_top_middle{width:153px;height:153px;margin: 0 auto;background-position: 0 -1018px;}
+	.main_top_login{width:140px;height:50px;font-size:28px;text-align:center;line-height:50px;background:#93c01d;margin:20px auto;}
+	.main_top_login a{color:white;text-decoration:none;}
+	.main_top_login a:visited{color:white}
+	.my_islogin{padding:110px 20px 0;height:260px;display: none;}
+	.my_login{position: relative; width:194px;height:154px;overflow: hidden; float:left;padding: 0 20px;}
+	.loginPhoto{position:absolute;width:153px;height:153px;border-radius:50%;}
+	#loginPhoto{position:absolute;width:153px;height:153px;border-radius:50%;opacity:0;}
+	.my_islogin_right{height:180px;float:left;padding-left: 6px;}
+	.my_islogin_right_top{width:100%;height:50px;line-height: 50px;}
+	.my_name{height:50px;float:left;color:white;font-size:30px;}
+	.my_level{height:50px;float:left;padding-left:100px;}
+	.my_islogin_right_bottom{width:100%;height:100px;padding-top:20px;line-height: 40px;font-size:30px;color:white;}
+	.my_month_card{height:80px;float:left;}
+	.my_month_card li{line-height:40px;height:40px;}
+	.my_fruit_money{height:80px;float:left;padding-left:100px;}
+	.my_fruit_money li{line-height:40px;height:40px;text-align:center;}
+	.main_center{width:100%;height:120px;background:white;}
+	.main_center dl{float:left;width:240px;height:120px;padding-left:80px;}
+	.main_center dl:nth-child(1){background-position:20px 35px}
+	.main_center dl:nth-child(2){background-position:20px -65px;}
+	.main_center dl:nth-child(3){background-position:20px -165px;}
+	.main_center dd{height:120px;font-size:28px;color:rgb(28,28,28);line-height:120px;}
+	.main_bottom{width:100%;background:white;padding:0 20px;margin-top:20px;}
+	.main_bottom dl{width:100%;height:87px;padding-left:60px;font-size:26px;line-height:87px;}
+	.main_bottom dl:nth-child(1){background-position:0 -279px;}
+	.main_bottom dl:nth-child(2){background-position:0 -379px;}
+	.main_bottom dl:nth-child(3){background-position:0 -479px;}
+	.main_bottom dl:nth-child(4){background-position:0 -579px;}
+	.main_bottom dl:nth-child(5){background-position:0 -679px;}
+	.main_bottom dl:nth-child(6){background-position:0 -779px;}
+	.main_bottom dl dd{width:620px;height:87px;border-bottom:1px solid #b2b2b2;background-position: 572px -930px;}
+	.exit{width:550px;height:80px;margin:50px auto;font-size:30px;color:white;background:#93c01d;text-align:center;line-height:80px;border-radius:20px;display: none;}
+</style>
+</head>
+	<body module-id="0" class="animation-fadeIn">
+		<div class="main_wrap main_wo_wrap">
+			<div class="main">
+				<div class="main_top">
+					<div class="main_top_roof clearfloat">
+						<div class="main_top_right"></div>
+					</div>
+					<div class="my_nologin">
+						<div class="main_top_middle">
+					    </div>
+					    <div class="main_top_login"><a href="login.html">登录</a></div>
+					</div>
+					<dl class="my_islogin clearfloat">
+						<dt class="my_login">
+						    <img class="loginPhoto"/>
+						    <form id="form2" action="http://api.grhao.com/server/api.do?method=face_img_upload" enctype="multipart/form-data" method="post" target="formImg">
+						    	<input type="file" accept="image/*" id='loginPhoto' name="faceimg"/>
+						    	<input type="hidden" name="userId" id="cuserId" value="" />
+						    	<input type="hidden" name="tokenId" id="tokenId" value="" />
+						    	<input type="hidden" name="sign" id="sign" value="" />
+						    	<input type="hidden" name="source" id="source" value="" />
+						    	<!--<input type="hidden" name="method" id="" value="face_img_upload" />-->
+						    </form>
+						    <iframe style="display: none;" name="formImg"></iframe>
+					    </dt>
+					    <dd class="my_islogin_right">
+					    	<div class="my_islogin_right_top clearfloat">
+					    		<div class="my_name"></div>
+					            <div class="my_level"></div>
+					    	</div>
+					    	<div class="my_islogin_right_bottom clearfloat">
+					    		<ul class="my_month_card">
+					    			<li>账户余额</li>
+					    			<li id="month_card"></li>
+					    		</ul>
+					            <ul class="my_fruit_money">
+					            	<li>果币</li>
+					            	<li id="fruit_money"></li>
+					            </ul>
+					    	</div>					        
+					    </dd>					    
+					</dl>					
+				</div>
+				<div class="main_center clearfloat">					
+					<dl>						
+						<dd class="zs_personal" data-url="order_management.html">订单管理</dd>
+					</dl>
+					<dl>						
+						<dd class="zs_personal" data-url="PreOrder_management.html">我的预购</dd>
+					</dl>
+					<dl>						
+						<dd class="zs_personal" data-url="cuopon_management.html">优惠券(<span class="wo_main_coupon" style="color: #fa6b7d;">0</span>)</dd>
+					</dl>
+				</div>
+			    <div class="main_bottom">
+			    	<dl>			    		
+			    		<dd class="zs_personal" data-url="address_management.html?addr=addr">收货地址</dd>
+			    	</dl>
+			    	<dl>			    		
+			    		<dd class="zs_personal" data-url="fruitMall.html">果币商城</dd>
+			    	</dl>
+			    	<dl>			    		
+			    		<dd class="zs_personal" data-url="month_recharge.html?search=recharge">在线充值</dd>
+			    	</dl>
+			    	<dl>			    		
+			    		<dd class="zs_personal" data-url="pwd_change.html">修改密码</dd>
+			    	</dl>
+			    	<dl>			    		
+			    		<dd class="zs_personal" data-url="help.html">帮助中心</dd>
+			    	</dl>
+			    	<dl>			    		
+			    		<dd class="zs_personal" style="border: none;" data-url="my_settlement.html">设置</dd>
+			    	</dl>			    				    			    				    	
+			    </div>
+			    <div class="exit">退出</div>
+			</div>
+		</div>
+		<div class="empty1"></div>
+		<div class="footer_wrap">
+			<div class="footer clearfloat" id="foot">
+				<div class="footer_item">首页</div>
+				<div class="footer_item">更多商品</div>
+				<div class="footer_item" data-content="0" >购物车</div>
+				<div class="footer_item actived">我</div>
+			</div>
+		</div>
+	</body>
+	<script src="../seajs/2.1.1/sea.js"></script>
+	<script src="../seajs-config.js"></script>
+	<script>
+		seajs.use(['personal'], function(zs){
+			zs.init();	
+		});
+	</script>
+</html>

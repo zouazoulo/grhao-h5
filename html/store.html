@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>门店选择</title>
+<meta name="viewport" content="width=720,user-scalable=0"/>
+<meta content="telephone=no, address=no" name="format-detection" />
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<link rel="stylesheet" type="text/css" href="../css/base.min.css"/>
+<style>
+/*门店页面*/
+.nav-menu .menu-list.actived .item,.nav-group:nth-child(2) .sub-menu-list .item.actived{background: url(../img/6.png) no-repeat;}
+.store-position{margin-top:79px;}
+.position-detial{font-size: 28px;color:#333333;background:#ffffff url(../img/dot.png) no-repeat;background-position: 24px  30px;height:100px;position: relative;}
+.position-detial p{position: absolute;top:50%;left:86px;width:500px;transform: translate(0,-50%);-webkit-transform: -webkit-translate(0,-50%);-moz-transform: -moz-translate(0,-50%);-o-transform: -o-translate(0,-50%);}
+.position-detial #checkAllMaker,.store-type-label{background:url(../img/maker.png) no-repeat;}
+.position-detial #checkAllMaker{width:100px;height:100px;position:absolute;top:0;right:0;display:block;background-position:0 0;}
+.store-type-label{width:54px;height:79px;display:block;position: absolute;top:0;left:18px;background-position: 0 -110px;}
+.store-type-label.actived{background-position: 0 -210px;}
+#store-list-data-box{background: #f0f0f0;padding-bottom:1px;margin-top: 15px;}
+.store-all .list{height:124px;width:720px;padding:10px 0;position:relative;margin-top:10px;background: #ffffff;}
+.store-all .list:first-child{margin-top:0;}
+.store-all .list:last-child{margin-bottom:10px;}
+.store-all .tipMgs{height:92px;text-align:center;line-height: 92px;font-size: 28px;background: #ffffff;margin-bottom: 13px;}
+.store-all img{float:left;margin-left: 16px;}
+.store-all .store-dec{margin-left:188px;}
+.store-all .store-address,.store-all .store-name{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;margin-top: 8px;margin-right:124px;}
+.store-all .store-name{font-size: 28px;color:#333333;}
+.store-all .store-address{font-size: 22px;color:#999999;}
+.store-content{position: fixed;top:161px;left:0;background: #ffffff;width:720px;z-index:1;}
+.store-distance{position: absolute;top:76px;right:0;color:#999;font-size: 22px;margin-right:20px;}
+.store-dot img{display:block;float:none;margin-left:23px;margin-top: 20px;}
+.store-dot{position:absolute;top:0;right:0;display:block;height:124px;width:124px;}
+
+.store-nav{width:720px;height:auto;position:fixed;top:96px;left:0;right:0;z-index:4;margin:0 auto;}
+.nav-tab{width:720px;color:#333333;font-size: 30px;text-align:center;line-height: 80px;background: #ffffff;}
+.nav-tab .nav-list{display:inline-block;float:left;width:240px;height:80px;border-bottom:2px solid #f0f0f0;background-position:200px -325px;}
+.nav-tab .nav-list.actived{color:#93c01d;border-bottom:2px solid #93c01d;background-position: -225px -386px;}
+.nav-content{width:720px;position:relative;}
+.nav-group{position: absolute;top:0;left:0;width:720px;display:none;}
+.nav-menu{color:#333333;font-size: 28px;width:720px;background: #ffffff;}
+.nav-menu .menu-list{height:96px;width:720px;border-bottom:1px solid #dddddd;}
+.nav-menu .menu-list .txt,.nav-menu .menu-list .item{display:inline-block;height:95px;float:left;line-height: 95px;}
+.nav-menu .menu-list .txt{width:168px;text-align:center;}
+.nav-menu .menu-list .item{width:552px;}
+.nav-menu .menu-list.actived .txt{color:#93c01d;}
+.nav-menu .menu-list.actived .item{background-position: 460px 37px;}
+.nav-group:nth-child(2){height:650px;}
+.nav-group:nth-child(2) .nav-menu{position:absolute;left:0;top:0;width:168px;height:650px;background: #ffffff;overflow-y:auto;}
+.nav-group:nth-child(2) .nav-menu .menu-list{width:168px;}
+.nav-group:nth-child(2) .menu-list.actived{background: #eeeeee;}
+.nav-group:nth-child(2) .nav-sub-menu{position:absolute;left:168px;top:0;width:554px;background: #eeeeee;margin-left:-2px;}
+.nav-group:nth-child(2) .sub-menu-list{height:650px;overflow-y: auto;display:none;}
+.nav-group:nth-child(2) .sub-menu-list.actived{display:block;}
+.nav-group:nth-child(2) .sub-menu-list .item{height:96px;width:554px;color:#333333;font-size: 28px;line-height: 96px;}
+.nav-group:nth-child(2) .sub-menu-list .item span{display:inline-block;border-bottom:1px solid #cccccc;width:554px;height:96px;text-indent:40px;}
+.nav-group:nth-child(2) .sub-menu-list .item.actived{background-position: 460px 37px;color:#93c01d;}
+</style>
+<script src="http://webapi.amap.com/maps?v=1.3&key=68f1f7850d75a2c422f417cc77331395&plugin=AMap.DragRoute"></script>
+</head>
+	<body module-id="store">
+		<div class="header_wrap">
+			<div class="header_contain">
+				<div class="header_left"><span class="triangle-btn green"></span></div>
+				<div class="header_title">门店选择</div>
+			</div>
+		</div>
+		<div class="empty"></div>
+		<div class="main_wrap">
+			<div class="store-box" id="store-box">
+				<div class="nav-modal-bg"></div>
+				<div class="store-nav">
+					<ul class="nav-tab clearfloat">
+						<li class="nav-list">筛选</li>	
+						<li class="nav-list">区域</li>	
+						<li class="nav-list">智能排序</li>	
+					</ul>
+					<div class="nav-content">
+						<div class="nav-group">
+							<ul class="nav-menu">
+								<li class="menu-list actived firm-type"><span class="txt">全部</span><span class="item"></span></li>
+								<li class="menu-list firm-type" firm-type="1"><span class="txt">线下门店</span><span class="item"></span></li>
+								<li class="menu-list firm-type" firm-type="5"><span class="txt">售货机</span><span class="item"></span></li>
+							</ul>
+						</div>
+						<div class="nav-group" id="store-area-data-box"></div>
+						<div class="nav-group"> 
+							<ul class="nav-menu">
+								<li class="menu-list actived sort-type"><span class="txt">智能排序</span><span class="item"></span></li>
+								<li class="menu-list sort-type" sort-type="1"><span class="txt">离我最近</span><span class="item"></span></li>
+								<li class="menu-list sort-type"><span class="txt">评价最好</span><span class="item"></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="store-position">
+					<div class="position-detial"><p></p><span id="checkAllMaker"></span></div>
+				</div>
+				<div class="store-all">
+					<ul id="store-list-data-box"></ul>
+					<p class="tipMgs" style="display:none" id="tipMgs">点击加载更多</p>
+				</div>
+			</div>
+		</div>
+		<div id="map-container"></div>
+		<script id="store-list-data" type="text/x-jquery-tmpl">
+			{{each objects}}
+				<li class="list">
+					<img src="${$value.faceImgUrl}" alt="" width="150px" height="102px">
+					<span class="store-type-label ${ $value.type==5 ? '' : 'actived'}"></span>
+					<div class="store-dec">
+						<p class="store-name">${$value.firmName}</p>
+						<p class="store-address">${$value.address}</p>
+					</div>
+					{{if $value.distanceS == "没有经纬度" }}
+						<span class="store-distance">${$value.streetName}</span>
+						{{else}}
+							{{if $value.distanceS >= 0 }}
+								{{if $value.distanceS < 20000 }} <span class="store-distance">${$value.streetName}&nbsp;&nbsp;${Number($value.distanceS/1000).toFixed(2)} km</span>
+									{{else}} <span class="store-distance">${$value.streetName}&nbsp;&nbsp;>&nbsp;20 km</span>
+								{{/if}}
+							{{/if}}
+					{{/if}}
+
+					<span class="store-dot isCurNode"><img src="../img/dot.png" alt="" width="32px" height="42px" class="isCurNode"></span>
+				</li>
+			{{/each}}
+		</script>
+		<script id="store-area-data" type="text/x-jquery-tmpl">
+			<ul class="nav-menu">
+				<li class="menu-list actived"><span class="txt">全部</span></li>
+				{{each  data}}
+					<li class="menu-list" code="${JSON.parse($index).code}"><span class="txt">${JSON.parse($index).name}</span></li>
+				{{/each}}
+			</ul>
+			<ul class="nav-sub-menu">
+				<li class="sub-menu-list actived">
+					<p class="item"><span>全部</span></p>
+					{{each data}}
+						{{each $value}}
+							{{if $value.length !=0 }}
+								<p class="item" code="${$value.code}"><span>${$value.name}</span></p>
+							{{/if}}
+						{{/each}}
+					{{/each}}
+				</li>
+				{{each  data}}
+					<li class="sub-menu-list">
+						<p class="item"><span>全部</span></p>
+						{{if $value.length !=0 }}
+							{{each $value}}
+								<p class="item" code="${$value.code}"><span>${$value.name}</span></p>
+							{{/each}}
+						{{/if}}
+					</li>
+				{{/each}}
+			</ul>
+		</script>
+	</body>
+	<script src="../seajs/2.1.1/sea.js"></script>
+	<script src="../seajs-config.js"></script>
+	<script>
+		seajs.use(['search'],function( zs ){
+			zs.init();
+		});
+	</script>
+</html>
