@@ -2,7 +2,7 @@ html { height:100%;font-family:"微软雅黑", "Helvetica Neue", Helvetica, STHe
 body { margin: 0; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
 
 article, aside, details, figcaption, figure, footer, header, main, nav, section, summary { display: block; }
-
+ 
 a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; }
 a:active { outline: 0; }
 a:active { color: #006699; }
