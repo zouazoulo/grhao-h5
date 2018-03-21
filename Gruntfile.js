@@ -47,14 +47,13 @@ module.exports = function (grunt) {
         var reg = /base\s*\:\s*\'(.+)\'/g;
 
         // recive( pathname, reg, "base : 'lib\/'");
-
+		var seajsConfig;
 
         switch( sym ){
-            case 'lib' : recive( pathname, reg, "base : 'lib\/'"); break;
-            case 'dest' : recive( pathname, reg, "base : 'dest\/'"); break;
+            case 'lib' : seajsConfig = recive( pathname, reg, "base : 'lib\/'"); break;
+            case 'dest' : seajsConfig = recive( pathname, reg, "base : 'dest\/'"); break;
             default : grunt.log.write( seajsConfig.match( reg ) );
         }
-        console.log( seajsConfig );
         grunt.file.write( pathname, seajsConfig, encoding );
     });
     grunt.registerTask('tip','tip',function(){
