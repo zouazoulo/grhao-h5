@@ -730,6 +730,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .sit_pay{width:238px;height:80px;float:right;border-radius:10px;background:#fe7831;color:white;}
 .order_situation.show.hide{display: none;}
 
+
 /*订单结算*/
 
 .set_charge_contact {width:100%;height:100px;background:#ffffff;}
@@ -1052,7 +1053,11 @@ body.locked{overflow-y:hidden;}
 .search_goods dl dt img.icon-img{position: absolute;top:20px;left:20px;width:36px;height:40px;}
 .search_goods dl dd{width:500px;padding:20px 0;font-size:28px;}
 .good_picre span{color:#fe7831;font-size:30px;}
+/*新增订单详情-2018-03-29*/
+.order_set_list li:last-child .order_set_list_right{color: #fe7831;}
 /*换肤需要*/
+
+/*第二套皮肤*/
 
 /*个人中心页面未登录状态下的登录按钮*/
 .main_top_login.skin2{background: #e5892b;}
@@ -1109,10 +1114,198 @@ body.locked{overflow-y:hidden;}
 .order_submit.skin2 .order_submit_right{background: url(../img/skip2submit@2x.png) no-repeat 0 0;background-size: 220px 110px;}
 /*修改个人信息*/
 .zs_address_box.skin2 .main_reverse,.zs_phone_box.skin2 .phone_submit,.zs_phone_box.skin2 #phone_verify_code1{background: #E5892B;}
+/*果币商城*/
+.fruitMall_wrap_top.skin2 .fruitMall_wrap_content div{background-image:url(../img/skin2_fruit.png) ;}
 /*更换密码*/
 .pwd_change_reverse.skin2{background: #E5892B;}
 /*帮助中心*/
-.main_tel.skin2{background: #E5892B;}
+.main_tel.skin2{background-color: #E5892B;}
 /*订单管理*/
 .order_manage_list.skin2 li.actived{color: #E5892B;border-bottom-color: #E5892B;}
 .management_contain.skin2 .order_num_right,.management_contain.skin2 .order_bottom_money{color: #EB4040;}
+/*订单详情*/
+.order_details.skin2 .order_status{color: #EB4040;}
+
+.position-label-box.skin2{background: #FFF url(../img/skin2_add@2x.png) no-repeat 658px 14px;color: #E5892B;}
+.order_set_list.skin2 li:last-child .order_set_list_right{color: #EB4040;}
+/*预购订单管理*/
+.myOrder_management_top.skin2 li.actived{color: #E5892B;border-bottom-color: #E5892B;}
+/*预购订单详情*/
+
+/*地址管理*/
+.add_address.skin2{background-color:#E5892B ;}
+/*修改或新增手机号*/
+.address_reverse.skin2{background-color:#E5892B ;}
+/*充值页面和支付页面*/
+.month_recharge_content.skin2 .month_sign1,.month_recharge_content.skin2 .count-left-money em{color: #EB4040;}
+.pay_style_box.skin2 .pay_style_item .count-left-money em{color:#EB4040 ;}
+.pay_style_box.skin2 #get_verify_code{background: #E5892B;}
+
+/*第三套皮肤*/
+
+/*个人中心页面未登录状态下的登录按钮*/
+.main_top_login.skin3{background: #35af64;}
+/*登录页面登录按钮*/
+.login_main_content.skin3 #get_verify_code,.login_main_content.skin3 #time,.login_btn.skin3{background: #35af64;}
+/*注册页面*/
+.regsiter_pack.skin3 .regsiter_btn,.regsiter_pack.skin3 #reg_time,.regsiter_pack.skin3 #reg_verify_code{background: #35af64;}
+/*首页*/
+.index_header.skin3 .index_tit{border-left-color: #35af64;}
+.index_header.skin3 .index_tit .all_bg1{background-image: url(../img/skin3.png);background-repeat: no-repeat;background-position:8px -264px;}
+.index_header.skin3 .index_rigth{background-image: url(../img/skin3.png);background-position: -294px -252px;}
+.index_inner.skin3 dl dd span.float_right{color:#Eb4040;}
+/*底部*/
+.footer.skin3 .footer_item{background-image:url(../img/skin3.png) ;}
+.footer.skin3 .footer_item.actived{ color:#35af64;}
+.footer.skin3 .footer_item:nth-child(1){background-position: 60px 2px;}
+.footer.skin3 .footer_item.actived:nth-child(1){ background-position: 60px -148px;}
+.footer.skin3 .footer_item:nth-child(2){background-position: -94px 2px;}
+.footer.skin3 .footer_item.actived:nth-child(2){ background-position: -94px -148px;}
+.footer.skin3 .footer_item:nth-child(3){background-position: -260px 2px;position: relative;}
+.footer.skin3 .footer_item.actived:nth-child(3){ background-position: -260px -148px;}
+.footer.skin3 .footer_item:nth-child(4){background-position: -441px 2px;}
+.footer.skin3 .footer_item.actived:nth-child(4){ background-position: -441px -148px;}
+#foot.skin3 .footer_item:nth-child(3):after{background: #EB4040;}
+/*更多商品*/
+.more_top_wrap.skin3 .more_first_click,.more_bottom_wrap.skin3 .more_two_click{border-color: #35af64;color: #35af64;}
+.more_bottom_wrap.skin3 .good_picre span{color: #EB4040;}
+.more_bottom_wrap.skin3 .minus_num{background: url(../img/skip3-@2x.png) no-repeat 0 0;background-size: 52px;}
+.more_bottom_wrap.skin3 .add_num{background: url(../img/skip3add@2x.png) no-repeat 0 0;background-size: 52px;}
+/*购物车*/
+#zs-cart.skin3 .curPrice{color: #EB4040;}
+#zs-cart.skin3 #select-delete,#zs-cart.skin3 #total .totalmoney{color: #EB4040;}
+#zs-cart.skin3 #total .settle{background: url(../img/skip3submit@2x.png) no-repeat 0 0;background-size: 198px 100px;}
+/*我*/
+.main_top.skin3 .main_top_login{background: #35af64;}
+.exit.skin3{background: #EC4040;}
+/*商品详情*/
+.goodsDetails_box1.skin3 .gd_price span{color: #EB4040;}
+.goodsDetails_box1.skin3 .minus_num{background: url(../img/skip3-@2x.png) no-repeat 0 0;background-size: 52px;}
+.goodsDetails_box1.skin3 .add_num{background: url(../img/skip3add@2x.png) no-repeat 0 0;background-size: 52px;}
+.goodsDetails_box2.skin3 .switch-tab .dot{background: #35af64;}
+/*搜索+门店*/
+.header_contain.skin3 .search_btn{color: #35af64;}
+.store-box.skin3 .position-detial{background: #FFF url(../img/skin3.png) no-repeat -472px -250px;}
+.store-box.skin3 #checkAllMaker{background: url(../img/skip3map@2x.png) no-repeat 0 center ;}
+.store-box.skin3 .store-dot{background: url(../img/skin3.png) no-repeat -472px -250px;}
+.store-box.skin3 .nav-list.actived{color: #35af64;border-bottom-color: #35af64;background: url(../img/skip3-down.png) no-repeat 198px 26px;background-size:26px ;}
+.store-box.skin3 .menu-list.actived .txt{color: #35af64;}
+.store-box.skin3 .nav-menu .menu-list.actived .item{background: url(../img/skip3-dui.png) no-repeat 460px 37px;}
+.store-box.skin3 .nav-group .sub-menu-list .item.actived{color: #35af64;background: url(../img/skip3-dui.png) no-repeat 460px 37px;}
+/*提交订单*/
+.order_goods_contain_details.skin3 .font_color{color: #EB4040;}
+.order_submit.skin3 .order_submit_left{color: #EB4040;}
+.order_submit.skin3 .order_submit_right{background: url(../img/skip3submit@2x.png) no-repeat 0 0;background-size: 220px 110px;}
+/*修改个人信息*/
+.zs_address_box.skin3 .main_reverse,.zs_phone_box.skin3 .phone_submit,.zs_phone_box.skin3 #phone_verify_code1{background: #35af64;}
+/*果币商城*/
+.fruitMall_wrap_top.skin3 .fruitMall_wrap_content div{background-image:url(../img/skin3_fruit.png) ;}
+/*更换密码*/
+.pwd_change_reverse.skin3{background: #35af64;}
+/*帮助中心*/
+.main_tel.skin3{background-color: #35af64;}
+/*订单管理*/
+.order_manage_list.skin3 li.actived{color: #35af64;border-bottom-color: #35af64;}
+.management_contain.skin3 .order_num_right,.management_contain.skin3 .order_bottom_money{color: #EB4040;}
+/*订单详情*/
+.order_details.skin3 .order_status{color: #EB4040;}
+
+.position-label-box.skin3{background: #FFF url(../img/skin3_add@2x.png) no-repeat 658px 14px;color: #35af64;}
+.order_set_list.skin3 li:last-child .order_set_list_right{color: #EB4040;}
+/*预购订单管理*/
+.myOrder_management_top.skin3 li.actived{color: #35af64;border-bottom-color: #35af64;}
+/*预购订单详情*/
+
+/*地址管理*/
+.add_address.skin3{background-color:#35af64 ;}
+/*修改或新增手机号*/
+.address_reverse.skin3{background-color:#35af64 ;}
+/*充值页面和支付页面*/
+.month_recharge_content.skin3 .month_sign1,.month_recharge_content.skin3 .count-left-money em{color: #EB4040;}
+.pay_style_box.skin3 .pay_style_item .count-left-money em{color:#EB4040 ;}
+.pay_style_box.skin3 #get_verify_code{background: #35af64;}
+
+/*第四套皮肤*/
+
+/*个人中心页面未登录状态下的登录按钮*/
+.main_top_login.skin4{background: #ca8b48;}
+/*登录页面登录按钮*/
+.login_main_content.skin4 #get_verify_code,.login_main_content.skin4 #time,.login_btn.skin4{background: #ca8b48;}
+/*注册页面*/
+.regsiter_pack.skin4 .regsiter_btn,.regsiter_pack.skin4 #reg_time,.regsiter_pack.skin4 #reg_verify_code{background: #ca8b48;}
+/*首页*/
+.index_header.skin4 .index_tit{border-left-color: #ca8b48;}
+.index_header.skin4 .index_tit .all_bg1{background-image: url(../img/skin4.png);background-repeat: no-repeat;background-position:8px -264px;}
+.index_header.skin4 .index_rigth{background-image: url(../img/skin4.png);background-position: -294px -252px;}
+.index_inner.skin4 dl dd span.float_right{color:#Eb4040;}
+/*底部*/
+.footer.skin4 .footer_item{background-image:url(../img/skin4.png) ;}
+.footer.skin4 .footer_item.actived{ color:#ca8b48;}
+.footer.skin4 .footer_item:nth-child(1){background-position: 60px 2px;}
+.footer.skin4 .footer_item.actived:nth-child(1){ background-position: 60px -148px;}
+.footer.skin4 .footer_item:nth-child(2){background-position: -94px 2px;}
+.footer.skin4 .footer_item.actived:nth-child(2){ background-position: -94px -148px;}
+.footer.skin4 .footer_item:nth-child(3){background-position: -260px 2px;position: relative;}
+.footer.skin4 .footer_item.actived:nth-child(3){ background-position: -260px -148px;}
+.footer.skin4 .footer_item:nth-child(4){background-position: -441px 2px;}
+.footer.skin4 .footer_item.actived:nth-child(4){ background-position: -441px -148px;}
+#foot.skin4 .footer_item:nth-child(3):after{background: #EB4040;}
+/*更多商品*/
+.more_top_wrap.skin4 .more_first_click,.more_bottom_wrap.skin4 .more_two_click{border-color: #ca8b48;color: #ca8b48;}
+.more_bottom_wrap.skin4 .good_picre span{color: #EB4040;}
+.more_bottom_wrap.skin4 .minus_num{background: url(../img/skip4-@2x.png) no-repeat 0 0;background-size: 52px;}
+.more_bottom_wrap.skin4 .add_num{background: url(../img/skip4add@2x.png) no-repeat 0 0;background-size: 52px;}
+/*购物车*/
+#zs-cart.skin4 .curPrice{color: #EB4040;}
+#zs-cart.skin4 #select-delete,#zs-cart.skin4 #total .totalmoney{color: #EB4040;}
+#zs-cart.skin4 #total .settle{background: url(../img/skip4submit@2x.png) no-repeat 0 0;background-size: 198px 100px;}
+/*我*/
+.main_top.skin4 .main_top_login{background: #E9953d;}
+.exit.skin4{background: #EC4040;}
+/*商品详情*/
+.goodsDetails_box1.skin4 .gd_price span{color: #EB4040;}
+.goodsDetails_box1.skin4 .minus_num{background: url(../img/skip4-@2x.png) no-repeat 0 0;background-size: 52px;}
+.goodsDetails_box1.skin4 .add_num{background: url(../img/skip4add@2x.png) no-repeat 0 0;background-size: 52px;}
+.goodsDetails_box2.skin4 .switch-tab .dot{background: #ca8b48;}
+/*搜索+门店*/
+.header_contain.skin4 .search_btn{color: #ca8b48;}
+.store-box.skin4 .position-detial{background: #FFF url(../img/skin4.png) no-repeat -472px -250px;}
+.store-box.skin4 #checkAllMaker{background: url(../img/skip4map@2x.png) no-repeat 0 center ;}
+.store-box.skin4 .store-dot{background: url(../img/skin4.png) no-repeat -472px -250px;}
+.store-box.skin4 .nav-list.actived{color: #ca8b48;border-bottom-color: #ca8b48;background: url(../img/skip4-down.png) no-repeat 198px 26px;background-size:26px ;}
+.store-box.skin4 .menu-list.actived .txt{color: #35af64;}
+.store-box.skin4 .nav-menu .menu-list.actived .item{background: url(../img/skip4-dui.png) no-repeat 460px 37px;}
+.store-box.skin4 .nav-group .sub-menu-list .item.actived{color: #ca8b48;background: url(../img/skip4-dui.png) no-repeat 460px 37px;}
+/*提交订单*/
+.order_goods_contain_details.skin4 .font_color{color: #EB4040;}
+.order_submit.skin4 .order_submit_left{color: #EB4040;}
+.order_submit.skin4 .order_submit_right{background: url(../img/skip4submit@2x.png) no-repeat 0 0;background-size: 220px 110px;}
+/*修改个人信息*/
+.zs_address_box.skin4 .main_reverse,.zs_phone_box.skin4 .phone_submit,.zs_phone_box.skin4 #phone_verify_code1{background: #ca8b48;}
+/*果币商城*/
+.fruitMall_wrap_top.skin4 .fruitMall_wrap_content div{background-image:url(../img/skin4_fruit.png) ;}
+/*更换密码*/
+.pwd_change_reverse.skin4{background: #ca8b48;}
+/*帮助中心*/
+.main_tel.skin4{background-color: #ca8b48;}
+/*订单管理*/
+.order_manage_list.skin4 li.actived{color: #ca8b48;border-bottom-color: #ca8b48;}
+.management_contain.skin4 .order_num_right,.management_contain.skin4 .order_bottom_money{color: #EB4040;}
+/*订单详情*/
+.order_details.skin4 .order_status{color: #EB4040;}
+
+.position-label-box.skin4{background: #FFF url(../img/skin4_add@2x.png) no-repeat 658px 14px;color: #ca8b48;}
+.order_set_list.skin4 li:last-child .order_set_list_right{color: #EB4040;}
+/*预购订单管理*/
+.myOrder_management_top.skin4 li.actived{color: #ca8b48;border-bottom-color: #ca8b48;}
+/*预购订单详情*/
+
+/*地址管理*/
+.add_address.skin4{background-color:#ca8b48 ;}
+/*修改或新增手机号*/
+.address_reverse.skin4{background-color:#ca8b48 ;}
+/*充值页面和支付页面*/
+.month_recharge_content.skin4 .month_sign1,.month_recharge_content.skin4 .count-left-money em{color: #EB4040;}
+.pay_style_box.skin4 .pay_style_item .count-left-money em{color:#EB4040 ;}
+.pay_style_box.skin4 #get_verify_code{background: #ca8b48;}
+
