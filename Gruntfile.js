@@ -54,7 +54,6 @@ module.exports = function (grunt) {
             case 'dest' : seajsConfig = recive( pathname, reg, "base : 'dest\/'"); break;
             default : grunt.log.write( seajsConfig.match( reg ) );
         }
-        console.log( seajsConfig );
         grunt.file.write( pathname, seajsConfig, encoding );
     });
     grunt.registerTask('tip','tip',function(){
