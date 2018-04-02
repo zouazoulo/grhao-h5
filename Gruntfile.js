@@ -77,7 +77,21 @@ module.exports = function (grunt) {
                    commonJs.replace( reg, '\"' + json[address][0] + '\"\, \/\/' + json[address][1])
                ); 
     });
-
+	//更新每个HTML下面的seajs保证微信下清除缓存
+	grunt.registerTask('html','html time',function( time ){
+		var pathdir = 'html/';
+		//var reg = /<script.*?(src=\".*?seajs-config\.js).*?<\/script>/g;
+		var reg = /seajs-config\.js.*?\"/g
+		var filebody = '';
+		//首页
+		filebody = grunt.file.read( 'index.html', encoding ).replace(reg,'seajs-config\.js?v='+time+'\"');
+		grunt.file.write( 'index.html', filebody, encoding );
+		
+		grunt.file.recurse(pathdir, function(abspath){
+			filebody = recive(abspath,reg,'seajs-config\.js?v='+time+'\"');
+			grunt.file.write( abspath, filebody, encoding );
+		})
+	});
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
