@@ -63,6 +63,7 @@ module.exports = function (grunt) {
     grunt.registerTask('api','api adress',function( address ){
         var pathname = 'lib/common.js';
         var reg = /[\'|\"](http\:\/\/.+(\/server\/api\.do)[\'|\"]\,.*)/g;
+        
         var json = {
             dev : ["http://61.164.118.194:8090/grh_api/server/api.do",' 测试'],
             loc : ["http://192.168.1.8:8080/grh_api/server/api.do",' 本地'],

@@ -212,7 +212,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .index_inner dl dt img {height:240px;width: 232px;opacity: 0}
 .index_inner dl dt img.fadeIn{opacity:1;transition:opacity 0.3s ease-in 0.1s;}
 .index_inner dl dd{height: 80px;background: #FFFFFF;line-height:40px;color:rgb(90,94,95);}
-.index_inner dl dd p {text-align:center;width: 238px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.index_inner dl dd p {text-align:center;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .index_inner dl dd p span{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 
 .business_name {line-height:50px;}
