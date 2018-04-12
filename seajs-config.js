@@ -1,5 +1,5 @@
 seajs.config({
-  base : 'dest/',
+  base : 'lib/',
   alias: {
     'swiperCSS' : '../css/swiper-3.3.1.min.css',
     'LAreaCSS':'../css/LArea.css',
@@ -26,7 +26,8 @@ seajs.config({
     'zsCart' : 'zsCart.js?v=041101',
     'zipImage': 'zipImage.js?v=041101',
     'weixinSDK' : 'weixin.js?v=041101',
-    'package' : 'red_package_rain.js?v=041101'
+    'package' : 'red_package_rain.js?v=041101',
+    'vue':'vue.js?v=041101'
   },
   preload: ['mobile-util']
 });

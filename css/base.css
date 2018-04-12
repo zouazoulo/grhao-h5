@@ -943,7 +943,34 @@ body.locked{overflow-y:hidden;}
 #total #all-select.selected{background-position: -734px 4px;}
 #total .detail-list:nth-child(3) p{margin-right:18px;}
 #total .detail-list:nth-child(3) span:nth-child(2){color:#ff7b29;max-width: 295px;display:inline-block;}
-#empty-cart{ text-align: center; padding-top: 20%;display:none;}
+#empty-cart{ text-align: center; padding-top: 20%;}
+/*购物车页面*/
+/*常购商品页面*/
+.often_shop_main_wrap .main ul{width:100%;margin-top:10px;background:#FFF}
+.line-wrapper{width:100%;height:220px;overflow:hidden;background: #F7F7F7;margin-bottom: 20px;}
+.line-scroll-wrapper{height:200px;width:950px}
+.line-normal-wrapper{float:left;width:750px;height:200px}
+.line-normal-avatar-wrapper{float:left;width:200px;height:200px;padding:20px;position: relative;}
+.line-normal-avatar-wrapper img{width:100%;height:100%}
+.line-normal-info-wrapper{float:left;width:448px;height:200px;padding-top:18px;}
+.often_shop_goods_top p{float:left;font-size:28px;color:#999999}
+.often_shop_goods_top .often_shop_goods_tit{width: 320px;line-height: 60px;color: #393737;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.often_shop_goods_top .often_shop_goods_icon{line-height: 50px;color: #ff7b29;font-size: 32px;}
+.often_shop_goods_top .often_shop_goods_icon del{color: #c1c1c1;font-size: 28px;}
+.often_shop_goods_top.often_shop_show p{line-height: 50px;}
+.often_shop_color{color:#F76A10;font-size:30px}
+.line-btn-delete{float:left;width:200px;height:200px}
+.line-btn-delete button{width:100%;height:100%;background:#ff3b30;border:none;font-size:28px;font-family:'Microsoft Yahei';color:#fff}
+
+#zs-cart .sub-list{background-image: url(../img/cart2.png) ;background-repeat:no-repeat ;}
+#zs-cart .sub-list[data-type='-1']{background-position: 24px center ;}
+#zs-cart .sub-list[data-type='0']{background-position: 24px center ;}
+#zs-cart .sub-list[data-type='1']{background-position: -740px center ;}
+
+.line-normal-wrapper[data-type='-1']{}
+.line-normal-avatar-wrapper{}
+.often_shop_goods_top .msg{padding: 15px 24px;font-size: 28px;color: red;}
+
 /*我*/
 .main_top{width:100%;height:320px;background:url('../img/1.jpg') no-repeat top left;background-size:100% 100%;position:relative;}
 .main_bottom dl,.main_center dl,.main_top_right,.main_bottom dl dd,.main_top_middle{background: url(../img/4.png) no-repeat;}
