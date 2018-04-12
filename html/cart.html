@@ -30,6 +30,7 @@
 		        			<dt class="sub-list" :data-type = "item.status" @click="choose(index,item)"></dt>
 	                        <dd class="line-normal-avatar-wrapper">
 	                        	<img :src="item.logo"/>
+	                        	<img v-show="(item.type == 2)" class="goods-type" src="../img/icon_miao_s.png"/>
 	                        </dd>
 	                        <dd class="line-normal-info-wrapper">
 	            				<div class="often_shop_goods_top clearfloat">
@@ -42,8 +43,8 @@
 								</div>
 								<div class="often_shop_goods_top clearfloat">
 									<div class="oprate float_left">
-										<span class="minus_num actived" v-on:click="numChange(index, -1)" v-bind:class="{ 'disable' : item.count==1 }">－</span>
-										<input class="show_num" v-on:blur="numEntry(index)" v-model="item.count">
+										<span class="minus_num actived" v-on:click="numChange(index, -1)" v-bind:class="{ 'disable' : item.sum==1 }">－</span>
+										<input class="show_num" v-on:blur="numEntry(index)" v-model="item.sum">
 										<span class="add_num" @click="numChange(index,1)">+</span>
 									</div>
 									<div class="float_right msg" v-text="item.msg">
@@ -53,7 +54,7 @@
 								
 	                        </dd>
 		               </dl>
-		               <div class="line-btn-delete"><button>删除</button></div>
+		               <div class="line-btn-delete" @click="delgood(index)"><button>删除</button></div>
 		           </div>
 		        </li>
 			    
