@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>购物车</title>
-	<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
-	<meta name="viewport" content="width=720,user-scalable=0"/>
+	<!--<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
+	--><meta name="viewport" content="width=720,user-scalable=0"/>
 	<meta content="telephone=no, address=no" name="format-detection" />	
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -15,14 +15,11 @@
 		</div>
 	</div>
 	
-	<div id="app">
+	<div id="app" >
 		
 		<ul class="ul-box" id="ul-box">
-			<!--<li v-for="(index1, item) in goodsObj">
-				<p v-html="item.name"></p>
-			</li>-->
 			<div v-show="!goodsObj || goodsObj.length == 0" id="empty-cart" ><a href="moregoods.html"><img src="../img/epmty_cart.png" alt=""></a></div>
-			<div v-show="goodsObj && goodsObj.length !=0 ">
+			<div v-show="goodsObj && goodsObj.length !=0 " id="good">
 				
 				<li v-for="(item , index ) in goodsObj" :class="['line-wrapper', ]" :data-id="item.goodsId" :data-packageNum="item.packageNum " :data-maxCount="item.maxCount" :data-price="item.price">
 		            <div class="line-scroll-wrapper clearfloat">
@@ -71,7 +68,7 @@
 					<p><span>合计:&nbsp;</span><span class="totalmoney" v-html="totalMoney.toFixed(2)"></span></p>
 				</li>
 			</ul>
-			<div class="settle">结算</div>
+			<div class="settle" @click="submitgoshop()">结算</div>
 		</div>
 	</div>
 	<div class="footer_wrap">
