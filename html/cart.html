@@ -4,7 +4,9 @@
 	<meta charset="UTF-8">
 	<title>购物车</title>
 	<!--<meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.118.194:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
-	--><meta name="viewport" content="width=720,user-scalable=0"/>
+	-->
+	<meta name="apple-mobile-web-app-capable" content="yes">  
+	<meta name="viewport" content="width=720,user-scalable=0"/>
 	<meta content="telephone=no, address=no" name="format-detection" />	
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -17,7 +19,7 @@
 	
 	<div id="app" >
 		
-		<ul class="ul-box" id="ul-box">
+		<ul class="ul-box" id="ul-box" v-cloak>
 			<div v-show="!goodsObj || goodsObj.length == 0" id="empty-cart" ><a href="moregoods.html"><img src="../img/epmty_cart.png" alt=""></a></div>
 			<div v-show="goodsObj && goodsObj.length !=0 " id="good">
 				
@@ -41,7 +43,7 @@
 								<div class="often_shop_goods_top clearfloat">
 									<div class="oprate float_left">
 										<span class="minus_num actived" v-on:click="numChange(index, -1)" v-bind:class="{ 'disable' : item.sum==1 }">－</span>
-										<input class="show_num" v-on:blur="numEntry(index)" v-model="item.sum">
+										<input type="text" class="show_num" v-on:blur="numEntry(index)" v-model="item.sum">
 										<span class="add_num" @click="numChange(index,1)">+</span>
 									</div>
 									<div class="float_right msg" v-text="item.msg">
@@ -65,7 +67,7 @@
 				</li>
 				<li id="select-delete" @click="delGoods()">删除</li>
 				<li class="detail-list">
-					<p><span>合计:&nbsp;</span><span class="totalmoney" v-html="totalMoney.toFixed(2)"></span></p>
+					<p><span>合计:&nbsp;</span><span class="totalmoney" v-html="'￥'+totalMoney.toFixed(2)"></span></p>
 				</li>
 			</ul>
 			<div class="settle" @click="submitgoshop()">结算</div>
@@ -81,7 +83,7 @@
 	</div>
 </body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=2018041101"></script>
+	<script src="../seajs-config.js?v=20180420"></script>
 	<script>
 		seajs.use(['zsCart'],function( zs ){
 			zs.init();
