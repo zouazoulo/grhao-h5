@@ -68,6 +68,7 @@
 			</dl>
 			<div class="order_goods_contain_details">
 			</div>
+			
 			<ul class="order_set_list">
 				<li>
 					<div class="float_left">商品总价：</div>
@@ -77,6 +78,10 @@
 					<div class="float_left">运费：</div>
 					<div class="float_right">￥</div>
 				</li>
+				<div class="order_first_free clearfloat">
+					<div class="float_left">首单立减</div>
+					<div class="float_right"></div>
+				</div>
 				<li class="group">
 					<div class="float_left">优惠券金额：</div>
 					<div class="float_right">￥0</div>
@@ -108,7 +113,7 @@
     </div>
 </body>
 <script src="../seajs/2.1.1/sea.js"></script>
-<script src="../seajs-config.js?v=20180420"></script>
+<script src="../seajs-config.js?v=20180426"></script>
 <script>
 	seajs.use(['orderSettlement'],function( zs ){
 		zs.init();
