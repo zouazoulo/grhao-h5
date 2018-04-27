@@ -42,6 +42,29 @@ module.exports = function (grunt) {
     var recive = function recive( pathname, reg, pattern ){
         return grunt.file.read( pathname, encoding ).replace( reg, pattern )
     }
+    var weixin = function(address){
+    	var pathname = 'lib/common.js';
+    	var reg = /(WXDOMAIN).*[\:].*[\,].*/g;
+    	var reg1 = /(WXAPPID).*[\:].*[\,].*/g;
+		var json = {
+            dev : ['WXDOMAIN : '+'"http://wx.grhao.cn/lifei"','WXAPPID : '+'"wxe92e098badc60fab"',"测试"],
+            pro : ['WXDOMAIN : '+'"http://weixin.grhao.com"','WXAPPID : '+'"wxf9dd00234aa6e921"',"正式"]
+        };
+        var commonJs = grunt.file.read( pathname, encoding );
+            !address ? grunt.log.write( commonJs.match( reg ) ) : grunt.file.write(
+                   pathname, 
+                   commonJs.replace( reg, json[address][0] + '\, \/\/' + json[address][2])
+                   
+               );
+        var commonJs = grunt.file.read( pathname, encoding );
+            !address ? grunt.log.write( commonJs.match( reg ) ) : grunt.file.write(
+                   pathname, 
+                   commonJs.replace( reg1, json[address][1] + '\, \/\/' + json[address][2])
+                   
+               ); 
+        
+        
+    }
     grunt.registerTask( 'path', 'switch jsvascript catalog', function(sym){
         var pathname = 'seajs-config.js';
         var reg = /base\s*\:\s*\'(.+)\'/g;
@@ -64,6 +87,7 @@ module.exports = function (grunt) {
         var pathname = 'lib/common.js';
         var reg = /[\'|\"](http\:\/\/.+(\/server\/api\.do)[\'|\"]\,.*)/g;
         
+        
         var json = {
             dev : ["http://61.164.118.194:8090/grh_api/server/api.do",' 测试'],
             loc : ["http://192.168.1.8:8080/grh_api/server/api.do",' 本地'],
@@ -75,7 +99,8 @@ module.exports = function (grunt) {
             !address ? grunt.log.write( commonJs.match( reg ) ) : grunt.file.write(
                    pathname, 
                    commonJs.replace( reg, '\"' + json[address][0] + '\"\, \/\/' + json[address][1])
-               ); 
+               );
+        weixin(address)
     });
 	//更新每个HTML下面的seajs保证微信下清除缓存
 	grunt.registerTask('html','html time',function( time ){
