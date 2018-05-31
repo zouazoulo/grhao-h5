@@ -1,5 +1,5 @@
 seajs.config({
-  base : 'dest/',
+  base : 'lib/',
   alias: {
     'swiperCSS' : '../css/swiper-3.3.1.min.css',
     'LAreaCSS':'../css/LArea.css',
