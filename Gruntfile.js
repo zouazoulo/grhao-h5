@@ -117,6 +117,21 @@ module.exports = function (grunt) {
 			grunt.file.write( abspath, filebody, encoding );
 		})
 	});
+	//更新每个HTML下面的min.css保证微信下清除缓存
+	grunt.registerTask('htmlCss','html time',function( time ){
+		var pathdir = 'html/';
+		//var reg = /<script.*?(src=\".*?seajs-config\.js).*?<\/script>/g;
+		var reg = /base\.min\.css.*\"/g
+		var filebody = '';
+		//首页
+		filebody = grunt.file.read( 'index.html', encoding ).replace(reg,'base\.min\.css?v='+time+'\"');
+		grunt.file.write( 'index.html', filebody, encoding );
+		
+		grunt.file.recurse(pathdir, function(abspath){
+			filebody = recive(abspath,reg,'base\.min\.css?v='+time+'\"');
+			grunt.file.write( abspath, filebody, encoding );
+		})
+	});
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
