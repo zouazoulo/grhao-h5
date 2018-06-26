@@ -17,6 +17,7 @@ seajs.config({
     'moregoods' : 'moregoods.js?v=20180606',
     'order_management' : 'order_management.js?v=20180606',
     'orderSettlement' : 'orderSettlement.js?v=20180606',
+    'orderSettlement1' : 'orderSettlement1.js?v=20180606',
     'other' : 'other.js?v=20180606',
     'payment' : 'payment.js?v=20180606',
     'personal' : 'personal.js?v=20180606',
@@ -27,7 +28,8 @@ seajs.config({
     'zipImage': 'zipImage.js?v=20180606',
     'weixinSDK' : 'weixin.js?v=20180606',
     'package' : 'red_package_rain.js?v=20180606',
-    'vue':'vue.js?v=20180606'
+    'vue':'vue.js?v=20180606',
+    'score':'score.js?v=20180606'
   },
   preload: ['mobile-util']
 });
