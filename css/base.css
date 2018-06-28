@@ -1362,15 +1362,17 @@ body.locked{overflow-y:hidden;}
 
 /*果币商城*/
 .score_top_box{height: 148px;padding: 30px 47px;background: #fff;margin-bottom: 30px;}
-.score_top_box .float_left{padding-top: 54px;font-size: 24px;}
+.score_top_box .float_left{font-size: 24px;}
 .score_top_box .float_left span{float: left;}
-.score_top_box .float_left .pad{padding-top:10px ;}
-.score_top_box .score_icon{font-size:54px;position: relative;padding-left: 60px;font-weight: 800;top: -24px;padding-right: 6px;}
-.score_top_box .score_icon:before{position: absolute;content: "";bottom:12px;left: 20px;width: 36px;height: 36px;background: url(../img/score_icon_b.png) no-repeat center bottom;}
-.score_top_box .details{width: 60px;height: 30px;border: 1px solid #9ACB41;position: relative;text-align: center;line-height: 30px;}
+.score_top_box .float_left .paddingTop{padding-top:54px ;}
+.score_top_box .score_icon{font-size:72px;position: relative;padding-left: 60px;font-weight: 800;top: -28px;padding-right: 6px;min-width: 50px;background-image: url(../img/score_icon_b.png);background-repeat: no-repeat;background-position: 20px 74px;padding-top: 32px;}
+
+/*.score_top_box .score_icon:before{position: absolute;content: "";bottom:12px;left: 20px;width: 36px;height: 36px;background: url(../img/score_icon_b.png) no-repeat center bottom;}
+*/
+.score_top_box .details{width: 60px;height: 30px;border: 1px solid #9ACB41;position: relative;text-align: center;line-height: 30px;font-weight: 400;top: -4px;}
 .score_top_box .float_right{text-align: right;padding-top: 54px;font-size: 24px;position: relative;}
 .score_top_box .abort_score{padding-left: 52px;}
-.score_top_box .abort_score:before{position: absolute;content: "";width: 32px;height: 32px;background: url(../img/score_why.png) no-repeat center;left: 10px;bottom: 0;}
+.score_top_box .abort_score:before{position: absolute;content: "";width: 32px;height: 32px;background: url(../img/score_why1.png) no-repeat center;left: 10px;bottom: 0;}
 .score_main_list .score_list_item{padding: 30px;margin-bottom: 10px;background: #FFF;color: #333;}
 .score_list_item dd{padding-left:30px ;}
 .score_list_item dd p:nth-child(1){height: 64px;line-height: 64px;font-size: 32px;}
@@ -1422,9 +1424,11 @@ body.locked{overflow-y:hidden;}
 
 .gameTiger_box_center{width: 605px;height: 605px;margin: 0 auto;padding: 5px;}
 .gameTiger_bc_top{padding-top: 4px;}
-.gameTiger_box_item{width: 85px;height: 85px;float: left;padding: 5px;}
-.gameTiger_box_item.active{background: url(../img/gameTigerActivwe.png) no-repeat center;}
-.gameTiger_box_item_inner{width: 75px;height: 75px;background: #FFF;border-radius: 10px;overflow: hidden;}
+.gameTiger_box_item{width: 85px;height: 85px;float: left;padding: 5px;background: #FFF;position: relative;}
+.gameTiger_box_item.active{background: url(../img/gameTigerActive.png) no-repeat center;}
+.gameTiger_box_item .activeMask{width: 85px;height: 85px; background: url(../img/gameTigerActive.png) no-repeat center;position: absolute;top: 0;left: 0;display: none;}
+.gameTiger_box_item.active .activeMask{display: block;}
+.gameTiger_box_item_inner{width: 75px;height: 75px;border-radius: 10px;overflow: hidden;}
 .gameTiger_box_item_inner img{width: 100%;height: 100%;}
 .gameTiger_bcc_left,.gameTiger_bcc_center,.gameTiger_bcc_right{float: left;}
 .gameTiger_bcc_left .gameTiger_box_item,.gameTiger_bcc_right .gameTiger_box_item{float: none;}
@@ -1475,7 +1479,7 @@ body.locked{overflow-y:hidden;}
 .select_coupon .select_coupon_top.active{background-image:url(../img/images/bg_num_a.png) ;}
 
 /*-------借用京东弹框样式--------*/
-.mod_alert{position: relative; box-sizing: border-box; width: 500px; margin: 20px auto 0; padding: 20px 24px 15px; text-align: center; border-radius: 14px; color: #333; background-color: #fff; overflow: hidden; box-shadow: 0 1px 10px 0 rgba(0,0,0,.3)}
+.mod_alert{position: relative; box-sizing: border-box; width: 500px; margin: 20px auto 0; padding: 20px 24px 15px; text-align: center; border-radius: 14px; color: #333; background-color: #fff; overflow: hidden; box-shadow: 0 1px 10px 0 rgba(0,0,0,.3);padding-top: 48px;}
 .mod_alert .icon{display: block; width: 100px; height: 100px; margin: 10px auto 15px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTOk7Pek7Peo7PfdLS+0/QPBCQus9Puo7Peo7Peo7Peo8Pus8Puo7Pek7PXsRad8AAAAOdFJOUwDg9ogHIhU3u8yjXlJyJjVnBAAAAuJJREFUWMO9WM9rE1EQ3tJt+iMKgnpQZA/FooKGFhRBIUQLonip9aB4kIiCgrSEil6EIqJehKDiyUNRxIOXEFDUk6h/gIgHj0JS1LTq9zc4b3ebbDczu+/NwTkE9m2+t29mvje/PI+Ry69ePhwf3/bk8A3PTq4+Q1e2v7EADE1hnWyeyUPMLSElK9+yEadL5l97nr+9funYmZuHHpmn9oEsxDmD6BysrD37124bzAsZMW02vV9JLvnvzNp+CVEMgFbfyefM6gfBVnV697p//SRhOrzdPkm7bSDMXkGRtnDm6RKrToEcclfS8iy5p9q3egrYJ9vyK7A1vTYcoFWTIdzrBeBelpOvALtSu5SwWsmkUgPtWlqTyWz2Daa0KQT4m8fx72gljXYi9yPhZx4nHstYzb98DSwnGAHcyYccB3p8ml1/TEFI4YnuQz1tc14W0Emc64sNZGPvZEd66GypY0vXXhN2kNk1mw1ZOKXrmuh2jqHF0Ovjjv41P8DT+HN/mB2DFrP4OVahjE3MW4BZHIiUKZTQtIUU0a6G1uZU4SGkjPHgKM97FkI34AH9nsdPe8g8foTa37KHjIT6B6z2AqQIsn0B7Yo9xC+hSjiekzyEmNkkuiy7QMpEmQH8coEsElXmsdMFcpRcshg6xxoySod6H/PZEjKG36TPpAtkkKzV4D0pQYoUJJdQc4EMY0UDCTDjAhkikhnSOECIkgSpuEB8LcT5YAr1/49fFIRR0FIiPxvGI/JLV4xLFvEVky6yIOYiS+FCEBMupKAkiAlKRdt03At9BaBijwgDrBTGherbhHEpWfASJQshJfESpSQh8fGujBKfkF5ZwsTpVZHEFaWCpiBRlD2K4kpRwnkX3AtFh3K0qS96NaW1XQE/kizgFW2CphlRtDyKxiq/ffP72jdFk6hpRRUNr6atVjTvmhGBZhAR7uY27vC8i85DlXh0s9tldKMZEGnGUJphl2aklj+4+we41lWyUPLC5gAAAABJRU5ErkJggg==) no-repeat; background-size: 100px auto}
 .mod_alert .icon_fail{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTOk7Pek7Puo7Pe1AQOo7PfJDQ+o7Peo8Puk7Peo7Pew+Pus8P+o7Pes8Pek7PTAbU/gAAAAPdFJOUwD6UtseiA3AXOujLjxyTY1GP2wAAAMUSURBVFjDnVjNaxNBFB+auImN5lBFEZE0/0GletDLpoj4hVhQRERIPBQRKlaQIl7Sg9KLUEXxJEZQ8aiCd3ux6CkK4rW5elzWuk1Vnm92s9nJzJvd5M0pm5nf/Oa9efO+hCDG/P0304/2Td+9tCaGGydfQn8cvTcEoHQeBsbhd1mIG03QRvAjHXG8Ilftev3gQ8M58/nyQfnlXUhDnJaIvVca8bfz6ZbEvLIj5iTiTkP9y1mWmIs2RLEF4H/X/z3rAnSXaEQeJfeJuSJighoJ+UkjIsxzamKb/cxSxln6WLdtUp4gj3YM4IBdl98ADhl20gI/xTRKLnT16S8Ai2mXfA3gmUGylW5Kb3WaU6RKNIU+GVCXC/+ybHwdfFVphUySkGZB+axnSRJJs5F8lAc3sAw8SkcR3m9kQxxXUUAT9g/jR95D0LdUgK/DQHYCxJZ+PUGnjyY87etr93CQmVhn+Ur2pcRX40W3Oa7oa554sOUjnURnL3p0m4keJ0xIFR7GP1d6ItRhKv5rB3iTOmKsksznImGcSl91UqwJk8TrJNfhNUJt+wPzkwaJsosb3mBBtfsxg2Zwk/XQGD/CL2Gn0fY4B39C6RfsS/QtCqH8LizZ1+g7FKXg+UgJlkX6OVG9NcQFdnlNbTTxTOPq89SXmTqvo8nk4K+w0Zgkoo2mcBP2CBuNSSKuwm/R9qaEhYYgCQ+10rNngoYgQdE3UZ5ZQdNQJPjKNtChmcEuWkyR4J1soaJXBUlDkuCLCtBeiEgkl5MkooQW4wIVn3E9SYL25YsWUL4VaUgS4UBXVID0P1UgSYQAjwNhHIwhPkPJjKtkGAzDLBnG34aRnxjjITPcBcMpMVwfw8Ey3DgnWDBCEiPwMcKrGsTLdBCvaUFcTRVydKqwqqUKakKynXpV1STFiRMSJe0pP+4Qz31N6GkPI7lipHCcRJGRjjKSXk5qzUjgGWWCLJtGLUYYJQ+jsOKUb1gkeiMWiZxSlFHwcspqMTdy8c5pEXAaEYx2B6epwmndcBpEvTaUN0obitPs4rTUsht3/wGACs5tnDrRzgAAAABJRU5ErkJggg==)}
 .mod_alert .icon_success{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAnUExURek7Pf////Wio+tFR+1WWPBvcPvS0/3l5fOPkP7w8Pm+vv/6+ve0tHOH3mIAAANvSURBVFjDrZjPaxNREMe/NEl/SC+vtM2P7aEFLYgeliot6CXVgoqXVCgiemjak54MVdpjCkIRPTSiIurBIIgetypV8NAeBIv/lPNespu3u+/XLs4tm/3sd2b3vXkzA6aw13/WVvwLK2vn76v+RfrS2yeI7PoXB6R8GjG70rIh7xtIWPHEjOz4/K6Ltz5tv/u5/eDMVf6rsGdCdvgtpfkg/O1tCNE9PfKG/38vkC95v/m1ZzqkVifPzyajfcGvdtVImZwo/k2/1F/ElFpK5GPiaTH1SyrkB72bc0xpB74cToRUya3bTGOPybVOCnkEDDGtzQLXksihj2JTj0zXB3+HyCZwhxnsFbAYR6Z9jAYmxGuj0IwhW8AuM1oliqaHVOum2MM3UOxIyHeriJC5KyFtjDKrhTcJpBY+wGjkSjdCtkI3jUYBL0VIA8PMwdZRChHya84Fmeh5xpFvPdpuDdzoI+2ej3bbEu+MkLKjX8KzlkAqKAZuiFfnX5yQhzjFHO0DRgTSxrIrMsmDAav6OHZFZlDoEDLjHIoI5piQSfu6l3fAKiEPMeaO7FP8EKCzTZFLYHVr9OV5Kf4iQxWwRb+JKO96QAc165qk7LMrrcwuKtYXtomBCkW+i0nb9iKRwUO9dSxjH5etItJC/4oxrFtWWEyEr7JhHFkyWFyEdso42ub9lRBhBxhFw/wlEyL0LUuENDOIsGlC6mhlEKFEUTQjKRGB+OhkEGFVFAgJMojQuizAtJDTInwpmxxTiAjHYuFvtCwiqTdWiw5qnQg7JET+lJXooNaJiE/ZkPZPDZKMUoRuKcWX5awkoxSh5D9Ei381dhosGkUoK40ntthARi0itlh8I0cyGhGxkRPpIpTRiDCeLhJJqS+jExFJaSaR+noyOhFKfcepBCtktCIiwabSOJfRiog0njosSGZBJ9I/LFJH0iyv8udMR9JU8okko03tvYNvInW8HmlF6HidUx7iE1qR/iGuKBU+d82lQp6CJEfZk6O4omBGMpZw7KV7oXgzfzlK9GLGojdPae1WwE/JBXyONiFPM5Kj5XFrrJZivVg5e/vmZW8SeRqytKKFpqLhXcjW8OZpq3nzjmzNe54RQZ5BRI5xh2Go8vR/jm7yDIjCMZQvjaFKJ7Zh12HmYRdjQWKkFjhM4QaDu+fKwd0/wqiyF0KTO2IAAAAASUVORK5CYII=)}
@@ -1530,7 +1534,7 @@ body.locked{overflow-y:hidden;}
 .mod_alert.show,.mod_alert_mask.show{display: block}
 
 /*仿京东的弹框*/
-.mod_prompt{position: relative; box-sizing: border-box; margin: 0 auto; padding: 80px 60px; text-align: center; border-radius: 14px; color: #FFF; background-color: #333; overflow: hidden; box-shadow: 0 1px 10px 0 rgba(0,0,0,.3)}
+.mod_prompt{position: relative; box-sizing: border-box; margin: 0 auto; padding: 54px 50px; text-align: center; border-radius: 14px; color: #FFF; background-color: #333; overflow: hidden; box-shadow: 0 1px 10px 0 rgba(0,0,0,.3)}
 .mod_prompt.fixed {display: none;z-index: 600;position: fixed;left: 50%;top: 50%;margin: auto;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);}
 .mod_prompt.show{display: block;}
 .mod_prompt .text{font-size: 30px;}
