@@ -9,7 +9,7 @@ a:active { color: #006699; }
 b, strong { font-weight: bold; }
 img { border: 0; vertical-align: middle; }
 hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
- 
+
 button, input, optgroup, select, textarea { color: inherit; font: inherit; margin: 0;}
 button { overflow: visible; background: none; border: none; outline: none; }
 button, select { text-transform: none; }
@@ -1424,7 +1424,7 @@ body.locked{overflow-y:hidden;}
 
 .gameTiger_box_center{width: 605px;height: 605px;margin: 0 auto;padding: 5px;}
 .gameTiger_bc_top{padding-top: 4px;}
-.gameTiger_box_item{width: 85px;height: 85px;float: left;padding: 5px;background: #FFF;position: relative;}
+.gameTiger_box_item{width: 85px;height: 85px;float: left;padding: 5px;position: relative;}
 .gameTiger_box_item.active{background: url(../img/gameTigerActive.png) no-repeat center;}
 .gameTiger_box_item .activeMask{width: 85px;height: 85px; background: url(../img/gameTigerActive.png) no-repeat center;position: absolute;top: 0;left: 0;display: none;}
 .gameTiger_box_item.active .activeMask{display: block;}
@@ -1560,3 +1560,21 @@ body.locked{overflow-y:hidden;}
 .mod_game_mask{display: none; position: fixed; left: 0; top: 0; bottom: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,.5); z-index: 500}
 .mod_game.show,.mod_game_mask.show{display: block}
 
+/*订单详情页面-添加扫一扫*/
+
+/*之前的优化*/
+.pickUpcode-label{display: none;}
+.pickUpcode-label.status-problem,.pickUpcode-label.status-resolve,.pickUpcode-label.status-success{display: block;}
+.pickUpcode-box .pickUpcode{position: relative;}
+.pickUpcode .scanQRCode{width: 48px;height: 48px;background: url(../img/scan_icon.png) no-repeat center;position: absolute;right: 30px;top: 26px;display: none;}
+
+
+.watmPickUpGoods{width: 100%;height: 100%;min-height: 600px;position: relative;background: #FFF;padding-top: 304px;display: none;}
+.watmPickUpGoods .watm_icon{width: 174px;height: 200px;display: block;margin: 0 auto;}
+.watmPickUpGoods p.txt{text-align: center;font-size: 32px;color: #949494;height: 150px;padding-top: 40px;}
+.watmPickUpGoods .btn_box{padding: 10px 70px;position: absolute;left: 0;bottom: 0;background: #FFF;text-align: center;font-size: 32px;width: 100%;}
+.watmPickUpGoods .btn_box p{width: 100%;height: 88px;line-height: 88px;margin: 20px auto;border-radius: 6px;overflow: hidden;}
+
+
+.watmPickUpGoods .confirm_btn{color: #FFF;background: #94c11e;}
+.watmPickUpGoods .cancle_btn{color: #94c11e;background: #FFF;border: 1px solid #94C11E;}
