@@ -29,7 +29,8 @@ seajs.config({
     'weixinSDK' : 'weixin.js?v=20180606',
     'package' : 'red_package_rain.js?v=20180606',
     'vue':'vue.js?v=20180606',
-    'score':'score.js?v=20180606'
+    'score':'score.js?v=20180606',
+    'addMap':'addMapPicker.js?v=20180606'
   },
   preload: ['mobile-util']
 });
