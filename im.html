@@ -239,26 +239,41 @@
 				min-width: 100px;
 				background: url(img/icon_yy_l.png) no-repeat 20px center;
 			}
+			.im-chat-text.type_voice{
+				padding-left: 70px;
+			}
 			.type_voice.active{
 				background-image:url(img/icon_yy_gif.gif) ;
 			}
-			.im_message_li .type_voice_no:before{
+
+			.type_voice_no:before{
 				display: block;
 				position: absolute;
 				content: " ";
 				top: 32px;
-				right: -20px;
+				right: -26px;
 				width: 16px;
 				height: 16px;
 				border-radius: 8px;
 				background: red;
 				
 			}
+			/*.im_message_mine*/
+
 			.im_message_mine .type_voice{
-				background: url(img/icon_yy_l.png) no-repeat right center;
+				background-image: url(img/icon_yy_r.png)；
+				background-repeat:no-repeat;
+				background-position: right center;
 			}
 			.im_message_mine .type_voice.active{
-				background: url(img/icon_yy_l.png) no-repeat right center;
+				background-image: url(img/icon_yy_l.png)；
+			}
+			.im_message_mine .im-chat-text.type_voice{
+				padding-right: 70px;
+				padding-left: 24px;
+			}
+			.im_message_mine .type_voice_no:before{
+				left: -26px;
 			}
 		</style>
 	</head>
