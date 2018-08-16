@@ -1,0 +1,373 @@
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=720,user-scalable=no"/>
+		<title>IM</title>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="css/rest.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<style type="text/css">
+			*{
+				-webkit-touch-callout:none;
+				-webkit-user-select:none;
+				-khtml-user-select:none;
+				-moz-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
+				-o-user-select:none;
+			}
+			
+			input {      
+			     -webkit-user-select:auto; /*webkit浏览器*/     
+			} 
+			
+			.im_message{
+				position: fixed;
+				top: 110px;
+				bottom: 110px;
+				left: 0;
+				right: 0;
+				overflow-y: scroll;
+				padding: 18px 0;
+			}
+			.im_message_box{padding: 0 18px;margin-bottom: 20px;}
+			.im_message_li{position: relative;font-size: 0;margin-bottom: 20px;padding-left: 100px;min-height: 80px;}
+    		.im_message_li .im-chat-user{position: absolute;left: 0;}
+    		.im_message_li .im-chat-text{ position: relative;display: inline-block;
+			    min-height: 44px;
+			    line-height: 44px;
+			    padding: 18px 24px;
+			    background-color: #fff;
+			    border-radius: 3px;
+			    color: #333;
+			    word-break: break-all;
+			    font-size: 24px;
+			}
+			.im-chat-text,.im-chat-user {
+			    display: inline-block;
+			    *display: inline;
+			    *zoom:1;vertical-align: top;
+			    font-size: 15px
+			}
+    		.im_message_li .im-chat-text:after{
+    			content: '';
+			    position: absolute;
+			    left: -10px;
+			    top: 13px;
+			    width: 0;
+			    height: 0;
+			    border-style: solid dashed dashed;
+			    border-color: #fff transparent transparent;
+			    overflow: hidden;
+			    border-width: 10px;
+    		}
+    		.im-chat-user img{width: 80px;height: 80px;border-radius: 2px;}
+    		
+			.im_message_box .im_message_mine {
+			    text-align: right;
+			    padding-left: 0;
+			    padding-right: 100px
+			}
+			
+			.im_message_mine .im-chat-user {
+			    left: auto;
+			    right: 3px
+			}
+			
+			.im_message_mine .im-chat-user cite {
+			    left: auto;
+			    right: 60px;
+			    text-align: right
+			}
+			
+			.im_message_mine .im-chat-user cite i {
+			    padding-left: 0;
+			    padding-right: 15px
+			}
+			
+			.im_message_mine .im-chat-text {
+			    margin-left: 0;
+			    text-align: left;
+			    background-color: #5FB878;
+			    color: #fff
+			}
+			
+			.im_message_mine .im-chat-text:after {
+			    left: auto;
+			    right: -10px;
+			    border-top-color: #5FB878
+			}
+			
+			.im_message_mine .im-chat-text a {
+			    color: #fff
+			}
+			.im_message_box .im_message_system {
+			    min-height: 0;
+			   	margin: 46px 0px 24px;
+			    padding: 0
+			}
+			.im_message_system {
+			    text-align: center
+			}
+			
+			.im_message_system span {
+			    display: inline-block;
+			    line-height: 30px;
+			    padding: 8px 12px;
+			    border-radius: 3px;
+			    background-color: #ddd;
+			    color: #fff;
+			    font-size: 18px;
+			    cursor: pointer
+			}
+			.im_message_footer{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 110px;
+				border-top: 1px solid #D5D5D5;
+				background: #FFF;
+				
+				max-width: 720px;
+			    width: 100%;
+			    margin: 0 auto;
+			}
+			.im_operate_box{
+				padding: 15px 24px;
+			}
+			.im_operate_inner{
+				position: relative;
+			}
+			.im_operate_inner button{
+				width: 80px;
+				height: 80px;
+				font-size: 80px;
+			}
+			.im_operate_top .operat_icon_left,.im_operate_top .operat_icon_right{
+				display: inline-block;
+				width: 80px;
+			};
+			.im_operate_top .operat_icon_left{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.im_operate_top .operat_icon_right{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			.im_operate_top .operat_icon_center{
+				width: 74%;
+				margin: 0 80px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.operat_icon_center .input_text{
+				display: block;
+				border: none;
+				line-height: 80px;
+				border-bottom: 1px solid #d6d6d6;
+				width: 100%;
+				font-size: 36px;
+				white-space: pre-wrap;
+				word-break: break-all;
+				padding: 0 20px;
+			}
+			.operat_icon_center .press_speak{
+				width: 80%;
+				height: 80px;
+				border: 1px solid #d6d6d6;
+				border-radius: 6px;
+				font-size: 24px;
+				text-align: center;
+				display: block;
+				margin: 0 auto;
+			}
+			.operat_icon_right .btn_send{
+				font-size: 30px;
+				color: #FFF;
+				background: green;
+				width: 100px;
+				position: relative;
+				left: -10px;
+				border-radius:10px ;
+			}
+			.status_nowx .operat_icon_center{
+				margin-left: 0;
+				width: 86%;
+			}
+			.input_text:focus{border-bottom-color:green ;}
+			.updata_img{position: absolute;left: 0;top: 0;bottom: 0;right: 0;opacity: 0;}
+			
+			.im-chat-text.type_img{
+				max-width: 60%;
+				padding: 0;
+				vertical-align: middle;
+			}
+			.im_message_li .type_img:after{
+				border-top-color: transparent;
+			}
+			.im_message_li .im-chat-text.type_img img{
+				width: 100%;
+				height: 100%;
+			}
+			/*
+			底部弹出的动画
+			 * */
+			.im_alert_operat{background: red;width: 100%;padding: 30px 24px;position: absolute;height: 220px;bottom: -0px;display: flex;text-align: center;}
+			.im_alert_operat-leave { bottom: 0px; }
+			.im_alert_operat-leave-active { transition: all 3s;}
+			.im_alert_operat-leave-to { bottom: 220px; opacity: 0;}
+			
+			.im_alert_operat-enter { bottom: 220px; }
+			.im_alert_operat-enter-active { transition: all 3s;}
+			.im_alert_operat-enter-to { bottom: 0; opacity: 0;}
+			
+			.im_alert_operat_item{
+				flex: 1;
+				font-size: 32px;
+			}
+			/*
+			语音消息
+			 * */
+			.type_voice{
+				min-width: 100px;
+				background: url(img/icon_yy_l.png) no-repeat 20px center;
+			}
+			.type_voice.active{
+				background-image:url(img/icon_yy_gif.gif) ;
+			}
+			.im_message_li .type_voice_no:before{
+				display: block;
+				position: absolute;
+				content: " ";
+				top: 32px;
+				right: -20px;
+				width: 16px;
+				height: 16px;
+				border-radius: 8px;
+				background: red;
+				
+			}
+			.im_message_mine .type_voice{
+				background: url(img/icon_yy_l.png) no-repeat right center;
+			}
+			.im_message_mine .type_voice.active{
+				background: url(img/icon_yy_l.png) no-repeat right center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header_wrap">
+			<div class="header_contain">
+			    <div class="header_left"><span class="triangle-btn green"></span></div>
+			    <h1 class="header_title header_title_color">test</h1>
+			</div>
+		</div>
+		<div class="empty1"></div>
+		<div class="main_wrap main_wrap_margin" id="app">
+			<div class="main">
+				<div class="im_message">
+					<ul class="im_message_box">
+						
+						<!--他人的样式-->
+						<!--<div class="im_message_li">
+							<div class="im-chat-user">
+								<img src="img/user1.jpg"/>
+							</div>
+							<div class="im-chat-text">
+								12143安康看看给你妈时空的每个孔凭什么打破购买商品了大规模排名第
+							</div>
+						</div>-->
+						<!--系统的时间样式-->
+						<!--<div class="im_message_system">
+							<span>8月10日   17:13</span>
+						</div>-->
+						<!--自己的样式-->
+						<!--<div class="im_message_li im_message_mine">
+							<div class="im-chat-user">
+								<img src="img/user.jpg"/>
+							</div>
+							<div class="im-chat-text">
+								12334
+							</div>
+						</div>-->
+						
+						<li v-for="(item, index) in msgBody" >
+							<!--他人的样式-->
+							<!--<div v-if="item.ascription == 2" class="im_message_li">
+								<div class="im-chat-user">
+									<img src="img/user1.jpg"/>
+								</div>
+								<div class="im-chat-text">
+									
+								</div>
+							</div>-->
+							<!--系统的时间样式-->
+							<div v-if="item.ascription == 0" class="im_message_system">
+								<span v-text="item.time"></span>
+							</div>
+							<!--自己的样式-->
+							<div v-if="item.ascription == 1 || item.ascription == 2" class="im_message_li" :class="{'im_message_mine':item.ascription == 1}">
+								<div class="im-chat-user">
+									<img v-bind:src="item.userImg">
+								</div>
+								<div class="im-chat-text" :class="{'type_img':item.type == 1,'type_voice':item.type == 2,'type_voice_no':item.type == 2 && item.read == 0,'active':item.type == 2 && item.read == 2}" v-html="getHtml(item)" @click="item.type == 2 && play_voice($event,item,index)"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="im_message_footer">
+					<div class="im_operate_box" :class="{'status_nowx' : !isWx}">
+						<div class="im_operate_inner">
+							<div class="im_operate_top ">
+								<div v-if="isWx" class="operat_icon_left" @click="changeIcon">
+									<button class="fa" :class="{'fa-microphone':openar[0].type == 1,'fa-camera-retro':openar[0].type == 2}"></button>
+								</div>
+								<div class="operat_icon_center ">
+									<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>
+									
+									<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="send_msg('','text')"/>
+								</div>
+								<div class="operat_icon_right" @click="add_img">
+									<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
+									<input v-show="!openar[1].value" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
+									<button v-show="openar[1].value" class="btn_send" >发送</button>
+								</div>
+							</div>
+							<div class="im_operate_bottom"></div>
+						</div>
+					</div>
+					<transition>
+						<!--<div v-show="isWx && openar[2].active" class="im_alert_operat">
+							<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
+							<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
+							<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
+						</div>-->
+					</transition>
+					
+				</div>
+			</div>
+		</div>
+		<script src="seajs/2.1.1/sea.js"></script>
+		<script src="seajs-config.js?v=20180720"></script>
+		
+		<script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/strophe.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="js/spark-md5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/async.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/upyun-mu.js"></script>
+		
+		<script type="text/javascript">
+			seajs.use(['im'],function(zs){
+				zs.init();
+			});
+		</script>
+	</body>
+</html>
