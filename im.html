@@ -21,6 +21,21 @@
 			input {      
 			     -webkit-user-select:auto; /*webkit浏览器*/     
 			} 
+			.vueApp{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+			.im_main_wrap{
+				position: absolute;
+				top: 96px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			.im_main{height: 100%;}
 			
 			.im_message{
 				position: fixed;
@@ -29,12 +44,25 @@
 				left: 0;
 				right: 0;
 				overflow-y: scroll;
+				
+			}
+			.im_message_main{
+				position: relative;
+				width: 100%;
+				height: 100%;
 				padding: 18px 0;
 			}
 			.im_message_box{padding: 0 18px;margin-bottom: 20px;}
 			.im_message_li{position: relative;font-size: 0;margin-bottom: 20px;padding-left: 100px;min-height: 80px;}
-    		.im_message_li .im-chat-user{position: absolute;left: 0;}
-    		.im_message_li .im-chat-text{ position: relative;display: inline-block;
+    		.im_message_li .im-chat-user{
+    			position: absolute;
+    			left: 0;
+    			width: 80px;
+    			height: 80px;
+    		}
+    		.im_message_li .im-chat-text{ 
+    			position: relative;
+    			display: inline-block;
 			    min-height: 44px;
 			    line-height: 44px;
 			    padding: 18px 24px;
@@ -43,6 +71,7 @@
 			    color: #333;
 			    word-break: break-all;
 			    font-size: 24px;
+			    margin-top: 66px;
 			}
 			.im-chat-text,.im-chat-user {
 			    display: inline-block;
@@ -74,14 +103,26 @@
 			    left: auto;
 			    right: 3px
 			}
-			
-			.im_message_mine .im-chat-user cite {
+			.im-chat-user span {
+			    position: absolute;
+			    left: 90px;
+			    top: -2px;
+			    font-size: 24px;
+			    white-space: nowrap;
+			    color: #999;
+			    text-align: left;
+			    font-style: normal
+			}
+			.im-chat-user .time{
+				font-size: 18px;
+			}
+			.im_message_mine .im-chat-user span {
 			    left: auto;
-			    right: 60px;
+			    right: 90px;
 			    text-align: right
 			}
 			
-			.im_message_mine .im-chat-user cite i {
+			.im_message_mine .im-chat-user span i {
 			    padding-left: 0;
 			    padding-right: 15px
 			}
@@ -216,6 +257,7 @@
 				width: 100%;
 				height: 100%;
 			}
+			
 			/*
 			底部弹出的动画
 			 * */
@@ -256,17 +298,15 @@
 				height: 16px;
 				border-radius: 8px;
 				background: red;
-				
 			}
-			/*.im_message_mine*/
 
 			.im_message_mine .type_voice{
-				background-image: url(img/icon_yy_r.png)；
+				background-image: url(img/icon_yy_r.png);
 				background-repeat:no-repeat;
-				background-position: right center;
+				background-position: 80px center;
 			}
 			.im_message_mine .type_voice.active{
-				background-image: url(img/icon_yy_l.png)；
+				background-image: url(img/icon_yy_gif1.gif);
 			}
 			.im_message_mine .im-chat-text.type_voice{
 				padding-right: 70px;
@@ -275,98 +315,151 @@
 			.im_message_mine .type_voice_no:before{
 				left: -26px;
 			}
+			/*
+			连接服务器样式--及消息加载样式
+			 * */
+			.im_main_mask{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: #F0F0F0;
+				text-align: center;
+			}
+			
+			.im_main_mask .center_box{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform:translate(-50%,-50%);
+				display: inline-block;
+			}
+			.im_main_mask .loging{
+				width: 80px;
+				height: 80px;
+			}
+			.im_main_mask .text{
+				padding-left: 20px;
+				font-size: 36px;
+				position: relative;
+				top: -30px;
+			}
+			@-webkit-keyframes rotation{
+				from {-webkit-transform: rotate(0deg);}
+				to {-webkit-transform: rotate(360deg);}
+			}
+			.Rotation{
+				-webkit-transform: rotate(360deg);
+				animation: rotation 1.5s linear infinite;
+				-moz-animation: rotation 1.5s linear infinite;
+				-webkit-animation: rotation 1.5s linear infinite;
+				-o-animation: rotation 1.5s linear infinite;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="header_wrap">
-			<div class="header_contain">
-			    <div class="header_left"><span class="triangle-btn green"></span></div>
-			    <h1 class="header_title header_title_color">test</h1>
-			</div>
-		</div>
-		<div class="empty1"></div>
-		<div class="main_wrap main_wrap_margin" id="app">
-			<div class="main">
-				<div class="im_message">
-					<ul class="im_message_box">
-						
-						<!--他人的样式-->
-						<!--<div class="im_message_li">
-							<div class="im-chat-user">
-								<img src="img/user1.jpg"/>
-							</div>
-							<div class="im-chat-text">
-								12143安康看看给你妈时空的每个孔凭什么打破购买商品了大规模排名第
-							</div>
-						</div>-->
-						<!--系统的时间样式-->
-						<!--<div class="im_message_system">
-							<span>8月10日   17:13</span>
-						</div>-->
-						<!--自己的样式-->
-						<!--<div class="im_message_li im_message_mine">
-							<div class="im-chat-user">
-								<img src="img/user.jpg"/>
-							</div>
-							<div class="im-chat-text">
-								12334
-							</div>
-						</div>-->
-						
-						<li v-for="(item, index) in msgBody" >
-							<!--他人的样式-->
-							<!--<div v-if="item.ascription == 2" class="im_message_li">
-								<div class="im-chat-user">
-									<img src="img/user1.jpg"/>
-								</div>
-								<div class="im-chat-text">
-									
-								</div>
-							</div>-->
-							<!--系统的时间样式-->
-							<div v-if="item.ascription == 0" class="im_message_system">
-								<span v-text="item.time"></span>
-							</div>
-							<!--自己的样式-->
-							<div v-if="item.ascription == 1 || item.ascription == 2" class="im_message_li" :class="{'im_message_mine':item.ascription == 1}">
-								<div class="im-chat-user">
-									<img v-bind:src="item.userImg">
-								</div>
-								<div class="im-chat-text" :class="{'type_img':item.type == 1,'type_voice':item.type == 2,'type_voice_no':item.type == 2 && item.read == 0,'active':item.type == 2 && item.read == 2}" v-html="getHtml(item)" @click="item.type == 2 && play_voice($event,item,index)"></div>
-							</div>
-						</li>
-					</ul>
+		<div id="app" class="vueApp">
+			<div class="header_wrap">
+				<div class="header_contain">
+				    <div class="header_left"><span class="triangle-btn green"></span></div>
+				    <h1 class="header_title header_title_color" v-html="title"></h1>
 				</div>
-				<div class="im_message_footer">
-					<div class="im_operate_box" :class="{'status_nowx' : !isWx}">
-						<div class="im_operate_inner">
-							<div class="im_operate_top ">
-								<div v-if="isWx" class="operat_icon_left" @click="changeIcon">
-									<button class="fa" :class="{'fa-microphone':openar[0].type == 1,'fa-camera-retro':openar[0].type == 2}"></button>
-								</div>
-								<div class="operat_icon_center ">
-									<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>
-									
-									<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="send_msg('','text')"/>
-								</div>
-								<div class="operat_icon_right" @click="add_img">
-									<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
-									<input v-show="!openar[1].value" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
-									<button v-show="openar[1].value" class="btn_send" >发送</button>
+			</div>
+			<div class="empty"></div>
+			<div class="main_wrap im_main_wrap">
+				<div class="main im_main">
+					<div class="im_message">
+						<div class="im_message_main">
+							<ul class="im_message_box">
+							
+								<!--他人的样式-->
+								<!--<div class="im_message_li">
+									<div class="im-chat-user">
+										<img src="img/user1.jpg"/>
+									</div>
+									<div class="im-chat-text">
+										12143安康看看给你妈时空的每个孔凭什么打破购买商品了大规模排名第
+									</div>
+								</div>-->
+								<!--系统的时间样式-->
+								<!--<div class="im_message_system">
+									<span>8月10日   17:13</span>
+								</div>-->
+								<!--自己的样式-->
+								<!--<div class="im_message_li im_message_mine">
+									<div class="im-chat-user">
+										<img src="img/user.jpg"/>
+									</div>
+									<div class="im-chat-text">
+										12334
+									</div>
+								</div>-->
+								
+								<li v-for="(item, index) in msgBody" >
+									<!--他人的样式-->
+									<!--<div v-if="item.ascription == 2" class="im_message_li">
+										<div class="im-chat-user">
+											<img src="img/user1.jpg"/>
+										</div>
+										<div class="im-chat-text">
+											
+										</div>
+									</div>-->
+									<!--系统的时间样式-->
+									<div v-if="item.ascription == 0" class="im_message_system">
+										<span v-text="item.time"></span>
+									</div>
+									<!--自己的样式-->
+									<div v-if="item.ascription == 1 || item.ascription == 2" class="im_message_li" :class="{'im_message_mine':item.ascription == 1}">
+										<div class="im-chat-user">
+											<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
+											<span v-html="getNameTime(item)"></span>
+										</div>
+										<div class="im-chat-text" :class="{'type_img':item.type == 1,'type_voice':item.type == 2,'type_voice_no':item.type == 2 && item.read == 0,'active':item.type == 2 && item.read == 2}" v-html="getHtml(item)" @click="item.type == 2 && play_voice($event,item,index)"></div>
+									</div>
+								</li>
+							</ul>
+							<div v-show="BossServerStatus != 4" class="im_main_mask" >
+								<div class="center_box">
+									<img src="img/icon_loging.png" class="loging Rotation"/>
+									<span class="text">正在连服务器，请稍后...</span>
 								</div>
 							</div>
-							<div class="im_operate_bottom"></div>
 						</div>
 					</div>
-					<transition>
-						<!--<div v-show="isWx && openar[2].active" class="im_alert_operat">
-							<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
-							<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
-							<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
-						</div>-->
-					</transition>
-					
+					<div class="im_message_footer">
+						<div class="im_operate_box status_nowx" >
+							<div class="im_operate_inner">
+								<div class="im_operate_top ">
+									<div v-if="isWx" class="operat_icon_left" @click="changeIcon">
+										<button class="fa" :class="{'fa-microphone':openar[0].type == 1,'fa-camera-retro':openar[0].type == 2}"></button>
+									</div>
+									<div class="operat_icon_center ">
+										<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>
+										
+										<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="send_msg('','text')"/>
+									</div>
+									<div class="operat_icon_right" @click="add_img">
+										<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
+										<input v-show="1 == 2" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
+										<button v-show="openar[1].value" class="btn_send" >发送</button>
+									</div>
+								</div>
+								<div class="im_operate_bottom"></div>
+							</div>
+						</div>
+						<transition>
+							<!--<div v-show="isWx && openar[2].active" class="im_alert_operat">
+								<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
+								<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
+								<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
+							</div>-->
+						</transition>
+						
+					</div>
 				</div>
+				
 			</div>
 		</div>
 		<script src="seajs/2.1.1/sea.js"></script>
