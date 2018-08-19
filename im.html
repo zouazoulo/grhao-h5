@@ -260,8 +260,8 @@
 			
 			/*
 			底部弹出的动画
-			 * */
-			.im_alert_operat{background: red;width: 100%;padding: 30px 24px;position: absolute;height: 220px;bottom: -0px;display: flex;text-align: center;}
+			 */
+			.im_alert_operat{background-color: #FF0000;width: 100%;padding: 30px 24px;position: absolute;height: 220px;bottom: -0px;display: flex;text-align: center;}
 			.im_alert_operat-leave { bottom: 0px; }
 			.im_alert_operat-leave-active { transition: all 3s;}
 			.im_alert_operat-leave-to { bottom: 220px; opacity: 0;}
@@ -297,7 +297,7 @@
 				width: 16px;
 				height: 16px;
 				border-radius: 8px;
-				background: red;
+				background-color: #FF0000;
 			}
 
 			.im_message_mine .type_voice{
@@ -416,7 +416,7 @@
 											<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
 											<span v-html="getNameTime(item)"></span>
 										</div>
-										<div class="im-chat-text" :class="{'type_img':item.type == 1,'type_voice':item.type == 2,'type_voice_no':item.type == 2 && item.read == 0,'active':item.type == 2 && item.read == 2}" v-html="getHtml(item)" @click="item.type == 2 && play_voice($event,item,index)"></div>
+										<div class="im-chat-text" :class="{'type_img':item.type == 'image','type_voice':item.type == 'voice','type_voice_no':item.type == 'voice' && item.read == 0,'active':item.type == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.type == 'voice' && play_voice($event,item,index)"></div>
 									</div>
 								</li>
 							</ul>
