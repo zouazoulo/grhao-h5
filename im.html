@@ -49,10 +49,10 @@
 			.im_message_main{
 				position: relative;
 				width: 100%;
-				height: 100%;
+				/*height: 100%;*/
 				padding: 18px 0;
 			}
-			.im_message_box{padding: 0 18px;margin-bottom: 20px;}
+			.im_message_box{padding: 0 18px;/*margin-bottom: 20px;*/}
 			.im_message_li{position: relative;font-size: 0;margin-bottom: 20px;padding-left: 100px;min-height: 80px;}
     		.im_message_li .im-chat-user{
     			position: absolute;
@@ -369,9 +369,9 @@
 			<div class="empty"></div>
 			<div class="main_wrap im_main_wrap">
 				<div class="main im_main">
-					<div class="im_message">
+					<div class="im_message" @scroll="boxScroll">
 						<div class="im_message_main">
-							<ul class="im_message_box">
+							<ul class="im_message_box" >
 							
 								<!--他人的样式-->
 								<!--<div class="im_message_li">
@@ -416,15 +416,16 @@
 											<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
 											<span v-html="getNameTime(item)"></span>
 										</div>
-										<div class="im-chat-text" :class="{'type_img':item.type == 'image','type_voice':item.type == 'voice','type_voice_no':item.type == 'voice' && item.read == 0,'active':item.type == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.type == 'voice' && play_voice($event,item,index)"></div>
+										<div class="im-chat-text" :class="{'type_img':item.msgType == 'image','type_voice':item.msgType == 'voice','type_voice_no':item.msgType == 'voice' && item.read == 0,'active':item.msgType == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.msgType == 'voice' && play_voice($event,item,index)"></div>
 									</div>
 								</li>
 							</ul>
-							<div v-show="BossServerStatus != 4" class="im_main_mask" >
-								<div class="center_box">
-									<img src="img/icon_loging.png" class="loging Rotation"/>
-									<span class="text">正在连服务器，请稍后...</span>
-								</div>
+							
+						</div>
+						<div v-show="BossServerStatus != 4" class="im_main_mask" >
+							<div class="center_box">
+								<img src="img/icon_loging.png" class="loging Rotation"/>
+								<span class="text">正在连服务器，请稍后...</span>
 							</div>
 						</div>
 					</div>
