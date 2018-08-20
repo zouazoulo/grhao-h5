@@ -428,6 +428,9 @@
 								<span class="text">正在连服务器，请稍后...</span>
 							</div>
 						</div>
+						<!--<div v-show="isFocus" class="im_main_mask" >
+
+						</div>-->
 					</div>
 					<div class="im_message_footer">
 						<div class="im_operate_box status_nowx" >
@@ -439,7 +442,7 @@
 									<div class="operat_icon_center ">
 										<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>
 										
-										<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="send_msg('','text')"/>
+										<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="send_msg('','text')" @focus="getPoint" @blur=""lostPoint/>
 									</div>
 									<div class="operat_icon_right" @click="add_img">
 										<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
