@@ -1991,6 +1991,7 @@ Strophe = {
      *  _Private_ function that properly logs an error to the console
      */
     _handleError: function (e) {
+    	window.console.log(e);
         if (typeof e.stack !== "undefined") {
             Strophe.fatal(e.stack);
         }
@@ -2035,7 +2036,8 @@ Strophe = {
      *      be one of the values in Strophe.LogLevel.
      *    (String) msg - The log message.
      */
-    log: function (level, msg) {
+    log: function (level, msg,t) {
+    	//window.console.log(t);
         if (level === this.LogLevel.FATAL &&
             typeof window.console === 'object' &&
             typeof window.console.error === 'function') {
@@ -2050,7 +2052,7 @@ Strophe = {
      *    (String) msg - The log message.
      */
     debug: function(msg) {
-        this.log(this.LogLevel.DEBUG, msg);
+        this.log(this.LogLevel.DEBUG, msg,'debug');
     },
 
     /** Function: info
@@ -2060,7 +2062,7 @@ Strophe = {
      *    (String) msg - The log message.
      */
     info: function (msg) {
-        this.log(this.LogLevel.INFO, msg);
+        this.log(this.LogLevel.INFO, msg,'info');
     },
 
     /** Function: warn
@@ -2070,7 +2072,7 @@ Strophe = {
      *    (String) msg - The log message.
      */
     warn: function (msg) {
-        this.log(this.LogLevel.WARN, msg);
+        this.log(this.LogLevel.WARN, msg,'warn');
     },
 
     /** Function: error
@@ -2080,7 +2082,7 @@ Strophe = {
      *    (String) msg - The log message.
      */
     error: function (msg) {
-        this.log(this.LogLevel.ERROR, msg);
+        this.log(this.LogLevel.ERROR, msg,'error');
     },
 
     /** Function: fatal
@@ -2090,7 +2092,8 @@ Strophe = {
      *    (String) msg - The log message.
      */
     fatal: function (msg) {
-        this.log(this.LogLevel.FATAL, msg);
+    	
+        this.log(this.LogLevel.FATAL, msg,"fatal");
     },
 
     /** Function: serialize
@@ -2638,37 +2641,31 @@ Strophe.TimedHandler.prototype = {
 
 /** Class: Strophe.Connection
  *  XMPP Connection manager.
- *
- *  This class is the main part of Strophe.  It manages a BOSH or websocket
- *  connection to an XMPP server and dispatches events to the user callbacks
- *  as data arrives. It supports SASL PLAIN, SASL DIGEST-MD5, SASL SCRAM-SHA1
- *  and legacy authentication.
- *
- *  After creating a Strophe.Connection object, the user will typically
- *  call connect() with a user supplied callback to handle connection level
- *  events like authentication failure, disconnection, or connection
- *  complete.
- *
- *  The user will also have several event handlers defined by using
- *  addHandler() and addTimedHandler().  These will allow the user code to
- *  respond to interesting stanzas or do something periodically with the
- *  connection. These handlers will be active once authentication is
- *  finished.
- *
+ *	XMPP连接管理器
+ *  This class is the main part of Strophe.  It manages a BOSH or websocket connection to an XMPP server and dispatches events to the user callbacks as data arrives. It supports SASL PLAIN, SASL DIGEST-MD5, SASL SCRAM-SHA1 and legacy authentication.
+ *	这类是拼音的主要部分。它管理到XMPP服务器的BoSH或WebSub连接，并在数据到达时将事件调度到用户回调。它支持SASL平原、SASL Digest-M5、SASL RADC-SAH1和遗留认证。
+ * 
+ *  After creating a Strophe.Connection object, the user will typically call connect() with a user supplied callback to handle connection level events like authentication failure, disconnection, or connection complete.
+ *	后创建一节。连接对象，用户想调用connect（），通常一个句柄连接到用户提供的回调水平样认证失效事件，或断开，连接完成。
+ * 
+ *  The user will also have several event handlers defined by using addHandler() and addTimedHandler().  These will allow the user code to respond to interesting stanzas or do something periodically with the connection. These handlers will be active once authentication is finished.
+ *	用户还将通过使用AddiHANDLE（）和AddiTimeDealLeR（）定义多个事件处理程序。这些将允许用户代码对有趣的节段做出响应，或者使用连接周期性地做一些事情。一旦完成身份验证，这些处理程序将是活动的。
+ * 
  *  To send data to the connection, use send().
+ * To send data to the connection, use send().
  */
 
 /** Constructor: Strophe.Connection
  *  Create and initialize a Strophe.Connection object.
- *
- *  The transport-protocol for this connection will be chosen automatically
- *  based on the given service parameter. URLs starting with "ws://" or
- *  "wss://" will use WebSockets, URLs starting with "http://", "https://"
- *  or without a protocol will use BOSH.
- *
- *  To make Strophe connect to the current host you can leave out the protocol
- *  and host part and just pass the path, e.g.
- *
+ *	创建和初始化一个SLPHEF.连接对象。
+ * 
+ *  The transport-protocol for this connection will be chosen automatically based on the given service parameter. URLs starting with "ws://" or "wss://" will use WebSockets, URLs starting with "http://", "https://" or without a protocol will use BOSH.
+ *	该连接的传输协议将根据给定的服务参数自动选择。从“WS://”或“WSS://”开始的URL将使用WebSoCube，从“http://”、“http://”开始的URL或没有协议将使用波什。
+ * 
+ *  To make Strophe connect to the current host you can leave out the protocol and host part and just pass the path,
+ * 为了使TrpHe连接到当前主机，可以省去协议和主机部分，只需通过路径，
+ *  e.g.
+ * 例如
  *  > var conn = new Strophe.Connection("/http-bind/");
  *
  *  Options common to both Websocket and BOSH:
@@ -2676,9 +2673,8 @@ Strophe.TimedHandler.prototype = {
  *
  *  cookies:
  *
- *  The *cookies* option allows you to pass in cookies to be added to the
- *  document. These cookies will then be included in the BOSH XMLHttpRequest
- *  or in the websocket connection.
+ *  The *cookies* option allows you to pass in cookies to be added to the document. These cookies will then be included in the BOSH XMLHttpRequest or in the websocket connection.
+ * * Cooky*选项允许您传递要添加到文档中的Cookie。这些Cookie将被包含在Bash XMLHtpRestQuestor或WebSookCube中。
  *
  *  The passed in value must be a map of cookie names and string values.
  *
@@ -2695,18 +2691,16 @@ Strophe.TimedHandler.prototype = {
  *  set server-side by making a XHR call to that domain to ask it to set any
  *  necessary cookies.
  *
- *  mechanisms:
+ *  mechanisms: 机制
  *
- *  The *mechanisms* option allows you to specify the SASL mechanisms that this
- *  instance of Strophe.Connection (and therefore your XMPP client) will
- *  support.
+ *  The *mechanisms* option allows you to specify the SASL mechanisms that this instance of Strophe.Connection (and therefore your XMPP client) will support.
+ * *机制*选项允许您指定SLPHE.CONTURE（因此您的XMPP客户端）实例将支持的SASL机制
  *
- *  The value must be an array of objects with Strophe.SASLMechanism
- *  prototypes.
+ *  The value must be an array of objects with Strophe.SASLMechanism prototypes.
+ * 该值必须是带有Stuff.SasLoTror原型的对象数组。
  *
- *  If nothing is specified, then the following mechanisms (and their
- *  priorities) are registered:
- *
+ *  If nothing is specified, then the following mechanisms (and their priorities) are registered:
+ * 如果未指定任何内容，则注册以下机制（及其优先级）：
  *      SCRAM-SHA1 - 70
  *      DIGEST-MD5 - 60
  *      PLAIN - 50
@@ -2736,40 +2730,41 @@ Strophe.TimedHandler.prototype = {
  *  BOSH options:
  *  -------------
  *
- *  By adding "sync" to the options, you can control if requests will
- *  be made synchronously or not. The default behaviour is asynchronous.
+ *  By adding "sync" to the options, you can control if requests will be made synchronously or not.
+ * 通过向选项中添加“同步”，可以控制请求是否同步进行。
+ * 	The default behaviour is asynchronous.
+ * 默认行为是异步的。
  *  If you want to make requests synchronous, make "sync" evaluate to true.
+ * 如果你想使请求同步，让“同步”评估为真。
+ * 
  *  > var conn = new Strophe.Connection("/http-bind/", {sync: true});
  *
  *  You can also toggle this on an already established connection.
+ * 您还可以在已建立的连接上切换此项。
  *  > conn.options.sync = true;
  *
- *  The *customHeaders* option can be used to provide custom HTTP headers to be
- *  included in the XMLHttpRequests made.
+ *  The *customHeaders* option can be used to provide custom HTTP headers to be included in the XMLHttpRequests made.
+ * 	*Cuffer-Healths*选项可用于提供自定义的HTTP报头，以包含在所生成的XMLHTTPREQUEST中。
  *
- *  The *keepalive* option can be used to instruct Strophe to maintain the
- *  current BOSH session across interruptions such as webpage reloads.
+ *  The *keepalive* option can be used to instruct Strophe to maintain the current BOSH session across interruptions such as webpage reloads.
+ * * KePixy*选项可用于指示在当前中断（如网页重载）中保持当前的BoSH会话。
  *
- *  It will do this by caching the sessions tokens in sessionStorage, and when
- *  "restore" is called it will check whether there are cached tokens with
- *  which it can resume an existing session.
+ *  It will do this by caching the sessions tokens in sessionStorage, and when "restore" is called it will check whether there are cached tokens with which it can resume an existing session.
+ * 它将通过缓存Session存储中的会话令牌来实现这一点，并且当调用“Read”时，它将检查是否有缓存令牌，用它可以恢复现有会话。
  *
- *  The *withCredentials* option should receive a Boolean value and is used to
- *  indicate wether cookies should be included in ajax requests (by default
- *  they're not).
- *  Set this value to true if you are connecting to a BOSH service
- *  and for some reason need to send cookies to it.
- *  In order for this to work cross-domain, the server must also enable
- *  credentials by setting the Access-Control-Allow-Credentials response header
- *  to "true". For most usecases however this setting should be false (which
- *  is the default).
- *  Additionally, when using Access-Control-Allow-Credentials, the
- *  Access-Control-Allow-Origin header can't be set to the wildcard "*", but
- *  instead must be restricted to actual domains.
- *
- *  The *contentType* option can be set to change the default Content-Type
- *  of "text/xml; charset=utf-8", which can be useful to reduce the amount of
- *  CORS preflight requests that are sent to the server.
+ *  The *withCredentials* option should receive a Boolean value and is used to indicate wether cookies should be included in ajax requests (by default they're not).
+ * *凭据*选项应该接收一个布尔值，并用于指示Wecookcookies应该包含在Ajax请求中（默认情况下它们不是）。
+ * 
+ *  Set this value to true if you are connecting to a BOSH service and for some reason need to send cookies to it.
+ * 如果您连接到BUSH服务，并且由于某些原因需要将cookie发送给它，则将该值设置为true
+ * 
+ *  In order for this to work cross-domain, the server must also enable credentials by setting the Access-Control-Allow-Credentials response header to "true". For most usecases however this setting should be false (which is the default).
+ * 为了使此工作跨域，服务器还必须通过设置访问控制允许凭据响应报头为“true”来启用凭据。然而，对于大多数用户来说，这个设置应该是false（默认值）。
+ * 
+ *  Additionally, when using Access-Control-Allow-Credentials, the Access-Control-Allow-Origin header can't be set to the wildcard "*", but instead must be restricted to actual domains.
+ * 但必须局限于实际领域。
+ *  The *contentType* option can be set to change the default Content-Type of "text/xml; charset=utf-8", which can be useful to reduce the amount of CORS preflight requests that are sent to the server.
+ *  可以设置*CordNeType *选项来更改默认的文本类型“TeX/XML；字符集= UTF-8”，这对于减少发送给服务器的CORS预飞请求的数量是有用的。
  *
  *  Parameters:
  *    (String) service - The BOSH or WebSocket service URL.
@@ -2949,8 +2944,7 @@ Strophe.Connection.prototype = {
     },
 
     /** Function: addProtocolErrorHandler
-     *  Register a handler function for when a protocol (websocker or HTTP)
-     *  error occurs.
+     *  Register a handler function for when a protocol (websocker or HTTP) error occurs.
      *
      *  NOTE: Currently only HTTP errors for BOSH requests are handled.
      *  Patches that handle websocket errors would be very welcome.
@@ -3014,6 +3008,83 @@ Strophe.Connection.prototype = {
      *      (for example when the JID is already contained in the client
      *      certificate), set authcid to that same JID. See XEP-178 for more
      *      details.
+     * 功能：连接
+	
+	*开始连接过程。
+	
+	*
+	
+	*当连接过程进行时，用户提供的回调将
+	
+	*多次触发状态更新。回调
+	
+	*应采取两个参数-状态代码和错误条件。
+	
+	*
+	
+	*状态代码将是在音节中的值之一。
+	
+	*常数。错误条件将是条件之一。
+	
+	*在RFC 3920中定义，或条件“Coppe PARSERACLE”。
+	
+	*
+	
+	*参数WaiTig、Y-Hoodl和You-TreTyi是可选的且仅相关的。
+	
+	*波什连接。请参阅XEP 124以作更详细的说明。
+	
+	*可选参数。
+	
+	*
+	
+	*参数：
+	
+	*（String）JID——用户的JID。这可能是一个赤裸的JID，
+	
+	*或一个完整的JID。如果没有提供节点，则SASL OAuthBuor或
+	
+	*将尝试SASL匿名身份验证（OAUTHBEARER
+	
+	*将提供的密码值作为访问令牌进行处理。
+	
+	*（字符串）传递用户密码。
+	
+	*（函数）回调-连接回调函数。
+	
+	*（整数）等待-可选的HTTPBNIN等待值。这就是
+	
+	*服务器在返回空结果之前将等待
+	
+	*请求。建议默认设置为60秒。
+	
+	*（整数）保持-可选的HTTPBNIN保持值。这就是
+	
+	*服务器将同时持有的连接数。这个
+	
+	*应该总是设置为1（默认值）。
+	
+	*（String）路由-可选路由值。
+	
+	*（String）AuthCID-可选的替代身份验证标识
+	
+	*（用户名）如果要冒充另一个用户。
+	
+	*当使用SASL外部身份验证机制时，例如
+	
+	*使用客户端证书，然后使用AutoCID值
+	
+	*确定是否应将授权JID（AuthZID）发送到
+	
+	*服务器。如果AutoZID不应该发送到服务器，如果
+	
+	* AuthZID和AuthCID是相同的。为了防止它被发送
+	
+	*（例如，当JID已经包含在客户端中时）
+	
+	*证书，将AuthCID设置为同一个JID。见XEP—178更多
+	
+	*详情。
      */
     connect: function (jid, pass, callback, wait, hold, route, authcid) {
         this.jid = jid;
@@ -3052,29 +3123,64 @@ Strophe.Connection.prototype = {
     },
 
     /** Function: attach
+     * 功能：附加
+     * 
      *  Attach to an already created and authenticated BOSH session.
-     *
-     *  This function is provided to allow Strophe to attach to BOSH
-     *  sessions which have been created externally, perhaps by a Web
-     *  application.  This is often used to support auto-login type features
-     *  without putting user credentials into the page.
-     *
+     *	附加到已经创建和认证的BUSH会话。
+     * 
+     *  This function is provided to allow Strophe to attach to BOSH sessions which have been created externally, perhaps by a Web application. 
+     * 这个函数允许Strophe附加到外部创建的博什会话，可能是由Web应用程序创建的
+     * 	This is often used to support auto-login type features without putting user credentials into the page.
+     * 这通常用于支持自动登录类型特征，而不将用户凭据放入页面。
      *  Parameters:
+     * 参数：
      *    (String) jid - The full JID that is bound by the session.
+     * （String）JID--由会话绑定的完整JID。
      *    (String) sid - The SID of the BOSH session.
-     *    (String) rid - The current RID of the BOSH session.  This RID
-     *      will be used by the next request.
+     * （字符串）希德-博什会话的SID。
+     *    (String) rid - The current RID of the BOSH session.  This RID  will be used by the next request.
+     * （字符串）rid是回话的session。这个rid 被下一个请求使用。
      *    (Function) callback The connect callback function.
-     *    (Integer) wait - The optional HTTPBIND wait value.  This is the
-     *      time the server will wait before returning an empty result for
-     *      a request.  The default setting of 60 seconds is recommended.
-     *      Other settings will require tweaks to the Strophe.TIMEOUT value.
-     *    (Integer) hold - The optional HTTPBIND hold value.  This is the
-     *      number of connections the server will hold at one time.  This
-     *      should almost always be set to 1 (the default).
-     *    (Integer) wind - The optional HTTBIND window value.  This is the
-     *      allowed range of request ids that are valid.  The default is 5.
+     *    (Integer) wait - 
+     * The optional HTTPBIND wait value.  
+     * 
+     * This is the time the server will wait before returning an empty result for a request.
+     * 
+     * The default setting of 60 seconds is recommended.
+     * 
+     * Other settings will require tweaks to the Strophe.TIMEOUT value.
+     *    (Integer) hold - 
+     * The optional HTTPBIND hold value. 
+     * This is the number of connections the server will hold at one time.
+     * This should almost always be set to 1 (the default).
+     * 
+     *    (Integer) wind - 
+     * The optional HTTBIND window value.  
+     * This is the allowed range of request ids that are valid. 
+     * The default is 5.
+     * 
+		
+		*（函数）回调连接回调函数。
+		
+		*（整数）等待-可选的HTTPBNIN等待值。这就是
+		
+		*服务器在返回空结果之前将等待
+		
+		*请求。建议默认设置为60秒。
+		
+		*其他设置将需要调整到TopPH.TimeOutt值。
+		
+		*（整数）保持-可选的HTTPBNIN保持值。这就是
+		
+		*服务器将同时持有的连接数。这个
+		
+		*应该总是设置为1（默认值）。
+		
+		*（整数）风——可选的HTTBIN窗口值。这就是
+		
+		*允许有效的请求ID范围。默认值为5。
      */
+    
     attach: function (jid, sid, rid, callback, wait, hold, wind) {
         if (this._proto instanceof Strophe.Bosh) {
             this._proto._attach(jid, sid, rid, callback, wait, hold, wind);
@@ -3112,6 +3218,57 @@ Strophe.Connection.prototype = {
      *      should almost always be set to 1 (the default).
      *    (Integer) wind - The optional HTTBIND window value.  This is the
      *      allowed range of request ids that are valid.  The default is 5.
+     * 功能：恢复
+		
+		*试图恢复缓存的波什会话。
+		
+		*
+		
+		*此函数仅与提供
+		
+		*“KeeAcVield:”实例化一个新的Stoph连接时的真选项。
+		
+		*
+		
+		*当“KeaValk”设置为真时，Copph将缓存波什令牌。
+		
+		*RID（请求ID）和SID（session id），然后当这个函数是
+		
+		*调用，它将尝试从缓存中恢复会话
+		
+		*令牌。
+		
+		*
+		
+		*因此必须调用此函数而不是连接或附加。
+		
+		*
+		
+		*关于如何使用它的例子，请参阅示例/Realth.JS
+		
+		*
+		
+		*参数：
+		
+		*（String）JID——用户的JID。这可能是一个裸露的JID或一个完整的JID。
+		
+		*（函数）回调-连接回调函数。
+		
+		*（整数）等待-可选的HTTPBNIN等待值。这就是
+		
+		*服务器在返回空结果之前将等待
+		
+		*请求。建议默认设置为60秒。
+		
+		*（整数）保持-可选的HTTPBNIN保持值。这就是
+		
+		*服务器将同时持有的连接数。这个
+		
+		*应该总是设置为1（默认值）。
+		
+		*（整数）风——可选的HTTBIN窗口值。这就是
+		
+		*允许有效的请求ID范围。默认值为5
      */
     restore: function (jid, callback, wait, hold, wind) {
         if (this._sessionCachingSupported()) {
@@ -3646,6 +3803,7 @@ Strophe.Connection.prototype = {
             this._proto._disconnect(pres);
         } else {
             Strophe.info("Disconnect was called before Strophe connected to the server");
+            //在连接到服务器的选通之前调用断开连接。
             this._proto._abortAllRequests();
             this._doDisconnect();
         }
@@ -5002,6 +5160,7 @@ Strophe.Request.prototype = {
             }
         } else if (this.xhr.responseText) {
             // In React Native, we may get responseText but no responseXML.  We can try to parse it manually.
+            //在原生反应中，我们可能得到响应，但没有应答。我们可以尝试手动解析它。
             Strophe.debug("Got responseText but no responseXML; attempting to parse it with DOMParser...");
             node = new DOMParser().parseFromString(this.xhr.responseText, 'application/xml').documentElement;
             if (!node) {
