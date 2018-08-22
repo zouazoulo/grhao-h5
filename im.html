@@ -20,31 +20,51 @@
 			
 			input {      
 			     -webkit-user-select:auto; /*webkit浏览器*/     
-			} 
+			}
 			.vueApp{
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
+				min-width: 320px;
+			    height: 100%;
+			    display: -webkit-box;
+			    display: -webkit-flex;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -webkit-box-orient: vertical;
+			    -webkit-box-direction: normal;
+			    -webkit-flex-direction: column;
+			    -ms-flex-direction: column;
+			}
+			
+			.vueApp .header_wrap{
+				display: -webkit-box;
+			    display: -webkit-flex;
+			    display: -ms-flexbox;
+			    display: flex;
+			    position: absolute;
 			}
 			.im_main_wrap{
-				position: absolute;
-				top: 96px;
-				left: 0;
-				right: 0;
-				bottom: 0;
+				width: 100%;
+			    overflow: hidden;
+			    z-index: 1;
+			    flex: 1;
+			    -webkit-flex: 1;
+			    -webkit-box-flex: 1;
+			    -ms-flex: 1;
+			    position: relative;
+			    display: -webkit-box;
+			    display: -webkit-flex;
+			    display: -ms-flexbox;
+			    display: flex;
 			}
-			.im_main{height: 100%;}
-			
 			.im_message{
-				position: fixed;
-				top: 110px;
-				bottom: 110px;
-				left: 0;
-				right: 0;
-				overflow-y: scroll;
-				
+				width: 100%;
+			    overflow-y: scroll;
+			    -webkit-overflow-scrolling: touch;
+			    z-index: 1;
+			    flex: 1;
+			    -webkit-flex: 1;
+			    -webkit-box-flex: 1;
+			    -ms-flex: 1;
+			    position: relative;
 			}
 			.im_message_main{
 				position: relative;
@@ -163,18 +183,29 @@
 			    cursor: pointer
 			}
 			.im_message_footer{
-				position: fixed;
+				/*position: fixed;
 				left: 0;
 				bottom: 0;
 				right: 0;
 				width: 100%;
+				max-width: 720px;
+			    width: 100%;
+			    margin: 0 auto;*/
+			    
 				height: 110px;
 				border-top: 1px solid #D5D5D5;
 				background: #FFF;
 				
-				max-width: 720px;
-			    width: 100%;
-			    margin: 0 auto;
+			    position: relative;
+			    z-index: 2;
+			    display: -webkit-box;
+			    display: -webkit-flex;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -webkit-box-orient: vertical;
+			    -webkit-box-direction: normal;
+			    -webkit-flex-direction: column;
+			    -ms-flex-direction: column;
 			}
 			.im_operate_box{
 				padding: 15px 24px;
@@ -186,24 +217,18 @@
 				width: 80px;
 				height: 80px;
 				font-size: 80px;
+				position: relative;
 			}
-			.im_operate_top .operat_icon_left,.im_operate_top .operat_icon_right{
-				display: inline-block;
+			.im_operate_inner button.icon_add{
+				text-align: left;
+				padding: 0;
+			}
+			.operat_icon_right{
+				height: 80px;
 				width: 80px;
 			};
-			.im_operate_top .operat_icon_left{
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
-			.im_operate_top .operat_icon_right{
-				position: absolute;
-				top: 0;
-				right: 0;
-			}
-			.im_operate_top .operat_icon_center{
-				width: 74%;
-				margin: 0 80px;
+			.operat_icon_center{
+				width: 590;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -233,14 +258,13 @@
 				font-size: 30px;
 				color: #FFF;
 				background: green;
-				width: 100px;
+				width: 120px;
 				position: relative;
-				left: -10px;
+				left: -20px;
 				border-radius:10px ;
 			}
 			.status_nowx .operat_icon_center{
-				margin-left: 0;
-				width: 86%;
+				width: 590px;
 			}
 			.input_text:focus{border-bottom-color:green ;}
 			.updata_img{position: absolute;left: 0;top: 0;bottom: 0;right: 0;opacity: 0;}
@@ -319,7 +343,7 @@
 			连接服务器样式--及消息加载样式
 			 * */
 			.im_main_mask{
-				position: absolute;
+				position: fixed;
 				top: 0;
 				left: 0;
 				right: 0;
@@ -356,9 +380,20 @@
 				-webkit-animation: rotation 1.5s linear infinite;
 				-o-animation: rotation 1.5s linear infinite;
 			}
+			.im_message_loading{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 100px;
+				text-align: center;
+				font-size: 24px;
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
+		
 		<div id="app" class="vueApp">
 			<div class="header_wrap">
 				<div class="header_contain">
@@ -368,106 +403,107 @@
 			</div>
 			<div class="empty"></div>
 			<div class="main_wrap im_main_wrap">
-				<div class="main im_main">
-					<div class="im_message" @scroll="boxScroll">
-						<div class="im_message_main">
-							<ul class="im_message_box" >
+				<div class="im_message" @scroll="boxScroll">
+					<div class="im_message_main">
+						<ul class="im_message_box" >
+						
+							<!--他人的样式-->
+							<!--<div class="im_message_li">
+								<div class="im-chat-user">
+									<img src="img/user1.jpg"/>
+								</div>
+								<div class="im-chat-text">
+									12143安康看看给你妈时空的每个孔凭什么打破购买商品了大规模排名第
+								</div>
+							</div>-->
+							<!--系统的时间样式-->
+							<!--<div class="im_message_system">
+								<span>8月10日   17:13</span>
+							</div>-->
+							<!--自己的样式-->
+							<!--<div class="im_message_li im_message_mine">
+								<div class="im-chat-user">
+									<img src="img/user.jpg"/>
+								</div>
+								<div class="im-chat-text">
+									12334
+								</div>
+							</div>-->
 							
+							<li v-for="(item, index) in msgBody" >
 								<!--他人的样式-->
-								<!--<div class="im_message_li">
+								<!--<div v-if="item.ascription == 2" class="im_message_li">
 									<div class="im-chat-user">
 										<img src="img/user1.jpg"/>
 									</div>
 									<div class="im-chat-text">
-										12143安康看看给你妈时空的每个孔凭什么打破购买商品了大规模排名第
+										
 									</div>
 								</div>-->
 								<!--系统的时间样式-->
-								<!--<div class="im_message_system">
-									<span>8月10日   17:13</span>
-								</div>-->
-								<!--自己的样式-->
-								<!--<div class="im_message_li im_message_mine">
-									<div class="im-chat-user">
-										<img src="img/user.jpg"/>
-									</div>
-									<div class="im-chat-text">
-										12334
-									</div>
-								</div>-->
-								
-								<li v-for="(item, index) in msgBody" >
-									<!--他人的样式-->
-									<!--<div v-if="item.ascription == 2" class="im_message_li">
-										<div class="im-chat-user">
-											<img src="img/user1.jpg"/>
-										</div>
-										<div class="im-chat-text">
-											
-										</div>
-									</div>-->
-									<!--系统的时间样式-->
-									<div v-if="item.ascription == 0" class="im_message_system">
-										<span v-text="item.time"></span>
-									</div>
-									<!--自己的样式-->
-									<div v-if="item.ascription == 1 || item.ascription == 2" class="im_message_li" :class="{'im_message_mine':item.ascription == 1}">
-										<div class="im-chat-user">
-											<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
-											<span v-html="getNameTime(item)"></span>
-										</div>
-										<div class="im-chat-text" :class="{'type_img':item.msgType == 'image','type_voice':item.msgType == 'voice','type_voice_no':item.msgType == 'voice' && item.read == 0,'active':item.msgType == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.msgType == 'voice' && play_voice($event,item,index)"></div>
-									</div>
-								</li>
-							</ul>
-							
-						</div>
-						<div v-show="BossServerStatus != 4" class="im_main_mask" >
-							<div class="center_box">
-								<img src="img/icon_loging.png" class="loging Rotation"/>
-								<span class="text">正在连服务器，请稍后...</span>
-							</div>
-						</div>
-						<!--<div v-show="isFocus" class="im_main_mask" >
-
-						</div>-->
-					</div>
-					<div class="im_message_footer">
-						<div class="im_operate_box status_nowx" >
-							<div class="im_operate_inner">
-								<div class="im_operate_top ">
-									<div v-if="isWx" class="operat_icon_left" @click="changeIcon">
-										<button class="fa" :class="{'fa-microphone':openar[0].type == 1,'fa-camera-retro':openar[0].type == 2}"></button>
-									</div>
-									<div class="operat_icon_center ">
-										<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>
-										<!--<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="add_img" @focus="getPoint" @blur="lostPoint"/>-->
-										<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value"/>
-									</div>
-									<div class="operat_icon_right" @click="add_img">
-										<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
-										<input v-show="1 == 2" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
-										<button v-show="openar[1].value" class="btn_send" >发送</button>
-									</div>
+								<div v-if="item.ascription == 0" class="im_message_system">
+									<span v-text="item.time"></span>
 								</div>
-								<div class="im_operate_bottom"></div>
-							</div>
-						</div>
-						<transition>
-							<!--<div v-show="isWx && openar[2].active" class="im_alert_operat">
-								<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
-								<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
-								<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
-							</div>-->
-						</transition>
+								<!--自己的样式-->
+								<div v-if="item.ascription == 1 || item.ascription == 2" class="im_message_li" :class="{'im_message_mine':item.ascription == 1}">
+									<div class="im-chat-user">
+										<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
+										<span v-html="getNameTime(item)"></span>
+									</div>
+									<div class="im-chat-text" :class="{'type_img':item.msgType == 'image','type_voice':item.msgType == 'voice','type_voice_no':item.msgType == 'voice' && item.read == 0,'active':item.msgType == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.msgType == 'voice' && play_voice($event,item,index)"></div>
+								</div>
+							</li>
+						</ul>
 						
+					</div>
+					<div v-show="BossServerStatus != 4" class="im_main_mask" >
+						<div class="center_box">
+							<img src="img/icon_loging.png" class="loging Rotation"/>
+							<span class="text">正在连服务器，请稍后...</span>
+						</div>
+					</div>
+					<div v-show="isLoging" class="im_message_loading">
+						<img width="60" height="60" src="data:image/gif;base64,R0lGODlhZABkAKIEAN7e3rq6uv///5mZmQAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpBRjA4RUZDMDI3MjA2ODExODA4M0Y1OTQyMzVDRDM3MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCMzE0Rjk3NDdDRTgxMUUzOUJCRjk0NjAxMUE1NzRBMCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCMzE0Rjk3MzdDRTgxMUUzOUJCRjk0NjAxMUE1NzRBMCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDVBMTZDQjczOTIwNjgxMTgwODNGNTk0MjM1Q0QzNzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUYwOEVGQzAyNzIwNjgxMTgwODNGNTk0MjM1Q0QzNzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+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"/>
+						<span class="desc">加载中...</span>
 					</div>
 				</div>
 				
 			</div>
+			<div class="im_message_footer">
+				<div class="im_operate_box status_nowx" >
+					<div class="im_operate_inner clearfloat">
+						<!--<div class="im_operate_top ">
+							
+						</div>
+						<div class="im_operate_bottom"></div>-->
+						<!--<div v-if="isWx == -1" class="operat_icon_left" @click="changeIcon">
+							<button class="fa" :class="{'fa-microphone':openar[0].type == 1,'fa-camera-retro':openar[0].type == 2}"></button>
+						</div>-->
+						<div class="operat_icon_center float_left">
+							<!--<button v-if="isWx && openar[0].type == 2" class="press_speak" @touchstart="gtouchstart()" @touchmove="gtouchmove()" @touchend="gtouchend()">按住说话</button>-->
+							<!--<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @keyup.enter="add_img" @focus="getPoint" @blur="lostPoint"/>-->
+							<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @focus="getPoint" @blur="lostPoint"/>
+						</div>
+						<div class="operat_icon_right float_right" @click="add_img">
+							<button v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
+							<input v-show="1 == 2" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
+							<button v-show="openar[1].value" class="btn_send" >发送</button>
+						</div>
+					</div>
+				</div>
+				<!--
+				<transition>
+					<div v-show="isWx && openar[2].active" class="im_alert_operat">
+						<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
+						<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
+						<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
+					</div>
+				</transition>
+				-->
+			</div>
 		</div>
 		<script src="seajs/2.1.1/sea.js"></script>
-		<script src="seajs-config.js?v=1651"></script>
+		<script src="seajs-config.js?v=654321"></script>
 		
 		<script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/strophe.js" type="text/javascript" charset="utf-8"></script>
