@@ -11,23 +11,23 @@
 		<link rel="stylesheet" type="text/css" href="../css/farm.css"/>
 	</head>
 	<body>
-		<div class="main">
+		<div class="main" id="appVue">
 			<!--
 				加载动画层
 			-->
-			<div class="canves_loging">
-				
+			<div class="canves_loging" v-show="PageStatus == 1">
+				加载中...
 			</div>
 			<!--
 				动画背景层
 			-->
-			<div class="canves_bg" >
+			<div class="canves_bg" v-show="PageStatus == 2">
 				
 			</div>
 			<!--
 				使用div做的主要操作视图区域
 			-->
-			<div class="main_view">
+			<div class="main_view" v-show="PageStatus == 2">
 				<!-- 头部区域-->
 				<header class="common_header title_c" >
 					<a href="#"></a>
@@ -103,7 +103,7 @@
 			<!--
 				场景转换使用-----覆盖在所有的层级上方
 			-->
-			<div class="canver_change_scene">
+			<div class="canver_change_scene" v-show="PageStatus == 3">
 				
 			</div>
 		</div>
