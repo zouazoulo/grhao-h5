@@ -7,12 +7,12 @@
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Cache-control" content="no-cache">
 		<meta http-equiv="Cache" content="no-cache">
-		<title>IM</title>
+		<title>客服</title>
 		<!--<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css"/>-->
 		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/rest.css"/>
-		<link rel="stylesheet" type="text/css" href="css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="css/im.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/rest.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/im.css"/>
 	</head>
 	<body>
 		<div  id="app" class="vueApp">
@@ -27,7 +27,6 @@
 				<div class="im_message" @scroll="boxScroll">
 					<div class="im_message_main">
 						<ul v-cloak class="im_message_box" >
-						
 							<!--他人的样式-->
 							<!--<div class="im_message_li">
 								<div class="im-chat-user">
@@ -79,7 +78,7 @@
 					</div>
 					<div v-cloak v-show="BossServerStatus != 4" class="im_main_mask" >
 						<div class="center_box">
-							<img src="img/icon_loging.png" class="loging Rotation"/>
+							<img src="../img/icon_loging.png" class="loging Rotation"/>
 							<span class="text">正在连服务器，请稍后...</span>
 						</div>
 					</div>
@@ -112,26 +111,17 @@
 						</div>
 					</div>
 				</div>
-				<!--
-				<transition>
-					<div v-show="isWx && openar[2].active" class="im_alert_operat">
-						<div class="im_alert_operat_item" @click="call_wx_img">图片</div>
-						<div class="im_alert_operat_item" @click="call_wx_camera">相机</div>
-						<div class="im_alert_operat_item" @click="call_wx_position">位置</div>
-					</div>
-				</transition>
-				-->
 			</div>
 		</div>
-		<script src="seajs/2.1.1/sea.js"></script>
-		<script src="seajs-config.js?v=1546121"></script>
+		<script src="../seajs/2.1.1/sea.js"></script>
+		<script src="../seajs-config.js?v=1546121"></script>
 		
-		<script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/strophe.js" type="text/javascript" charset="utf-8"></script>
-	    <script src="js/spark-md5.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/async.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/upyun-mu.js"></script>
+		<script src="../js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/strophe.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/spark-md5.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/async.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/upyun-mu.js"></script>
 		
 		<script type="text/javascript">
 			seajs.use(['im'],function(zs){
