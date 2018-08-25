@@ -53,3 +53,20 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
     -o-user-select: auto!important;
     user-select: auto!important;
 }
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: "";
+	display:block;
+	clear: both;
+}
+.ellipsis{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	}
