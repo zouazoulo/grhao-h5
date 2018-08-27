@@ -86,10 +86,10 @@ body {
 .common_rash:after {
 	content: "";
 	position: absolute;
-	top: -8px;
-	right: -8px;
-	width: 36px;
-	height: 36px;
+	top: -0px;
+	right: -0px;
+	width: 30px;
+	height: 30px;
 	border: 2px solid #FFFFFF;
 	border-radius: 50%;
 	background-color: #f72547;
@@ -539,7 +539,7 @@ body {
 }
 .friend_top .name{
 	color:#333333;
-	font-size:32px ;
+	font-size:24px ;
 	text-align: center;
 	margin:20px 0 10px 0;
 	line-height: 32px;

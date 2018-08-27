@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>果然好农场</title>
-		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.113.168:8090/grh_api/server/farm.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " > 
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.113.168:8090/grh_api/server/farm.do ; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " > 
 		<meta name="apple-touch-fullscreen" content="no"/>
 		<meta name="viewport" content="width=750,user-scalable=no" />
 		<meta content="telephone=no, address=no" name="format-detection" />
@@ -59,7 +59,7 @@
 				</div>
 				<!-- 动态及好友信息展示 -->
 				<div v-cloak v-if="PageType == 1" class="side_nav" >
-					<div class="dynamic" @click="getDynamic" v-bind:data="dynamicInfo" >
+					<div class="dynamic" :class="{'common_rash':dynamicInfo.isNoRead}" @click="getDynamic" v-bind:data="dynamicInfo">
 						<img src="../img/farmImg/dt.png" alt=""/>
 					</div>
 					<div class="friends" @click="getFrieds">
@@ -94,8 +94,8 @@
 				<div id="trends" class="trends common_wrap" >
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
 					<div class="trends_wrap">
-						<ul class="trends_content">
-							
+						<ul class="trends_content"  >
+							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type' v-text="item.note"></li>
 						</ul>
 					</div>
 				</div>
@@ -103,23 +103,25 @@
 				<div id="land" class="common_wrap" >
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
 					<ul class="land_content">
-						
+						<li v-show="landInfo.landList" v-for="item in landInfo.landList">
+							<dl class="active"></dl>
+							<p class="color_b" v-text="item.no+'号土地'"></p>
+						</li>
 					</ul>
 				</div>
 				<!-- 仓库 -->
 				<div id="storehouse" class="storehouse common_wrap" >
 					<div class="common_title">仓库<span class="common_close" data-obj='storehouseInfo' @click="closeMask"></span></div>
 					<ul class="menu">
-						<li v-for="(item,index) in storehouseInfo" v-text="item.name" :data-type = "index" :class="{'active':item.active}" @click="!item.active && getStorehouse(item,index)"></li>
+						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)"></li>
 					</ul>
-					<div  class="wrap">
+					<div class="wrap">
 						<div class="show">
-							
-							<dl data="${v[i].seedId}">
-								<dt class="ccsl">${v[i].name}</dt>
-								<dd class="num">x${v[i].num}</dd>
-								<dd><img src="${v[i].logo}"/></dd>
-								<dd><span class="button">立即使用</span></dd>
+							<dl v-for="item in storehouseInfo.data" v-bind:data-id="item.id">
+								<dt class="ccsl" v-text="item.name"></dt>
+								<dd class="num" v-text="'x'+item.num"></dd>
+								<dd><img v-bind:src="item.logo"/></dd>
+								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id">立即使用</span></dd>
 							</dl>
 						</div>
 					</div>
@@ -128,15 +130,12 @@
 				<div id="friend" class="friend common_wrap" >
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 						<div class='friend_top'>
-							<div class="left">
-								<dl>
-									<dt><img src="../img/farmImg/1.jpg" class="border_blue"/></dt>
-									<dd class='name ellipsis'>我</dd>
-									<dd class='no'>No.3</dd>
-								</dl>
-							</div>
 							<div class="right">
-								
+								<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id">
+									<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
+									<dd class='name ellipsis' v-text="item.petName"></dd>
+									<dd class='no' v-text="'No.'+(index+1)"></dd>
+								</dl>
 							</div>
 						</div>
 					<div class="friend_bottom" @click="invitationFriend">邀请好友</div>
