@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=750,user-scalable=no" />
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/farm.css"/>
 	</head>
 	<body>
@@ -26,7 +27,7 @@
 				<header v-cloak class="common_header title_c" >
 					<a href="#"></a>
 					<p>果然好农场</p>
-					<dl class="share">
+					<dl v-if="PageType == 1" class="share">
 						<dt><img src="../img/farmImg/share2x.png"/></dt>
 						<dd>分享</dd>
 					</dl>
@@ -103,9 +104,9 @@
 				<div id="land" class="common_wrap" >
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
 					<ul class="land_content">
-						<li v-show="landInfo.landList" v-for="item in landInfo.landList">
-							<dl class="active"></dl>
-							<p class="color_b" v-text="item.no+'号土地'"></p>
+						<li v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
+							<dl :class="{active:farmLand.id == item.id}"></dl>
+							<p class="color_b" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
 						</li>
 					</ul>
 				</div>
@@ -131,7 +132,7 @@
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 						<div class='friend_top'>
 							<div class="right">
-								<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id">
+								<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
 									<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
 									<dd class='name ellipsis' v-text="item.petName"></dd>
 									<dd class='no' v-text="'No.'+(index+1)"></dd>

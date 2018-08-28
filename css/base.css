@@ -145,7 +145,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .float_left{float: left;}
 .float_right{float: right;}
 /*公用弹出提示框*/
-.prompt{position: fixed;position: -ms-device-fixed;padding:20px;background:rgba(0,0,0,0.6);color:#FFF;font-size: 24px;border-radius: 12px;z-index: 1000;left: 50%;display: none;top:26%;}
+.prompt{position: fixed;position: -ms-device-fixed;padding:20px;background:rgba(0,0,0,0.6);color:#FFF;font-size: 24px;border-radius: 12px;z-index: 9999999999;left: 50%;display: none;top:26%;}
 /*清除浮动*/
 .clearfloat:after{content: ".";display: block;height: 0;overflow: hidden;visibility: hidden;clear: both;}
 /*公用遮罩层*/
