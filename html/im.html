@@ -70,7 +70,7 @@
 										<img v-bind:src="item.ascription == 2 ? config.userServerImg : config.userImg">
 										<span v-html="getNameTime(item)"></span>
 									</div>
-									<div class="im-chat-text" :class="{'type_img':item.msgType == 'image','type_voice':item.msgType == 'voice','type_voice_no':item.msgType == 'voice' && item.read == 0,'active':item.msgType == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="item.msgType == 'voice' && play_voice($event,item,index)"></div>
+									<div class="im-chat-text" :class="{'type_img':item.msgType == 'image','type_voice':item.msgType == 'voice','type_voice_no':item.msgType == 'voice' && item.read == 0,'active':item.msgType == 'voice' && item.read == 2}" v-html="getHtml(item)" @click="clickMessage($event,item,index)" ></div>
 								</div>
 							</li>
 						</ul>
@@ -105,7 +105,7 @@
 							<input v-if="openar[0].type != 2" type="text" autocomplete="off" id="text" class="input_text" v-model.trim="openar[1].value" @focus="getPoint" @blur="lostPoint"/>
 						</div>
 						<div class="operat_icon_right float_right" @click="add_img">
-							<button v-cloak v-show="!openar[1].value" class="fa fa-plus icon_add"></button>
+							<button v-cloak v-show="!openar[1].value" class=" icon_add"></button>
 							<input v-show="1 == 2" class="updata_img" type="file" accept="image/*" name="" id="file" value=""  />
 							<button v-cloak v-show="openar[1].value" class="btn_send" >发送</button>
 						</div>
@@ -113,6 +113,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="preview-modal"></div>
 		<script src="../seajs/2.1.1/sea.js"></script>
 		<script src="../seajs-config.js?v=1546121"></script>
 		
