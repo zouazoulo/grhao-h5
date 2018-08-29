@@ -25,7 +25,7 @@
 			<div class="canves_bg" v-show="PageStatus == 2">
 				<!-- 头部区域-->
 				<header v-cloak class="common_header title_c" >
-					<a href="#"></a>
+					<a href="avascript:void(0)" @click="goBack"></a>
 					<p>果然好农场</p>
 					<dl v-if="PageType == 1" class="share">
 						<dt><img src="../img/farmImg/share2x.png"/></dt>
@@ -95,9 +95,10 @@
 				<div id="trends" class="trends common_wrap" >
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
 					<div class="trends_wrap">
-						<ul class="trends_content"  >
+						<ul class="trends_content">
 							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type' v-text="item.note"></li>
 						</ul>
+						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click="clickGetMoreDynamic"></p>
 					</div>
 				</div>
 				<!-- 土地弹窗 -->
@@ -105,6 +106,7 @@
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
 					<ul class="land_content">
 						<li v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
+							<!--<dt></dt><dd><p>p1</p><p>p2</p></dd>-->
 							<dl :class="{active:farmLand.id == item.id}"></dl>
 							<p class="color_b" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
 						</li>

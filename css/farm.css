@@ -483,7 +483,8 @@ body {
 .load_more {
 	font-size: 24px;
 	text-align: center;
-	background-color: #E5E5E5;
+	background: #FFF;
+    line-height: 98px;
 }
 
 
