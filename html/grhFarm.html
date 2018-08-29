@@ -104,11 +104,14 @@
 				<!-- 土地弹窗 -->
 				<div id="land" class="common_wrap" >
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
-					<ul class="land_content">
-						<li v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
-							<!--<dt></dt><dd><p>p1</p><p>p2</p></dd>-->
-							<dl :class="{active:farmLand.id == item.id}"></dl>
-							<p class="color_b" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
+					<ul class="land_content clearfloat">
+						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
+							<!---->
+							<dl :class="{active:farmLand.id == item.id}">
+								<dt v-if="!item.id"></dt>
+								<dd v-if="!item.id"><p>暂未开通</p><p v-text="item.desc"></p></dd>
+							</dl>
+							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
 						</li>
 					</ul>
 				</div>
@@ -119,8 +122,8 @@
 						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)"></li>
 					</ul>
 					<div class="wrap">
-						<div class="show">
-							<dl v-for="item in storehouseInfo.data" v-bind:data-id="item.id">
+						<div class="show clearfloat" v-bind:style="{width:getWidth}">
+							<dl class="float_left" v-for="item in storehouseInfo.data" v-bind:data-id="item.id">
 								<dt class="ccsl" v-text="item.name"></dt>
 								<dd class="num" v-text="'x'+item.num"></dd>
 								<dd><img v-bind:src="item.logo"/></dd>

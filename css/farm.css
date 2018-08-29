@@ -305,11 +305,14 @@ body {
 .color_b {
 	color: #2696F6;
 }
+.color_c {
+	color: #9d9d9d;
+}
 
 .land_content {
-	display: flex;
+	/*display: flex;
 	justify-content: space-between;
-	flex-flow: wrap;
+	flex-flow: wrap;*/
 	padding: 60px 60px 20px;
 }
 
@@ -319,6 +322,10 @@ body {
 	padding-bottom: 40px;
 	text-align: center;
 	font-size: 25px;
+	margin-right: 54px;
+}
+.land_content li:nth-child(3n){
+	margin-right: 0;
 }
 
 .land_content li dl {
@@ -400,8 +407,9 @@ body {
 }
 
 .storehouse .show {
-	display: flex;
-	justify-content: space-between;
+	/*display: flex;
+	justify-content: space-between;*/
+	display: block;
 	margin: 0 60px 60px;
 }
 
