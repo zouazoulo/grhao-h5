@@ -31,7 +31,8 @@ seajs.config({
     'vue':'vue.js?v=20180720',
     'score':'score.js?v=20180720',
     'addMap':'addMapPicker.js?v=20180720',
-    'im':"im.js?v=20180720"
+    'im':"im.js?v=20180720",
+    'small-exif':'small-exif.js?v=20180702',
     
   },
   preload: ['mobile-util']
