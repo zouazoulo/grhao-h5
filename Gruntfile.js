@@ -90,9 +90,9 @@ module.exports = function (grunt) {
         
         var json = {
             dev : ["http://61.164.113.168:8090/grh_api/server/api.do",' 测试'],
-            loc : ["http://192.168.1.8:8080/grh_api/server/api.do",' 本地'],
+            //loc : ["http://192.168.1.8:8080/grh_api/server/api.do",' 本地'],
             // loc : ["http://192.168.0.135:8080/grh_api/server/api.do",' 本地'],
-            // loc : ["http://192.168.1.12:8080/server/api.do",' 本地'],
+           	loc : ["http://192.168.0.184:/grh_api/server/farm.do",' 本地'],
             pro : ["http://api.grhao.com/server/api.do",' 正式']
         };
         var commonJs = grunt.file.read( pathname, encoding );

@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>果然好农场</title>
-		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.113.168:8090/grh_api/server/farm.do ; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " > 
-		<meta name="apple-touch-fullscreen" content="no"/>
+		<!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.113.168:8090/grh_api/server/farm.do ; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " > 
+		--><meta name="apple-touch-fullscreen" content="no"/>
 		<meta name="viewport" content="width=750,user-scalable=no" />
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
@@ -96,7 +96,10 @@
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
 					<div class="trends_wrap">
 						<ul class="trends_content">
-							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type' v-text="item.note"></li>
+							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type'>
+								<p v-text="item.createTime"></p>
+								<p v-text="item.note"></p>
+							</li>
 						</ul>
 						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click="clickGetMoreDynamic"></p>
 					</div>
@@ -144,7 +147,7 @@
 								</dl>
 							</div>
 						</div>
-					<div class="friend_bottom" @click="invitationFriend">邀请好友</div>
+					<div class="friend_bottom" v-if="isWx" @click="invitationFriend">邀请好友</div>
 				</div>
 				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>
 			</div>
