@@ -25,13 +25,13 @@
 			<div class="canves_bg" v-show="PageStatus == 2">
 				<!-- 头部区域-->
 				<header v-cloak class="common_header title_c" >
-					<a href="avascript:void(0)" @click="goBack"></a>
+					<a href="javascript:void(0)" @click="goBack"></a>
 					<p>果然好农场</p>
-					<dl v-if="PageType == 1" class="share">
+					<!--<dl v-if="PageType == 1" class="share">
 						<dt><img src="../img/farmImg/share2x.png"/></dt>
 						<dd>分享</dd>
-					</dl>
-					<dl class="rule">
+					</dl>-->
+					<dl class="rule" @click="goToRule">
 						<dt><img src="../img/farmImg/rule2x.png"/></dt>
 						<dd>规则</dd>
 					</dl>
@@ -82,7 +82,7 @@
 				
 				
 				<!-- 签到弹出框 -->
-				<div id="frame" class="frame" v-show="signIn.htmlStr">
+				<div v-cloak id="frame" class="frame" v-show="signIn.htmlStr">
 					<span class="close" data-obj='siginIn' @click="closeMask"></span>
 					<div class="icon">
 						<img v-bind:src="signIn.imgUrl" alt="" />
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<!-- 动态弹窗 -->
-				<div id="trends" class="trends common_wrap" >
+				<div v-cloak id="trends" class="trends common_wrap" >
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
 					<div class="trends_wrap">
 						<ul class="trends_content">
@@ -105,7 +105,7 @@
 					</div>
 				</div>
 				<!-- 土地弹窗 -->
-				<div id="land" class="common_wrap" >
+				<div v-cloak id="land" class="common_wrap" >
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
 					<ul class="land_content clearfloat">
 						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
@@ -119,24 +119,24 @@
 					</ul>
 				</div>
 				<!-- 仓库 -->
-				<div id="storehouse" class="storehouse common_wrap" >
+				<div v-cloak id="storehouse" class="storehouse common_wrap" >
 					<div class="common_title">仓库<span class="common_close" data-obj='storehouseInfo' @click="closeMask"></span></div>
 					<ul class="menu">
 						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)"></li>
 					</ul>
 					<div class="wrap">
 						<div class="show clearfloat" v-bind:style="{width:getWidth}">
-							<dl class="float_left" v-for="item in storehouseInfo.data" v-bind:data-id="item.id">
+							<dl class="float_left" v-for="(item,index) in storehouseInfo.data" v-bind:data-id="item.id">
 								<dt class="ccsl" v-text="item.name"></dt>
 								<dd class="num" v-text="'x'+item.num"></dd>
 								<dd><img v-bind:src="item.logo"/></dd>
-								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id">立即使用</span></dd>
+								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index">立即使用</span></dd>
 							</dl>
 						</div>
 					</div>
 				</div>
 				<!-- 好友邀请好友 -->
-				<div id="friend" class="friend common_wrap" >
+				<div v-cloak id="friend" class="friend common_wrap" >
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 						<div class='friend_top'>
 							<div class="right">

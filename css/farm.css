@@ -612,51 +612,13 @@ body {
 	color: #FFFFFF;
 }
 
-/*兑换*/
 
-.exchange {
-	height: 100%;
-	margin-top: 108px;
-	background-color: #e6e6e6;
-	padding: 30px;
-	font-size: 30px;
-}
-
-.exchange .same {
-	display: flex;
-	justify-content: space-between;
-	height: 100px;
-	margin-bottom: 50px;
-	line-height: 100px;
-	padding: 0 20px;
-	background-color: #fff;
-}
-
-.exchange .goods img {
-	margin-bottom: 10px;
-}
-
-.exchange .number input {
-	width: 170px;
-}
-
-.exchange .exchange_b {
-	position: absolute;
-	bottom: 30px;
-	width: 660px;
-	height: 100px;
-	line-height: 100px;
-	background-color: deepskyblue;
-	color: #FFFFFF;
-	text-align: center;
-}
-
-.main{
+/*.main{
 	max-width: 750px;
 	width: 100%;
 	height: 100%;
 	position: relative;
-}
+}*/
 .canves_loging,.canves_bg,.main_view,.canver_change_scene{
 	position: absolute;
 	top: 0;
@@ -673,4 +635,159 @@ body {
 
 .common_mask{
 	z-index: 20;
+}
+
+
+
+/*
+农场规则页面
+ * */
+.farmRule{
+	padding: 24px;
+}
+.farmRuleItem{
+	background: #FFF;
+	padding: 24px;
+	margin-bottom: 20px;
+}
+.farmRule .farmRuleItem h5{
+	font-size: 28px;
+}
+.farmRule .farmRuleItem p{
+	padding-top: 16px;
+	font-size: 24px;
+}
+
+
+/*
+ 兑换页面
+ * */
+.error{
+	color: #EB4040;
+}
+.exchange {
+	height: 100%;
+	padding: 30px;
+	font-size: 28px;
+	color:#333333;
+}
+.exchange_msg{
+	background: #FFF;
+	line-height: 48px;
+	padding: 0 30px;
+	font-size: 24px;
+}
+.exchange_msg:before{
+	display: inline-block;
+	content: "*";
+	color: red;
+	
+}
+.exchange .same {
+	display: flex;
+	justify-content: space-between;
+	height: 98px;
+	padding: 0 30px;
+	border-radius: 4px;
+	background-color: #fff;
+	line-height: 100px;
+}
+.exchange_msg_top{
+	padding-top: 16px;
+}
+.exchange_msg_bottom{
+	padding-bottom: 16px;
+}
+.exchange .exchange_box,.exchange .goods{
+	margin-bottom: 30px;
+}
+.exchange .goods img {
+	width:54px;
+	margin-bottom: 10px;
+}
+.goods,.number,.exchange .address{
+	
+	box-shadow: 0 10px 30px rgba(0,0,0,.04);
+}
+.exchange .number input {
+	text-align: right;
+	
+}
+.exchange .address{
+	display: inherit;
+	background: #FFF;
+}
+.exchange .address .top{
+	padding:inherit;
+	margin:0 30px ;
+	border-bottom: 1px solid #e5e5e5;
+}
+.exchange .address .bottom{
+	padding: 40px 30px;
+}
+.exchange .address .bottom span:first-child{
+	font-size: 30px;
+}
+.exchange .address .bottom span:nth-child(2){
+	margin-left: 10px;
+	font-size: 24px;
+	color: #666666;
+}
+.exchange .address .bottom p:first-child{
+	margin-bottom: 30px;
+}
+.exchange .address .bottom p:last-child{
+	font-size: 24px;
+}
+.arrow{
+	position: relative;
+	width:130px;
+	color: #2696f6;
+}
+.exchange .address .arrow:after{
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: -18px;
+	width: 18px;
+	height: 18px;
+	border-bottom: 4px solid #2696f6;;
+	border-right: 4px solid #2696f6;;
+	margin: 20px 30px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	display: inline-block;
+	transform-origin: 100%;
+}
+.exchange_main .exchange_b, .exchange_success .exchange_index{
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	width: 660px;
+	height: 88px;
+	border-radius: 6px;
+	background-color: #cccccc;
+	line-height: 88px;
+	color: #FFFFFF;
+	font-size: 32px;
+	text-align: center;
+}
+.exchange_success .exchange_index{
+	background-color: #2696f6;
+}
+.exchange_main .exchange_b.active{
+	background-color: #2696f6;
+}
+/*兑换成功*/
+.get{
+	margin-top: 288px;
+	margin-bottom: 60px;
+	text-align: center;
+	font-size: 32px;
+	color: #333333;
+}
+.get p:last-child{
+	margin-top: 30px;
+	font-size: 24px;
+	color: #999999;
 }

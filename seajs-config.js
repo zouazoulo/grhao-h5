@@ -38,6 +38,7 @@ seajs.config({
     'framView':'framView.js?v=20180720',
     'farmCanves':'farmCanves.js?v=20180720',
     'farm':'farm.js?v=20180720',
+    'framOther':'framOther.js?v=20180720',
   },
   preload: ['mobile-util']
 });
