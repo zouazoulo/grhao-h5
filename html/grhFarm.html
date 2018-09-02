@@ -50,10 +50,10 @@
 							<div class="blue_bg">
 								<div class="data">
 									<span class="left" v-text="farmLevel.levelNum"></span>
-									<span class="middle" v-text="farmLevel.startExp+'/'+farmLevel.endExp"></span>
+									<span class="middle" v-text="farmLevel.exp+'/'+(farmLevel.endExp-farmLevel.startExp)"></span>
 									<span class="right" v-text="farmLevel.levelNum + 1"></span>
 								</div>
-								<div class="exp"></div>
+								<div class="exp" v-bind:style="{width:__width}"></div>
 							</div>
 						</div>
 					</div>
@@ -147,9 +147,10 @@
 								</dl>
 							</div>
 						</div>
-					<div class="friend_bottom" v-if="isWx" @click="invitationFriend">邀请好友</div>
+					<div class="friend_bottom" v-if="isWx" @click="invitationFriend" v-bind:data-obj="friedsInfo">邀请好友</div>
 				</div>
 				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>
+				
 			</div>
 			<!--
 				使用div做的主要操作视图区域
