@@ -23,9 +23,9 @@
 			    </div>
 			</div>
 			<div class="empty"></div>
-			<div class="main_wrap main_wrap_margin">
+			<div v-cloak class="main_wrap main_wrap_margin">
 				<div class="main exchange_main" v-show="PageType == 1">
-					<div class="exchange">
+					<div v-cloak class="exchange">
 						<div class="goods same">
 							<p>兑换物品(<b v-text="fruit.name"></b>)</p>
 							<span><img v-bind:src="fruit.logo"/></span>
@@ -51,7 +51,7 @@
 					</div>
 					<div class='exchange_b' :class="{'active':fruitNum && !exchangeErrorMsg}" @click="exchangeFruit">确认兑换</div>
 				</div>
-				<div class="main exchange_success" v-show="PageType == 2">
+				<div v-cloak class="main exchange_success" v-show="PageType == 2">
 					<div class="get">
 						<img src="../img/farmImg/success.png"/>
 						<p>提交成功</p>

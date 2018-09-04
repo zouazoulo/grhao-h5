@@ -12,6 +12,7 @@ body {
 	height: 0;
 	width: 100%;
 	bottom: 0;
+	display: none;
 	border-radius: 40px 40px 0 0;
 	background-color: #fff;
 	z-index: 999;
@@ -104,7 +105,7 @@ body {
 	content: attr(data-content);
 	min-width: 68px;
 	min-height: 36px;
-	border-radius: 16px;
+	border-radius: 18px;
 	border: 2px solid #FFFFFF;
 	top: -14px;
 	right: -30px;
@@ -228,7 +229,6 @@ body {
 	border-radius: 4px;
 	border: 1px solid #559df6;
 	background-color: rgba(85, 157, 246, .3);
-	opacity: 0.3;
 	flex: 2;
 }
 
@@ -389,7 +389,7 @@ body {
 .storehouse .menu .active:after {
 	content: "";
 	position: absolute;
-	left: 0;
+	left: 2px;
 	bottom: 0;
 	width: 52px;
 	height: 6px;
@@ -591,14 +591,14 @@ body {
 .crown:before{
 	top:-20px;
 	left: -10px;
-	background:#FFF url("../img/farmImg/king.png") no-repeat center center/cover;
+	background: url("../img/farmImg/king.png") no-repeat center center/cover;
 }
 .pick:after{
 	box-sizing: border-box;
 	top:-20px;
 	right: -10px;
 	border:2px solid #2696F6;
-	background:#FFF url("../img/farmImg/zs.png") no-repeat center center;
+	background: url("../img/farmImg/zs.png") no-repeat center center;
 	border-radius: 50%;
 }
 .friend_bottom {
@@ -648,14 +648,18 @@ body {
 .farmRuleItem{
 	background: #FFF;
 	padding: 24px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 10px 30px rgba(0,0,0,.04);
+	border-radius:4px ;
 }
 .farmRule .farmRuleItem h5{
-	font-size: 28px;
+	font-size: 32px;
 }
 .farmRule .farmRuleItem p{
 	padding-top: 16px;
-	font-size: 24px;
+	font-size: 26px;
+	color: #333;
+	line-height: 36px;
 }
 
 
@@ -691,6 +695,12 @@ body {
 	border-radius: 4px;
 	background-color: #fff;
 	line-height: 100px;
+}
+.exchange .same.number p{
+	flex: 1;
+}
+.exchange .same.number input{
+	width: 200px;
 }
 .exchange_msg_top{
 	padding-top: 16px;
