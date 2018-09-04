@@ -33,6 +33,7 @@ seajs.config({
     'addMap':'addMapPicker.js?v=20180720',
     'im':"im.js?v=20180720",
     'small-exif':'small-exif.js?v=20180702',
+    'exif':'exif.js?v=20180702',
     
   },
   preload: ['mobile-util']
