@@ -102,6 +102,9 @@
 							</li>
 						</ul>
 						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click="clickGetMoreDynamic"></p>
+						<div v-show="ajaxState == 'wait'" class="page_status">
+							加载中...
+						</div>
 					</div>
 				</div>
 				<!-- 土地弹窗 -->
@@ -116,6 +119,9 @@
 							</dl>
 							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
 						</li>
+						<div v-show="ajaxState == 'wait'" class="page_status">
+							加载中...
+						</div>
 					</ul>
 				</div>
 				<!-- 仓库 -->
@@ -133,20 +139,27 @@
 								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index">立即使用</span></dd>
 							</dl>
 						</div>
+						<div v-show="ajaxState == 'wait'" class="page_status">
+							加载中...
+						</div>
 					</div>
 				</div>
 				<!-- 好友邀请好友 -->
 				<div v-cloak id="friend" class="friend common_wrap friedsInfo-box" >
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
-						<div class='friend_top'>
-							<div class="right">
-								<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
-									<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
-									<dd class='name ellipsis' v-text="item.petName"></dd>
-									<dd class='no' v-text="'No.'+(index+1)"></dd>
-								</dl>
+					<div class='friend_top'>
+						<div class="right">
+							<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
+								<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
+								<dd class='name ellipsis' v-text="item.petName"></dd>
+								<dd class='no' v-text="'No.'+(index+1)"></dd>
+							</dl>
+							<div v-show="ajaxState == 'wait'" class="page_status">
+								加载中...
 							</div>
 						</div>
+						
+					</div>
 					<div class="friend_bottom" v-if="isWx" @click="invitationFriend" v-bind:data-obj="friedsInfo">邀请好友</div>
 				</div>
 				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>

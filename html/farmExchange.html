@@ -27,13 +27,13 @@
 				<div class="main exchange_main" v-show="PageType == 1">
 					<div v-cloak class="exchange">
 						<div class="goods same">
-							<p>兑换物品(<b v-text="fruit.name"></b>)</p>
+							<p>兑换物品(<b v-text="fruit.name +'X'+fruit.num"></b>)</p>
 							<span><img v-bind:src="fruit.logo"/></span>
 						</div>
 						<div class="exchange_box">
-							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果'"></div>
+							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果;最多可兑换'+parseInt(fruit.num/fruit.rate) + '份'"></div>
 							<div class="number same">
-								<p>兑换数量(拥有<b v-text="fruit.num"></b>)</p>
+								<p>兑换数量</p>
 								<input type="text" class='value' maxlength = "4" placeholder="请输入要兑换的份数" v-model="fruitNum"/>
 							</div>
 							<div class="exchange_msg exchange_msg_bottom error" v-show="exchangeErrorMsg" v-text="exchangeErrorMsg"></div>
