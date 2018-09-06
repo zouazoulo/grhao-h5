@@ -34,7 +34,7 @@
 							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果;最多可兑换'+parseInt(fruit.num/fruit.rate) + '份'"></div>
 							<div class="number same">
 								<p>兑换数量</p>
-								<input type="text" class='value' maxlength = "4" placeholder="请输入要兑换的份数" v-model="fruitNum"/>
+								<input type="tel" class='value' maxlength = "4" placeholder="请输入要兑换的份数" v-model="fruitNum"/>
 							</div>
 							<div class="exchange_msg exchange_msg_bottom error" v-show="exchangeErrorMsg" v-text="exchangeErrorMsg"></div>
 						</div>
