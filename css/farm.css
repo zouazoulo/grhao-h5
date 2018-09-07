@@ -532,9 +532,8 @@ body {
 /*好友*/
 
 .friend_top {
-	overflow: auto;
-	display:flex;
-	justify-content: space-between;
+	overflow-x: scroll;
+	overflow-y: hidden;
 	padding:30px 0;
 }
 .friend_top dl{
@@ -570,9 +569,9 @@ body {
 .friend_top .right{
 	overflow: scroll;
 	overflow-y:hidden;
-	padding:30px 0;
+	padding:30px 0;/*
 	display: flex;
-	flex: 2;
+	flex: 2;*/
 }
 .friend_top .right dl{
 	margin-left:50px ;

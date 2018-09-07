@@ -148,8 +148,8 @@
 				<div v-cloak id="friend" class="friend common_wrap friedsInfo-box" >
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 					<div class='friend_top'>
-						<div class="right">
-							<dl v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
+						<div class="right clearfloat"  v-bind:style="{width:getFriedsWidth}">
+							<dl class="float_left" v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
 								<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
 								<dd class='name ellipsis' v-text="item.petName"></dd>
 								<dd class='no' v-text="'No.'+(index+1)"></dd>
