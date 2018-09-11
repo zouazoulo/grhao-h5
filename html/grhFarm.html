@@ -43,7 +43,7 @@
 					<div class="content">
 						<div class="top clearfix">
 							<p class="user_name fl" v-text="userInfo.petName"></p>
-							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click="getSignIn"><span>签到</span></p>
+							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click="getSignIn"><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
 						</div>
 						<div class="bottom">
 							<span class='level'></span>
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				
-				
+				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>
 				<!-- 签到弹出框 -->
 				<div v-cloak id="frame" class="frame" v-show="signIn.htmlStr">
 					<span class="close" data-obj='siginIn' @click="closeMask"></span>
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<!-- 动态弹窗 -->
-				<div v-cloak id="trends" class="trends common_wrap dynamicInfo-box" >
+				<div v-cloak id="trends" class="trends common_wrap dynamicInfo-box dynamic-wrapper-hide" >
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
 					<div class="trends_wrap">
 						<ul class="trends_content">
@@ -108,7 +108,7 @@
 					</div>
 				</div>
 				<!-- 土地弹窗 -->
-				<div v-cloak id="land" class="common_wrap landInfo-box" >
+				<div v-cloak id="land" class="landInfo common_wrap landInfo-box landInfo-wrapper-hide" >
 					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
 					<ul class="land_content clearfloat">
 						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
@@ -125,7 +125,7 @@
 					</ul>
 				</div>
 				<!-- 仓库 -->
-				<div v-cloak id="storehouse" class="storehouse common_wrap storehouseInfo-box" >
+				<div v-cloak id="storehouse" class="storehouse common_wrap storehouseInfo-box storehouse-wrapper-hide" >
 					<div class="common_title">仓库<span class="common_close" data-obj='storehouseInfo' @click="closeMask"></span></div>
 					<ul class="menu">
 						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)"></li>
@@ -145,7 +145,7 @@
 					</div>
 				</div>
 				<!-- 好友邀请好友 -->
-				<div v-cloak id="friend" class="friend common_wrap friedsInfo-box" >
+				<div v-cloak id="friend" class="friend common_wrap friedsInfo-box friend-wrapper-hide" >
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 					<div class='friend_top'>
 						<div class="right clearfloat"  v-bind:style="{width:getFriedsWidth}">
@@ -162,7 +162,7 @@
 					</div>
 					<div class="friend_bottom" v-if="isWx" @click="invitationFriend" v-bind:data-obj="friedsInfo">邀请好友</div>
 				</div>
-				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>
+				
 				
 			</div>
 			<!--
