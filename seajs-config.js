@@ -35,10 +35,10 @@ seajs.config({
     
     
     'pixi':'pixi.js?v=20180911',
-    'framView':'framView.js?v=20180912',
-    'farmCanves':'farmCanves.js?v=20180911',
-    'farm':'farm.js?v=2018091156564141',
-    'framOther':'framOther.js?v=20180905',
+    'framView':'framView.js?v=2018091201',
+    'farmCanves':'farmCanves.js?v=2018091201',
+    'farm':'farm.js?v=2018091201',
+    'framOther':'framOther.js?v=2018091201',
   },
   preload: ['mobile-util']
 });
