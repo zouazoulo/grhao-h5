@@ -9,7 +9,7 @@
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
 		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20180911"/>
+		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20180912"/>
 	</head>
 	<body>
 		<div class="main" id="appVue">
@@ -75,8 +75,8 @@
 					<div v-if="PageType == 1" class="storehouse_w" @click="getStorehouse">
 						<img src="../img/farmImg/ck.png"/>
 					</div>
-					<div v-if="PageType == 1" class="watering common_num" v-bind:data-content="waterTimes" @click="getWatering">
-						<img src="../img/farmImg/js.png"/>
+					<div v-if="PageType == 1" class="watering common_num" v-bind:data-content="waterTimes" >
+						<img src="../img/farmImg/js.png" @click="getWatering"/>
 					</div>
 				</div>
 				
@@ -178,10 +178,26 @@
 			<div class="canver_change_scene" v-show="PageStatus == 3">
 				
 			</div>
+			<div id="image-preload" style="display: none;">
+				<img src="../img/farmImg/cloud1.png" class="cloud1"/>
+				<img src="../img/farmImg/cloud2.png" class="cloud2"/>
+				<img src="../img/farmImg/cloud3.png" class="cloud3"/>
+				<img src="../img/farmImg/icon_kettle1.png" class="kettle1"/>
+				<img src="../img/farmImg/icon_kettle2.png" class="kettle2"/>
+				<img src="../img/farmImg/icon_kettle3.png" class="kettle3"/>
+				<img src="../img/farmImg/icon_kettle4.png" class="kettle4"/>
+				<img src="../img/farmImg/icon_kettle5.png" class="kettle5"/>
+				<img src="../img/farmImg/icon_kettle6.png" class="kettle6"/>
+				<img src="../img/farmImg/icon_kettle7.png" class="kettle7"/>
+				<img src="../img/farmImg/icon_kettle8.png" class="kettle8"/>
+				<img src="../img/farmImg/icon_kettle9.png" class="kettle9"/>
+				<img src="../img/farmImg/icon_kettle10.png" class="kettle10"/>
+				<img src="../img/farmImg/icon_kettle11.png" class="kettle11"/>
+			</div>
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20180911001"></script>
+	<script src="../seajs-config.js?v=20180912"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();
