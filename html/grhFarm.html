@@ -9,7 +9,7 @@
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
 		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=2018091202"/>
+		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=2018091301"/>
 	</head>
 	<body>
 		<div class="main" id="appVue">
@@ -31,7 +31,7 @@
 						<dt><img src="../img/farmImg/share2x.png"/></dt>
 						<dd>分享</dd>
 					</dl>-->
-					<dl class="rule" @click="goToRule">
+					<dl class="rule" @click="goToRule" @click.prevent>
 						<dt><img src="../img/farmImg/rule2x.png"/></dt>
 						<dd>规则</dd>
 					</dl>
@@ -43,7 +43,7 @@
 					<div class="content">
 						<div class="top clearfix">
 							<p class="user_name fl" v-text="userInfo.petName"></p>
-							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click="getSignIn"><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
+							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click="getSignIn" @click.prevent><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
 						</div>
 						<div class="bottom">
 							<span class='level'></span>
@@ -60,40 +60,40 @@
 				</div>
 				<!-- 动态及好友信息展示 -->
 				<div v-cloak v-if="PageType == 1" class="side_nav" >
-					<div class="dynamic" :class="{'common_rash':dynamicInfo.isNoRead}" @click="getDynamic" v-bind:data="dynamicInfo">
+					<div class="dynamic" :class="{'common_rash':dynamicInfo.isNoRead}" @click="getDynamic" v-bind:data="dynamicInfo" @click.prevent>
 						<img src="../img/farmImg/dt.png" alt=""/>
 					</div>
-					<div class="friends" @click="getFrieds">
+					<div class="friends" @click="getFrieds" @click.prevent>
 						<img src="../img/farmImg/hy.png"/>
 					</div>
 				</div>
 				<!-- 底部  土地 仓库  --浇水 -->
 				<div v-cloak class="bottom_nav">
-					<div class="land common_num" v-bind:data-content="farmLandCount" @click="getLand">
+					<div class="land common_num" v-bind:data-content="farmLandCount" @click="getLand" @click.prevent>
 						<img src="../img/farmImg/td.png"/>
 					</div>
-					<div v-if="PageType == 1" class="storehouse_w" @click="getStorehouse">
+					<div v-if="PageType == 1" class="storehouse_w" @click="getStorehouse" @click.prevent>
 						<img src="../img/farmImg/ck.png"/>
 					</div>
-					<div v-if="PageType == 1" class="watering common_num" v-bind:data-content="waterTimes" >
-						<img src="../img/farmImg/js.png" @click="getWatering"/>
+					<div v-if="PageType == 1" class="watering common_num" v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
+						<img src="../img/farmImg/js.png" @click="getWatering" @click.prevent/>
+					</div>
+					<div v-if="PageType == 2" class="watering" >
+						<img src="../img/farmImg/icon_goHome.png" @click="goHome" @click.prevent/>
 					</div>
 				</div>
-				
-				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData"></div>
+				<div id ="mask" class="common_mask" v-if="isMask" @click="closeMask" v-bind:data-obj="isMaskData" @touchmove.prevent @click.prevent></div>
 				<!-- 签到弹出框 -->
 				<div v-cloak id="frame" class="frame" v-show="signIn.htmlStr">
-					<span class="close" data-obj='siginIn' @click="closeMask"></span>
+					<span class="close" data-obj='siginIn' @click="closeMask" @click.prevent></span>
 					<div class="icon">
 						<img v-bind:src="signIn.imgUrl" alt="" />
 					</div>
-					<div v-html="signIn.htmlStr">
-						
-					</div>
+					<div v-html="signIn.htmlStr"></div>
 				</div>
 				<!-- 动态弹窗 -->
 				<div v-cloak id="trends" class="trends common_wrap dynamicInfo-box dynamic-wrapper-hide" >
-					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask"></span></div>
+					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click="closeMask" @click.prevent></span></div>
 					<div class="trends_wrap">
 						<ul class="trends_content">
 							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type'>
@@ -101,7 +101,7 @@
 								<p v-text="item.note"></p>
 							</li>
 						</ul>
-						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click="clickGetMoreDynamic"></p>
+						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click="clickGetMoreDynamic" @click.prevent></p>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
 						</div>
@@ -109,9 +109,9 @@
 				</div>
 				<!-- 土地弹窗 -->
 				<div v-cloak id="land" class="landInfo common_wrap landInfo-box landInfo-wrapper-hide" >
-					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask"></span></div>
+					<div class="common_title">土地<span class="common_close" data-obj='landInfo' @click="closeMask" @click.prevent></span></div>
 					<ul class="land_content clearfloat">
-						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)">
+						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click="goToLand(item)" @click.prevent>
 							<!---->
 							<dl :class="{active:farmLand.id == item.id}">
 								<dt v-if="!item.id"></dt>
@@ -126,9 +126,9 @@
 				</div>
 				<!-- 仓库 -->
 				<div v-cloak id="storehouse" class="storehouse common_wrap storehouseInfo-box storehouse-wrapper-hide" >
-					<div class="common_title">仓库<span class="common_close" data-obj='storehouseInfo' @click="closeMask"></span></div>
+					<div class="common_title"><span class="text_left_btn" @click="goExchangeRecord" @click.prevent>兑换记录</span> 仓库<span class="common_close" data-obj='storehouseInfo' @click="closeMask" @click.prevent></span></div>
 					<ul class="menu">
-						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)"></li>
+						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click="!item.active && getStorehouse(item,index)" @click.prevent></li>
 					</ul>
 					<div class="wrap">
 						<div class="show clearfloat" v-bind:style="{width:getWidth}">
@@ -136,11 +136,14 @@
 								<dt class="ccsl" v-text="item.name"></dt>
 								<dd class="num" v-text="'x'+item.num"></dd>
 								<dd><img v-bind:src="item.logo"/></dd>
-								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index">立即使用</span></dd>
+								<dd><span class="button" @click="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" @click.prevent>立即使用</span></dd>
 							</dl>
 						</div>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
+						</div>
+						<div v-show="ajaxState == 'success' && storehouseInfo.data.length == 0" class="page_status" v-html="'暂无'+storehouseInfo.list[storehouseInfo.type].name">
+							
 						</div>
 					</div>
 				</div>
@@ -149,7 +152,7 @@
 					<div class="common_title">好友<span class="common_close" data-obj='friedsInfo' @click="closeMask"></span></div>
 					<div class='friend_top'>
 						<div class="right clearfloat"  v-bind:style="{width:getFriedsWidth}">
-							<dl class="float_left" v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)">
+							<dl class="float_left" v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click="goToFarm(item)" @click.prevent>
 								<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
 								<dd class='name ellipsis' v-text="item.petName"></dd>
 								<dd class='no' v-text="'No.'+(index+1)"></dd>
@@ -160,7 +163,7 @@
 						</div>
 						
 					</div>
-					<div class="friend_bottom" v-if="isWx" @click="invitationFriend" v-bind:data-obj="friedsInfo">邀请好友</div>
+					<div class="friend_bottom" v-if="isWx" @click="invitationFriend" v-bind:data-obj="friedsInfo" @click.prevent>邀请好友</div>
 				</div>
 				
 				
@@ -197,7 +200,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=2018091202"></script>
+	<script src="../seajs-config.js?v=2018091301"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();
