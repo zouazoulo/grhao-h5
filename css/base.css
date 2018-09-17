@@ -473,7 +473,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .month_card_recharge_item.bg_select {background-position: -124px 32px;}
 
 .mcr_left{width:200px;padding-left:60px;line-height:100px;font-size:26px;}
-.month_card_recharge_item:nth-child(3){border-bottom:1px solid #FFFFFF;}
+/*.month_card_recharge_item:nth-child(3){border-bottom:1px solid #FFFFFF;}*/
 
 .month_card_recharge_item:nth-child(1) .mcr_left{background-position:0 -100px;}
 .month_card_recharge_item:nth-child(2) .mcr_left{background-position:0 -200px;}
@@ -1595,3 +1595,21 @@ body.locked{overflow-y:hidden;}
 .help_item.help_chat{background-image:url(../img/icon_chat.png) ;background-position-x: 170px;padding-left: 230px;}
 .help_content .msg{text-align: center;font-size: 24px;color: #999;}
 
+/*
+ Vue改版充值
+ 充值卡充值
+ * */
+.vuePageBox{
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.month_pay_style .month_card_recharge_item:nth-last-child{border-bottom:1px solid #FFFFFF;}
+/*
+.month_card_recharge_item[pay-way='1']{}
+*/
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='2'] .mcr_left{background-position:0 -100px;}
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='3'] .mcr_left{background-position:0 -300px;}
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='4'] .mcr_left{background-position:0 -200px;}
+
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='5'] .mcr_left{background: url(../img/icon_rechange_card.png) no-repeat left center;}
