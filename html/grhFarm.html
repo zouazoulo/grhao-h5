@@ -10,15 +10,15 @@
 		<link rel="stylesheet" href="../css/rest.css" />
 		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=2018091301"/>
+		<link rel="stylesheet" href="../css/pace-theme-center-simple.css" />
 	</head>
-	<body>
-		<div class="main" id="appVue">
+	<body >
 			<!--
 				加载动画层
 			-->
-			<div class="canves_loging" v-show="PageStatus == 1">
-				加载中...
+			<div id="canves_loging" v-show="PageStatus == 1" >
 			</div>
+			<div class="main" id="appVue">
 			<!--
 				动画背景层
 			-->
@@ -201,6 +201,7 @@
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
 	<script src="../seajs-config.js?v=2018091301"></script>
+	<script src="../lib/pace.js"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();

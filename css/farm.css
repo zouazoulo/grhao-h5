@@ -660,7 +660,7 @@ body {
 	z-index: 999999999;
 }
 
-.canves_loging{font-size: 40px;text-align: center;line-height: 400px;}
+/*.canves_loging{font-size: 40px;text-align: center;line-height: 400px;}*/
 [v-cloak]{display: none;}
 
 .common_mask{
