@@ -30,15 +30,15 @@ seajs.config({
     'package' : 'red_package_rain.js?v=20180911',
     'vue':'vue.js?v=20180911',
     'score':'score.js?v=20180911',
-    'addMap':'addMapPicker.js?v=20180911',
+    'addMap':'addMapPicker.js?v=20180914',
     
     
     
     'pixi':'pixi.js?v=20180911',
-    'framView':'framView.js?v=20180913',
-    'farmCanves':'farmCanves.js?v=2018091301',
-    'farm':'farm.js?v=2018091301',
-    'framOther':'framOther.js?v=2018091301',
+    'framView':'framView.js?v=20180914',
+    'farmCanves':'farmCanves.js?v=20180914',
+    'farm':'farm.js?v=20180914',
+    'framOther':'framOther.js?v=20180914',
   },
   preload: ['mobile-util']
 });
