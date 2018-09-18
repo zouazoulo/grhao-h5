@@ -1613,3 +1613,4 @@ body.locked{overflow-y:hidden;}
 #pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='4'] .mcr_left{background-position:0 -200px;}
 
 #pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='5'] .mcr_left{background: url(../img/icon_rechange_card.png) no-repeat left center;}
+.month_pay_style dl dd input{padding-left: 16px;}
