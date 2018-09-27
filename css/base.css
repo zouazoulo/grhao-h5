@@ -748,7 +748,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .set_charge_contact_right li.actived{background-position:-756px 34px;}
 
 .set_charge_con {width:100%;margin-top:20px;background:#FFFFFF; display: none;}
-.set_charge_address{width:100%;padding:20px 40px 20px 20px;display: block;background:#ffffff url(../img/arrow_right.png) no-repeat 660px center;}
+.set_charge_address{width:100%;padding:20px 40px 20px 20px;display: block;background:#ffffff url(../img/arrow_right.png) no-repeat 674px center;}
 .set_charge_address2{width:100%;padding:20px 40px 20px 20px;display: block;background: #ffffff;} 
 .set_charge_address1 .set_address_select {display:none;}
 .set_address_select {width:100%;height:150px;font-size:46px;line-height:150px;text-align:center;}
