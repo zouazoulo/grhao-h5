@@ -48,7 +48,7 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
 
 
 [contenteditable = "true"], input, textarea {
-    -webkit-user- select: auto!important;
+    -webkit-user-select: auto!important;
     -khtml-user-select: auto!important;
     -moz-user-select: auto!important;
     -ms-user-select: auto!important;
@@ -1182,7 +1182,6 @@ body.locked{overflow-y:hidden;}
 .pay_style_box.skin2 #get_verify_code{background: #E5892B;}
 
 /*第三套皮肤*/
-
 /*个人中心页面未登录状态下的登录按钮*/
 .main_top_login.skin3{background: #35af64;}
 /*登录页面登录按钮*/
@@ -1547,7 +1546,7 @@ body.locked{overflow-y:hidden;}
 .mod_game.fixed {display: none;z-index: 600;position: fixed;left: 50%;top: 50%;margin: auto;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);}
 .mod_game.show{display: block;}
 .mod_game .close{width: 48px;height: 48px;display: block;position: absolute;top: 20px;right: 20px;background: url(../img/gameTigerClose.png) no-repeat center;}
-.mod_game .icon_box{width: 200px;height: 200px;margin: 0 auto;background: url(../img/pic_logo_load.png) no-repeat center;background-size:100% ;};
+.mod_game .icon_box{width: 200px;height: 200px;margin: 0 auto;background: url(../img/pic_logo_load.png) no-repeat center;background-size:100% ;}
 
 
 .mod_game .icon_box img{width: 100%;height: 100%;}
@@ -1617,7 +1616,7 @@ body.locked{overflow-y:hidden;}
 .month_pay_style dl dd input{padding-left: 16px;}
 /*
  my页面nav
- * */
+*/
 .main_bottom dl.icon_address{background-position:0 -279px;}
 .main_bottom dl.icon_shop{background-position:0 -379px;}
 .main_bottom dl.icon_rechange{background-position:0 -479px;}
