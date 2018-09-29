@@ -1599,10 +1599,7 @@ body.locked{overflow-y:hidden;}
  Vue改版充值
  充值卡充值
  * */
-.vuePageBox{
-	max-width: 720px;
-	margin: 0 auto;
-}
+.vuePageBox{max-width: 720px;margin: 0 auto;}
 
 .month_pay_style .month_card_recharge_item:nth-last-child{border-bottom:1px solid #FFFFFF;}
 /*
