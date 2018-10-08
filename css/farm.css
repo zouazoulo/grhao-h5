@@ -1148,8 +1148,8 @@ body {
 }
 /*翻转动画部分*/
 .viewport-flip {  
-    -webkit-perspective: 1000px;  
-    perspective: 1000px;  
+    /*-webkit-perspective: 1000px;  
+    perspective: 1000px;  */
     position: absolute;  
 }  
 .flip {  

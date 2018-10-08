@@ -27,22 +27,21 @@
 				<div class="main exchange_main" v-show="PageType ===0">
 					<div v-cloak class="exchange">
 						<div class="goods same">
-							<p>赠送物品(<b v-text="fruit.name"></b>)</p>
-							<span><img v-bind:src="fruit.logo"/></span>
+							<p>赠送物品(<b v-text="giveFriends.name"></b>)</p>
+							<span><img v-bind:src="giveFriends.logo"/></span>
 						</div>
 						<div class="exchange_box">
-							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果，最多可兑换'+parseInt(fruit.num/fruit.rate) + '份'"></div>
 							<div class="number same">
-								<p>赠送数量(<b v-text="'拥有'+ fruit.num"></b>)</p>
-								<input type="tel" class='value' maxlength = "4" placeholder="请输入整数" v-model="fruitNum"/>
+								<p>赠送数量(<b v-text="'拥有'+ giveFriends.num"></b>)</p>
+								<input type="tel" class='value' maxlength = "4" placeholder="请输入整数" v-model="giveNum"/>
 							</div>
-							<div class="exchange_msg exchange_msg_bottom error" v-show="exchangeErrorMsg" v-text="exchangeErrorMsg"></div>
+							<div class="exchange_msg exchange_msg_bottom error" v-show="giveErrorMsg" v-text="giveErrorMsg"></div>
 						</div>
 						<div class="select_friends">
 							<p>选择要赠送的朋友</p>
 							<div class="select_wrap">
-								<div class="select_content clearfloat "  v-bind:style="{width:getFriedsWidth}">
-									<dl class="float_left "  >
+								<div class="select_content clearfloat " >
+									<dl class="float_left " @click="selected" >
 										<dt><img src="../../gssH5/app/img/btn_Start draw@2x.png" class="border_blue"/></dt>
 										<dd class='name ellipsis' >23456789</dd>
 									</dl>
@@ -54,7 +53,7 @@
 							</div>	
 						</div>
 					</div>
-					<div class='exchange_b' :class="{'active':fruitNum && !exchangeErrorMsg}" @click="exchangeFruit">确认兑换</div>
+					<div class='exchange_b' :class="{'active':giveNum && !giveErrorMsg}" >确认赠送</div>
 				</div>
 			</div>		
 		</div>
