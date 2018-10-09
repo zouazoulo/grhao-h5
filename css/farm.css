@@ -1339,3 +1339,75 @@ body {
     background: url("../img/farmImg/tick.png") no-repeat center center/cover;
     
 }
+/*签到修改*/
+.frame{
+	width:580px;
+	padding:98px 30px 30px;
+	text-align: initial;
+}
+.frame .month{
+	display: flex;
+	flex-wrap: wrap;
+}
+.frame .month dl{
+	position: relative;
+	width:86px;
+	/*height:88px;*/
+	margin-bottom: 20px;
+	margin-left: 20px;
+	text-align: center;
+	background-color: #fff;
+}
+.frame .month dl:nth-child(5n+1){
+	margin-left: 0px;
+}
+.frame .month dl dt{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #559DF6;
+	line-height: 32px;
+	color: #FFFFFF;
+	font-size: 24px;
+	
+}
+.frame .month dl dd{
+	height:56px;
+	background-color: #fff;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	box-shadow: 0px 2px 5px #e6e6e6;
+}
+.frame .month dl .sign_right{
+	background-color: #cce2fc;
+}
+.frame .month .sign_ture:after{
+	content: "";
+	position: absolute;
+	bottom:2px;
+	right:2px;
+	width:30px;
+	height:30px;
+	background-image: url("../img/farmImg/tick1.png");
+}
+.frame .month_sign{
+	display:flex;
+	justify-content: space-between;
+	line-height: 35px;
+	color: #f33e20;
+}
+.frame .month_sign p{
+	margin-right: 52px;
+	font-size: 24px;
+	color: #333333;
+}
+.frame .month_sign div{
+	font-size: 28px;
+}
+.frame .month_sign span {
+	margin-right: 5px;
+	vertical-align: middle;
+	
+}
+.frame .month_sign .received{
+	color:#adadad;
+}

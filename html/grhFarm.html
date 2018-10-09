@@ -89,10 +89,31 @@
 				<!-- 签到弹出框 -->
 				<div v-cloak id="frame" class="frame" v-show="signIn.htmlStr">
 					<span class="close" data-obj='siginIn' @click.stop="closeMask" ></span>
-					<div class="icon">
-						<img v-bind:src="signIn.imgUrl" alt="" />
+					<div class="month ">
+						<dl>
+							<dt class="day ">1</dt>
+							<dd><img src="../img/farmImg/gift1.png"/></dd>
+						</dl>
+						<dl class="sign_ture">
+							<dt class="day sign_right">2</dt>
+							<dd><img src="../img/farmImg/gift5.png"/></dd>
+						</dl>	
 					</div>
-					<div v-html="signIn.htmlStr"></div>
+					<div class="month_sign">
+						<p>本月累计签到</p>
+						<div class="clearfloat received ">
+							<span class="float_left ">7天</span>
+							<img class="float_left" src="../img/farmImg/gift5.png"/>
+						</div>
+						<div class="clearfloat">
+							<span class="float_left">15天</span>
+							<img class="float_left" src="../img/farmImg/gift3.png"/>
+						</div>
+						<div class="clearfloat">
+							<span class="float_left">30天</span>
+							<img class="float_left" src="../img/farmImg/gift4.png"/>
+						</div>
+					</div>
 				</div>
 				<!-- 动态弹窗 -->
 				<div v-cloak id="trends" class="trends common_wrap dynamicInfo-box dynamic-wrapper-hide" >
