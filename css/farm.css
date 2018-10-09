@@ -965,3 +965,377 @@ body {
 .exchangeRecordBox .exchangeRecord_list.active .exchangeRecord_item:nth-child(3) span:before{
 	background: url(../img/farmImg/icon_farm_active1.png) no-repeat center;
 }
+/*9.28更新*/
+/*兑换*/
+.exchange_nav{
+	display: flex;
+	justify-content: space-between;
+	width:660px;
+	height: 100%;
+    margin: 40px 30px 10px;
+    border-radius: 4px;
+    font-size: 28px;
+    color: #333333;
+    font-size:28px ;
+    border:2px solid #2696F6;
+    
+}
+.exchange_nav li{
+	width:330px;
+	height:66px;
+	line-height:66px;
+	text-align: center;
+}
+.exchange_nav li.active{
+	color: #fff;
+	background-color: #2696F6;
+}
+.exchange_msg_top{
+	color:red;
+}
+.coin_wrap{
+	padding:14px 30px 30px;	
+	background-color: #fff;
+}
+.coin_wrap .ex_num,
+.coin_wrap .ex_coin{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+.coin_wrap .ex_num li input{
+	width:50px;
+	margin:0px 14px;
+	text-align: center;
+}
+.exchange .same.number input{
+	width:260px;
+}
+/*农场主页图标修改*/
+.bottom_nav .storehouse_w{
+	margin-right: 30px;
+}
+.store .my_coin{
+	position: absolute;
+    left: 60px;
+    font-size: 26px;
+    color: #2696F6;
+}
+.store .show{
+	margin: 60px;
+	overflow: scroll;
+}
+.store .show dl{
+	width: 160px;
+	text-align: center;
+	margin-right:60px ;
+}
+.store .show dl img{
+	width:160px;
+	height: 160px;
+}
+.store .show .name{
+	margin:18px 0px 16px;
+	font-size: 28px;
+	color: #333333;
+}
+.store .show .coin_num{
+	margin-bottom: 16px;
+	font-size: 30px;
+	color: #2696F6;
+}
+.store .show .button{
+	display: inline-block;
+	width:160px;
+	height: 52px;
+	border-radius: 26px;
+	background-color: #2696F6;
+	line-height: 52px;
+	font-size: 32px;
+	color: #fff;
+}
+.store-wrapper-hide{
+	-webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s,-webkit-transform .3s;
+}
+.store-wrap{
+	bottom: -554px;
+    height: 554px;
+}
+.store-wrapper-show{
+	-webkit-transform: translateY(-554px);
+    transform: translateY(-554px);
+    -webkit-transition: -webkit-transform .6s;
+    transition: -webkit-transform .6s;
+    transition: transform .6s;
+    transition: transform .6s,-webkit-transform .6s
+}
+.num_msg{
+	display: flex;
+	justify-content: space-between;
+}
+.storehouse .show dl{
+	position: absolute;
+	padding:20px 20px 30px;
+	font-size:24px ;
+	height:356px;
+}
+.storehouse .dl_wrap{
+	position: relative;
+	width:240px;
+	height:356px;
+	margin-right:30px; 
+}
+.storehouse .show .num_msg .num{
+	font-size:30px ;
+	line-height:normal;
+    margin-bottom:0px;
+}
+.storehouse .show .name{
+	margin-top:18px;
+	margin-bottom: 24px;
+}
+.storehouse .show dl .button{
+	width:80px;
+	margin-top:0px;
+}
+.storehouse .show dl dd:last-child{
+	margin-top: 30px;
+}
+.storehouse .show dl dd:last-child span:first-child{
+	margin-right: 8px;
+}
+.storehouse .show dl dd:last-child span:last-child{
+	margin-left:8px ;
+}
+.storehouse .wrap{
+	height:530px;
+}
+.storehouse {
+    bottom: -640px;
+    height: 640px;
+}
+.storehouse-wrapper-show{
+	-webkit-transform: translateY(-640px);
+    transform: translateY(-640px);
+    -webkit-transition: -webkit-transform .6s;
+    transition: -webkit-transform .6s;
+    transition: transform .6s;
+    transition: transform .6s,-webkit-transform .6s
+}
+.storehouse  .dl_wrap .goods_msg{
+	width:100%;
+	height:100%;
+	background-color: #09233a;
+	color: #fff;
+	font-size: 24px;
+	
+
+}
+.storehouse  .dl_wrap .goods_msg dt{
+	margin-left:100px ;
+	margin-bottom:36px;
+}
+.storehouse  .dl_wrap .goods_msg dd{
+	padding:0 10px
+}
+.storehouse  .dl_wrap .goods_msg dd:last-child{
+	margin-top:48px;
+}
+/*翻转动画部分*/
+.viewport-flip {  
+    /*-webkit-perspective: 1000px;  
+    perspective: 1000px;  */
+    position: absolute;  
+}  
+.flip {  
+    -webkit-backface-visibility:hidden;  
+    -webkit-transform:translateX(0);   
+    backface-visibility:hidden;  
+    transform:translateX(0);  
+}  
+.flip.out {  
+    -webkit-transform: rotateY(-90deg) scale(.9);  
+    -webkit-animation-name: flipouttoleft;  
+    -webkit-animation-duration: 175ms;  
+    transform: rotateY(-90deg) scale(.9);  
+    animation-name: flipouttoleft;  
+    animation-duration: 175ms;  
+}  
+.flip.in {  
+    -webkit-animation-name: flipintoright;  
+    -webkit-animation-duration: 225ms;  
+    animation-name: flipintoright;  
+    animation-duration: 225ms;  
+}  
+  
+@-webkit-keyframes flipouttoleft {  
+    from { -webkit-transform: rotateY(0); }  
+    to { -webkit-transform: rotateY(-90deg) scale(.9); }  
+}  
+@keyframes flipouttoleft {  
+    from { transform: rotateY(0); }  
+    to { transform: rotateY(-90deg) scale(.9); }  
+}  
+@-webkit-keyframes flipintoright {  
+    from { -webkit-transform: rotateY(90deg) scale(.9); }  
+    to { -webkit-transform: rotateY(0); }  
+}  
+@keyframes flipintoright {  
+    from { transform: rotateY(90deg) scale(.9); }  
+    to { transform: rotateY(0); }  
+} 
+/*好友邀请添加*/ 
+.friend_top .right{
+	padding-bottom: 10px;
+}
+.friend_bottom{
+	margin-bottom: 40px;
+}
+.friend {
+    bottom: -828px;
+    height: 828px;
+}
+.friend-wrapper-show {
+    -webkit-transform: translateY(-828px);
+    transform: translateY(-828px);
+    -webkit-transition: -webkit-transform .6s;
+    transition: -webkit-transform .6s;
+    transition: transform .6s;
+    transition: transform .6s,-webkit-transform .6s;
+}
+.gift{
+	padding:0 40px 60px;
+}
+.gift_title{
+	font-size: 32px;
+	font-weight: 700;
+	color: #333333;
+}
+.gift_word,
+.gift_state{
+	font-size: 24px;
+	color: #999999;
+}
+.gift_word{
+	margin-top:30px;
+}
+.gift_word img , .gift_word span{
+	vertical-align: middle;
+}
+.gift_word img{
+	margin-left: 20px;
+}
+.gift_progress{
+	
+	width:100%;
+	height: 8px;
+	margin-top: 90px;
+	background-color: #cce1fc;
+}
+.gift_in_progress{
+	position: relative;
+	height: 8px;
+	max-width:670px;
+	background-color: #559DF6;
+}
+.gift_state{
+	margin-top: 26px;
+}
+.gift_in_progress .circle{
+	position: absolute;
+	top:-8px;
+	box-sizing: border-box;
+	width:24px;
+	height:24px;
+	border-radius: 50%;
+	background-color: #559DF6;
+	box-shadow: 0px  0px  0px  4px rgba(85,157,246,.4) ;
+}
+.gift_in_progress .circle_1{
+	left:265px;
+}
+.gift_in_progress .circle_2{
+	left:374px;
+}
+.gift_in_progress .circle_3{
+	left:637px;
+}
+.gift_in_progress .circle:after{
+	position: absolute;
+	left:-30px;
+	bottom: -50px;
+	width:80px;
+	font-size: 28px;
+	color: #f33e20;
+	text-align: center;
+}
+.gift_in_progress .circle_1:after{
+	content: "3人";
+}
+.gift_in_progress .circle_2:after{
+	content: "5人";
+}
+.gift_in_progress .circle_3:after{
+	content: "10人";
+}
+.gift_in_progress img{
+	position: absolute;
+	top:-40px;
+	left:-4px;
+}
+/*赠送好友*/
+.select_friends{
+	background-color: #fff;
+	padding:35px 0px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.04);
+}
+.select_friends p{
+	padding:0 30px;
+}
+.select_friends .select_wrap{
+	height:204px;
+	overflow: scroll;
+    overflow-y: hidden;
+}
+.select_friends .select_wrap .select_content{
+	padding-top:50px;
+	height:204px;
+	width:1000px;
+}
+.select_friends dl{
+	position: relative;
+	width: 96px;
+	margin-left:50px;
+}
+.select_friends dl dt img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.select_friends dl dd{
+	margin-top:20px;
+}
+.select_friends dl:after{
+	content: "";
+    position: absolute;
+    top: -20px;
+    right: -12px;
+    width: 44px;
+    height: 44px;
+    background-color: #fff;
+    border-radius: 50%;
+    border:1px solid #559DF6;
+    z-index: 99;
+}
+/*选中状态 select_item*/
+.select_friends .select_item:after{
+    background: url("../img/farmImg/tick.png") no-repeat center center/cover;
+    
+}

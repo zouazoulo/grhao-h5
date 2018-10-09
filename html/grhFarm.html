@@ -75,6 +75,9 @@
 					<div v-if="PageType == 1" class="storehouse_w" @click.stop="getStorehouse" >
 						<img src="../img/farmImg/ck.png"/>
 					</div>
+					<div v-if="PageType == 1" class="store" @click.stop="goShop">
+						<img src="../img/farmImg/store.png" />
+					</div>
 					<div v-if="PageType == 1" class="watering common_num" v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
 						<img src="../img/farmImg/js.png" @click.stop="getWatering" />
 					</div>
@@ -131,13 +134,50 @@
 						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click.stop="!item.active && getStorehouse(item,index)" ></li>
 					</ul>
 					<div class="wrap">
-						<div class="show clearfloat" v-bind:style="{width:getWidth}">
-							<dl class="float_left" v-for="(item,index) in storehouseInfo.data" v-bind:data-id="item.id">
-								<dt class="ccsl" v-text="item.name"></dt>
-								<dd class="num" v-text="'x'+item.num"></dd>
-								<dd><img v-bind:src="item.logo"/></dd>
-								<dd><span class="button" @click.stop="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" >立即使用</span></dd>
-							</dl>
+						<div class="show clearfloat " v-show="storehouseInfo.type == 0" v-bind:style="{width:getWidth}">
+							<div class="dl_wrap float_left viewport-flip "   v-for="(item,index) in storehouseInfo.list[0].dataArr">
+								<dl  class="goods_msg clearfloat flip out">
+									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
+									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
+									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+								</dl>
+								<dl v-bind:data-id="item.id" class="flip">
+									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
+									<dd class="ccsl name" v-text="item.name"></dd>
+									<dd><img v-bind:src="item.logo"/></dd>
+									<dd><span class="button" v-bind:data-index="index" @click.stop = "clickGiveFriends">赠送</span><span class="button" @click.stop="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" v-text="button_exchange(index)"></span></dd>
+								</dl>
+							</div>
+						</div>
+						<div class="show clearfloat " v-show="storehouseInfo.type == 1" v-bind:style="{width:getWidth}">
+							<div class="dl_wrap float_left viewport-flip "  v-for="(item,index) in storehouseInfo.list[1].dataArr">
+								<dl  class=" goods_msg clearfloat flip out">
+									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
+									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
+									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+								</dl>
+								<dl v-bind:data-id="item.id" class="flip">
+									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
+									<dd class="ccsl name" v-text="item.name"></dd>
+									<dd><img v-bind:src="item.logo"/></dd>
+									<dd><span class="button" v-bind:data-index="index" @click.stop = "clickGiveFriends">赠送</span><span class="button" @click.stop="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" v-text="button_exchange(index)"></span></dd>
+								</dl>
+							</div>
+						</div>
+						<div class="show clearfloat " v-show="storehouseInfo.type == 2" v-bind:style="{width:getWidth}">
+							<div class="dl_wrap float_left viewport-flip "   v-for="(item,index) in storehouseInfo.list[2].dataArr">
+								<dl  class="goods_msg clearfloat flip out">
+									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
+									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
+									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+								</dl>
+								<dl v-bind:data-id="item.id" class="flip">
+									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
+									<dd class="ccsl name" v-text="item.name"></dd>
+									<dd><img v-bind:src="item.logo"/></dd>
+									<dd><span class="button" v-bind:data-index="index" @click.stop = "clickGiveFriends">赠送</span><span class="button" @click.stop="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" v-text="button_exchange(index)"></span></dd>
+								</dl>
+							</div>
 						</div>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
@@ -163,10 +203,37 @@
 						</div>
 						
 					</div>
-					<div class="friend_bottom" v-if="isWx" @click.stop="invitationFriend" v-bind:data-obj="friedsInfo" >邀请好友</div>
+				<!--v-if="isWx"-->	<div class="friend_bottom"  @click.stop="invitationFriend" v-bind:data-obj="friedsInfo" >邀请好友</div>
+				<div class="gift">
+					<p class="gift_title">邀请有礼</p>
+					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="" /></div>
+					<div class="gift_progress" >
+						<div class='gift_in_progress' style="width:76px">
+							<span class="circle circle_1"><img class="gift1" src="../img/farmImg/gift2.png"/></span>
+							<span class="circle circle_2"><img class="gift1" src="../img/farmImg/gift3.png"/></span>
+							<span class="circle circle_3"><img class="gift1" src="../img/farmImg/gift4.png"/></span>
+						</div>
+					</div>
+					<p class="gift_state">累积邀请(0人)</p>
 				</div>
-				
-				
+				</div>
+				<!--商店-->
+				<div v-cloak id="store" class="store store-wrap common_wrap store-wrapper-hide">
+					<div class="common_title"><span class="my_coin">我的果币</span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
+					<div class="wrap">
+						<div class="show clearfloat" v-bind:style="{width:getWidth}">
+							<dl class="float_left" >
+								<dt><img src="../../gssH5/app/img/btn_Start draw@2x.png"/></dt>
+								<dd class="name">种子</dd>
+								<dd class="coin_num">666果币</dd>
+								<dd><span class="button">购买</span></dd>
+							</dl>
+						</div>
+						<!--<div v-show="ajaxState == 'wait'" class="page_status">
+							加载中...
+						</div>-->
+					</div>
+				</div>
 			</div>
 			<!--
 				使用div做的主要操作视图区域

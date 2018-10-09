@@ -22,16 +22,20 @@
 					<h1 class="header_title header_title_color">兑换</h1>
 			    </div>
 			</div>
-			<div class="empty"></div>
+			<div  class="empty"></div>
 			<div v-cloak class="main_wrap main_wrap_margin">
-				<div class="main exchange_main" v-show="PageType == 1">
+				<ul v-cloak class="exchange_nav" v-show="PageType !=2">
+					<li @click="PageType = 0" :class="{'active':PageType===0}">兑换水果</li>
+					<li @click="PageType = 1" :class="{'active':PageType===1}">兑换果币</li>
+				</ul>
+				<div class="main exchange_main" v-show="PageType ===0">
 					<div v-cloak class="exchange">
 						<div class="goods same">
 							<p>兑换物品(<b v-text="fruit.name +'X'+fruit.num"></b>)</p>
 							<span><img v-bind:src="fruit.logo"/></span>
 						</div>
 						<div class="exchange_box">
-							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果;最多可兑换'+parseInt(fruit.num/fruit.rate) + '份'"></div>
+							<div class="exchange_msg exchange_msg_top" v-text="fruit.rate +'个' + fruit.name + '可兑换一份水果，最多可兑换'+parseInt(fruit.num/fruit.rate) + '份'"></div>
 							<div class="number same">
 								<p>兑换数量</p>
 								<input type="tel" class='value' maxlength = "4" placeholder="请输入要兑换的份数" v-model="fruitNum"/>
@@ -50,6 +54,35 @@
 						</div>
 					</div>
 					<div class='exchange_b' :class="{'active':fruitNum && !exchangeErrorMsg}" @click="exchangeFruit">确认兑换</div>
+				</div>
+				<div class="exchange_coin exchange_main" v-show="PageType ===1">
+					<div v-cloak class="exchange">
+						<div class="goods same">
+							<p>兑换物品(<b v-text="fruit.name +'X'+fruit.num"></b>)</p>
+							<span><img v-bind:src="fruit.logo"/></span>
+						</div>
+						<div class="coin_wrap">
+							<div class=" exchange_msg_top" v-text="fruit.rate +'份' + fruit.name +'可兑换1个果币'"></div>
+								<ul class="ex_num">
+									<li>兑换数量</li>
+									<li class="right" v-if="fruit.num > fruit.rate" >
+										<span @click="minus" ><img src="../img/farmImg/minus.png"/></span>
+										<input v-model="coinNum"></input>
+										<span  @click="add"><img src="../img/farmImg/add.png"/></span>
+									</li>
+									<li v-else>
+										<span>数量不够</span>
+									</li>
+									
+								</ul>
+								<ul class="ex_coin">
+									<li>可获得果币</li>
+									<li class="coin_num" v-text="coinNum/fruit.rate" v-if="fruit.num > fruit.rate"></li>
+									<li v-else>--</li>
+								</ul>
+						</div>
+					</div>
+					<div class='exchange_b ' :class="{'active':fruit.num > fruit.rate}" @click="exchangeCoin">确认兑换</div>
 				</div>
 				<div v-cloak class="main exchange_success" v-show="PageType == 2">
 					<div class="get">
