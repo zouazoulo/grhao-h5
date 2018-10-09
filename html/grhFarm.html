@@ -43,7 +43,7 @@
 					<div class="content">
 						<div class="top clearfix">
 							<p class="user_name fl" v-text="userInfo.petName"></p>
-							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click.stop="getSignIn" ><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
+							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click.stop="getSignList" ><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
 						</div>
 						<div class="bottom">
 							<span class='level'></span>
@@ -87,31 +87,19 @@
 				</div>
 				<div id ="mask" class="common_mask" v-show="isMask" @click.stop="closeMask" v-bind:data-obj="isMaskData" @touchmove.prevent ></div>
 				<!-- 签到弹出框 -->
-				<div v-cloak id="frame" class="frame" v-show="signIn.htmlStr">
+				<div v-cloak id="frame" class="frame" v-show="signCalendar.SignInCfgDate.length != 0">
 					<span class="close" data-obj='siginIn' @click.stop="closeMask" ></span>
 					<div class="month ">
-						<dl>
-							<dt class="day ">1</dt>
-							<dd><img src="../img/farmImg/gift1.png"/></dd>
+						<dl v-for="(item,index) in signCalendar.SignInCfgDate" v-bind:class="item.sign == 2 ? 'actived' : item.sign == 1 ? 'sign_ture' : ''" @click="getSignIn(item,1)">
+							<dt class="day " v-text="index+1"></dt>
+							<dd><img v-bind:src="item.sign != 1 ? '../img/farmImg/gift1.png' : '../img/farmImg/gift5.png'" /></dd>
 						</dl>
-						<dl class="sign_ture">
-							<dt class="day sign_right">2</dt>
-							<dd><img src="../img/farmImg/gift5.png"/></dd>
-						</dl>	
 					</div>
 					<div class="month_sign">
 						<p>本月累计签到</p>
-						<div class="clearfloat received ">
-							<span class="float_left ">7天</span>
-							<img class="float_left" src="../img/farmImg/gift5.png"/>
-						</div>
-						<div class="clearfloat">
-							<span class="float_left">15天</span>
-							<img class="float_left" src="../img/farmImg/gift3.png"/>
-						</div>
-						<div class="clearfloat">
-							<span class="float_left">30天</span>
-							<img class="float_left" src="../img/farmImg/gift4.png"/>
+						<div class="clearfloat " v-for="(item,index) in signCalendar.SignInCfgCount" v-bind:class="{'received':item.state == 1}" @click="getSignIn(item,2)">
+							<span class="float_left " v-text="item.signInCount+'天'"></span>
+							<img class="float_left" v-bind:src="item.state == 1 ? '../img/farmImg/gift5.png' : index == 0 ? '../img/farmImg/gift2.png' : index == 1 ? '../img/farmImg/gift3.png' : index == 2 ? '../img/farmImg/gift4.png' : index == 3 ? '../img/farmImg/gift2.png' : index == 4 ? '../img/farmImg/gift3.png' : '' "/>
 						</div>
 					</div>
 				</div>
@@ -157,10 +145,11 @@
 					<div class="wrap">
 						<div class="show clearfloat " v-show="storehouseInfo.type == 0" v-bind:style="{width:getWidth}">
 							<div class="dl_wrap float_left viewport-flip "   v-for="(item,index) in storehouseInfo.list[0].dataArr">
-								<dl  class="goods_msg clearfloat flip out">
+								<dl class="goods_msg clearfloat flip out">
 									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
-									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
-									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+									<dd class="float_left" v-html="item.desc.replace(/\r\n/g, '<br/>')"></dd>
+									<!--<dd class="float_left" v-html="item.desc"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
+									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>-->
 								</dl>
 								<dl v-bind:data-id="item.id" class="flip">
 									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
@@ -227,27 +216,28 @@
 				<!--v-if="isWx"-->	<div class="friend_bottom"  @click.stop="invitationFriend" v-bind:data-obj="friedsInfo" >邀请好友</div>
 				<div class="gift">
 					<p class="gift_title">邀请有礼</p>
-					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="" /></div>
+					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="礼包" /></div>
+					<p class="gift_state">累积邀请(0人)</p>
 					<div class="gift_progress" >
-						<div class='gift_in_progress' style="width:76px">
+						<div class='gift_in_progress' style="width:67px">
 							<span class="circle circle_1"><img class="gift1" src="../img/farmImg/gift2.png"/></span>
 							<span class="circle circle_2"><img class="gift1" src="../img/farmImg/gift3.png"/></span>
 							<span class="circle circle_3"><img class="gift1" src="../img/farmImg/gift4.png"/></span>
 						</div>
 					</div>
-					<p class="gift_state">累积邀请(0人)</p>
+					
 				</div>
 				</div>
 				<!--商店-->
 				<div v-cloak id="store" class="store store-wrap common_wrap store-wrapper-hide">
-					<div class="common_title"><span class="my_coin">我的果币</span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
+					<div class="common_title"><span class="my_coin" v-text="'我的果币：'+userAccountInfo.score"></span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
 					<div class="wrap">
 						<div class="show clearfloat" v-bind:style="{width:getWidth}">
-							<dl class="float_left" >
-								<dt><img src="../../gssH5/app/img/btn_Start draw@2x.png"/></dt>
-								<dd class="name">种子</dd>
-								<dd class="coin_num">666果币</dd>
-								<dd><span class="button">购买</span></dd>
+							<dl class="float_left" v-for="(item,index) in store" >
+								<dt><img v-bind:src="item.logo"/></dt>
+								<dd class="name" v-text="item.goodsByName"></dd>
+								<dd class="coin_num" v-text="item.buyRole+'果币'"></dd>
+								<dd><span class="button" @click="buyGood(item)">购买</span></dd>
 							</dl>
 						</div>
 						<!--<div v-show="ajaxState == 'wait'" class="page_status">
