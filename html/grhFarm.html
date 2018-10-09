@@ -78,7 +78,7 @@
 					<div v-if="PageType == 1" class="store" @click.stop="goShop">
 						<img src="../img/farmImg/store.png" />
 					</div>
-					<div v-if="PageType == 1" class="watering common_num" v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
+					<div class="watering common_num" v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
 						<img src="../img/farmImg/js.png" @click.stop="getWatering" />
 					</div>
 					<div v-if="PageType == 2" class="watering" >
@@ -207,26 +207,27 @@
 				<div class="gift">
 					<p class="gift_title">邀请有礼</p>
 					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="" /></div>
+					<p class="gift_state">累积邀请(0人)</p>
 					<div class="gift_progress" >
-						<div class='gift_in_progress' style="width:76px">
+						<div class='gift_in_progress' style="width:67px">
 							<span class="circle circle_1"><img class="gift1" src="../img/farmImg/gift2.png"/></span>
 							<span class="circle circle_2"><img class="gift1" src="../img/farmImg/gift3.png"/></span>
 							<span class="circle circle_3"><img class="gift1" src="../img/farmImg/gift4.png"/></span>
 						</div>
 					</div>
-					<p class="gift_state">累积邀请(0人)</p>
+					
 				</div>
 				</div>
 				<!--商店-->
 				<div v-cloak id="store" class="store store-wrap common_wrap store-wrapper-hide">
-					<div class="common_title"><span class="my_coin">我的果币</span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
+					<div class="common_title"><span class="my_coin" v-text="'我的果币：'+userAccountInfo.score"></span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
 					<div class="wrap">
 						<div class="show clearfloat" v-bind:style="{width:getWidth}">
-							<dl class="float_left" >
-								<dt><img src="../../gssH5/app/img/btn_Start draw@2x.png"/></dt>
-								<dd class="name">种子</dd>
-								<dd class="coin_num">666果币</dd>
-								<dd><span class="button">购买</span></dd>
+							<dl class="float_left" v-for="(item,index) in store">
+								<dt><img v-bind:src="item.logo"/></dt>
+								<dd class="name" v-text="item.goodsByName"></dd>
+								<dd class="coin_num" v-text="item.buyRole+'果币'"></dd>
+								<dd><span class="button" @click="buyGood(item)">购买</span></dd>
 							</dl>
 						</div>
 						<!--<div v-show="ajaxState == 'wait'" class="page_status">
@@ -234,6 +235,8 @@
 						</div>-->
 					</div>
 				</div>
+				<!--签单的弹出框-->
+				
 			</div>
 			<!--
 				使用div做的主要操作视图区域
