@@ -129,7 +129,7 @@
 								<dt v-if="!item.id"></dt>
 								<dd v-if="!item.id"><p>暂未开通</p><p v-text="item.desc"></p></dd>
 							</dl>
-							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="farmLand.id == item.id ? '当前土地' : item.no+'号土地'"></p>
+							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="item.id ? item.desc : item.no+'号土地'"></p>
 						</li>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
@@ -217,12 +217,12 @@
 				<div class="gift">
 					<p class="gift_title">邀请有礼</p>
 					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="礼包" /></div>
-					<p class="gift_state">累积邀请(0人)</p>
+					<p class="gift_state" v-text="'累积邀请('+invite_cfg.total+'人)'"></p>
 					<div class="gift_progress" >
-						<div class='gift_in_progress' style="width:67px">
-							<span class="circle circle_1"><img class="gift1" src="../img/farmImg/gift2.png"/></span>
-							<span class="circle circle_2"><img class="gift1" src="../img/farmImg/gift3.png"/></span>
-							<span class="circle circle_3"><img class="gift1" src="../img/farmImg/gift4.png"/></span>
+						<div class='gift_in_progress' v-bind:style="{width:((670/invite_cfg.maxCount)*invite_cfg.total)+'px'}">
+							<span class="circle" v-for="(item,index) in invite_cfg.detail" v-bind:data-content="item.count+'人'" v-bind:style="{left:((670/invite_cfg.maxCount)*item.count)+'px'}" @click="getGift(item)" >
+								<img class="gift1" v-bind:src="'../img/farmImg/gift'+(index+2)+'.png'" />
+							</span>
 						</div>
 					</div>
 					
