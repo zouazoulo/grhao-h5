@@ -43,7 +43,7 @@
 					<div class="content">
 						<div class="top clearfix">
 							<p class="user_name fl" v-text="userInfo.petName"></p>
-							<p v-if="PageType == 1" class="sign fr" v-bind:class="{'icon_rash':!hasSignIn}" @click.stop="getSignList" ><span v-text="hasSignIn ? '已签到' : '签到'"></span></p>
+							<p v-if="PageType == 1" class="sign fr"  @click.stop="getSignList" ><span v-text="'签到'"></span></p>
 						</div>
 						<div class="bottom">
 							<span class='level'></span>
@@ -69,6 +69,9 @@
 				</div>
 				<!-- 底部  土地 仓库  --浇水 -->
 				<div v-cloak class="bottom_nav">
+					<div v-if="PageType == 2" class="gohome" >
+						<img src="../img/farmImg/icon_goHome.png" @click.stop="goHome" />
+					</div>
 					<div class="land common_num" v-bind:data-content="farmLandCount" @click.stop="getLand" >
 						<img src="../img/farmImg/td.png"/>
 					</div>
@@ -78,12 +81,10 @@
 					<div v-if="PageType == 1" class="store" @click.stop="goShop">
 						<img src="../img/farmImg/store.png" />
 					</div>
-					<div v-if="PageType == 1" class="watering common_num" v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
+					<div class="watering " v-bind:class="{'noWatering':waterTimes == 0}" v-bind:data-content="'x'+waterTimes" >
 						<img src="../img/farmImg/js.png" @click.stop="getWatering" />
 					</div>
-					<div v-if="PageType == 2" class="watering" >
-						<img src="../img/farmImg/icon_goHome.png" @click.stop="goHome" />
-					</div>
+					
 				</div>
 				<div id ="mask" class="common_mask" v-show="isMask" @click.stop="closeMask" v-bind:data-obj="isMaskData" @touchmove.prevent ></div>
 				<!-- 签到弹出框 -->
@@ -92,14 +93,14 @@
 					<div class="month ">
 						<dl v-for="(item,index) in signCalendar.SignInCfgDate" v-bind:class="item.sign == 2 ? 'actived' : item.sign == 1 ? 'sign_ture' : ''" @click="getSignIn(item,1)">
 							<dt class="day " v-text="index+1"></dt>
-							<dd><img v-bind:src="item.sign != 1 ? '../img/farmImg/gift1.png' : '../img/farmImg/gift5.png'" /></dd>
+							<dd><img v-bind:src="item.sign != 1 ? '../img/farmImg/gift1.png' : '../img/farmImg/gift0.png'" /></dd>
 						</dl>
 					</div>
 					<div class="month_sign">
 						<p>本月累计签到</p>
 						<div class="clearfloat " v-for="(item,index) in signCalendar.SignInCfgCount" v-bind:class="{'received':item.state == 1}" @click="getSignIn(item,2)">
 							<span class="float_left " v-text="item.signInCount+'天'"></span>
-							<img class="float_left" v-bind:src="item.state == 1 ? '../img/farmImg/gift5.png' : index == 0 ? '../img/farmImg/gift2.png' : index == 1 ? '../img/farmImg/gift3.png' : index == 2 ? '../img/farmImg/gift4.png' : index == 3 ? '../img/farmImg/gift2.png' : index == 4 ? '../img/farmImg/gift3.png' : '' "/>
+							<img class="float_left" v-bind:src="item.state == 1 ? '../img/farmImg/gift0.png' : index == 0 ? '../img/farmImg/gift2.png' : index == 1 ? '../img/farmImg/gift3.png' : index == 2 ? '../img/farmImg/gift4.png' : index == 3 ? '../img/farmImg/gift2.png' : index == 4 ? '../img/farmImg/gift3.png' : '' "/>
 						</div>
 					</div>
 				</div>
@@ -245,6 +246,54 @@
 						</div>-->
 					</div>
 				</div>
+				<!--
+					引导动画层
+				-->
+				<div v-cloak class="guideAnimation" v-if="isNewFarmer == true" >
+					<div class="guide_skip"><span class="guide_skip_btn" @click="skipGuide(false)">跳过</span></div>
+					<div class="guide guide1" v-show="guideNUmber == 1">
+						<div class="guide_content clearfloat">
+							<div class="guide_center float_right" v-text="'签到'"></div>
+							<div class="guide_line float_right">
+								<img src="../img/farmImg/guide_line1.png"/>
+							</div>
+						</div>
+						<div class="guide_text">每日签到获得礼包，累积签到相应天数更有超级礼包等你</div>
+						<div class="guide_next"><span class="guide_next_btn" @click="nextGuide(2)">下一步</span></div>
+					</div>
+					<div class="guide guide2" v-show="guideNUmber == 2">
+						<div class="guide_content clearfloat">
+							<div class="guide_center float_right"><img src="../img/farmImg/hy.png"/></div>
+							<div class="guide_line float_right"><img src="../img/farmImg/guide_line2.png"/></div>
+						</div>
+						<div class="guide_text">邀请好友，和好友一起来种水果邀请相应的人数可得礼包</div>
+						<div class="guide_next"><span class="guide_next_btn" @click="nextGuide(3)">下一步</span></div>
+					</div>
+					<div class="guide guide3" v-show="guideNUmber == 3">
+						<div class="guide_text">仓库里种子可以在土地上种植，道具可对生长中的植物使用，果实可以兑换实物和果币</div>
+						<div class="guide_next"><span class="guide_next_btn" @click="nextGuide(4)">下一步</span></div>
+						<div class="guide_content clearfloat">
+							<div class="guide_line"><img src="../img/farmImg/guide_line3.png"/></div>
+							<div class="guide_center"><img src="../img/farmImg/ck.png"/></div>
+						</div>
+					</div>
+					<div class="guide guide4" v-show="guideNUmber == 4">
+						<div class="guide_text"><p>在商店可用果币购</p><p>买水果种子、化肥</p></div>
+						<div class="guide_next"><span class="guide_next_btn" @click="nextGuide(5)">下一步</span></div>
+						<div class="guide_content clearfloat">
+							<div class="guide_line"><img src="../img/farmImg/guide_line3.png"/></div>
+							<div class="guide_center"><img src="../img/farmImg/store.png"/></div>
+						</div>
+					</div>
+					<div class="guide guide5" v-show="guideNUmber == 5">
+						<div class="guide_text"><p>浇水可以加快植物生长</p></div>
+						<div class="guide_next"><span class="guide_next_btn" @click="skipGuide(false)">开始经营我的农场</span></div>
+						<div class="guide_content clearfloat">
+							<div class="guide_line"><img src="../img/farmImg/guide_line4.png"/></div>
+							<div class="guide_center"><img src="../img/farmImg/js.png"/></div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!--
 				使用div做的主要操作视图区域
@@ -259,6 +308,7 @@
 			<div class="canver_change_scene" v-show="PageStatus == 3">
 				
 			</div>
+			
 			<div id="image-preload" style="display: none;">
 				
 				<img src="../img/farmImg/cloud1.png" class="cloud1"/>
