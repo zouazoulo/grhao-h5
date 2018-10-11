@@ -23,7 +23,7 @@
 			    </div>
 			</div>
 			<div  class="empty"></div>
-			<div v-cloak class="main_wrap main_wrap_margin">
+			<div v-cloak class="main_wrap main_wrap_margin" v-if="friedsInfo.length" v-show="PageStatus">
 				<div class="main exchange_main" v-show="PageType ===0">
 					<div v-cloak class="exchange">
 						<div class="goods same">
@@ -37,15 +37,14 @@
 							</div>
 							<div class="exchange_msg exchange_msg_bottom error" v-show="giveErrorMsg" v-text="giveErrorMsg"></div>
 						</div>
-						<div class="select_friends">
+						<div class="select_friends" >
 							<p>选择要赠送的朋友</p>
 							<div class="select_wrap">
-								<div class="select_content clearfloat " >
-									<dl class="float_left " @click="selected" >
-										<dt><img src="../../gssH5/app/img/btn_Start draw@2x.png" class="border_blue"/></dt>
-										<dd class='name ellipsis' >23456789</dd>
+								<div class="select_content clearfloat " v-bind:style="{width:getFriedsWidth}" >
+									<dl  class="float_left " v-for="(item,index) in friedsInfo" :id="item.userId" :class="{select_item:index==num}" @click="selected(index)" >
+										<dt><img :src="item.faceImg" class="border_blue"/></dt>
+										<dd class='name ellipsis' v-text="item.petName"></dd>
 									</dl>
-									
 									<!--<div v-show="ajaxState == 'wait'" class="page_status">
 										加载中...
 									</div>-->
@@ -53,9 +52,20 @@
 							</div>	
 						</div>
 					</div>
-					<div class='exchange_b' :class="{'active':giveNum && !giveErrorMsg}" >确认赠送</div>
+					<div class='exchange_b' :class="{'active':giveNum && !giveErrorMsg }" @click="giveThings">确认赠送</div>
 				</div>
-			</div>		
+				<div v-cloak class="main exchange_success" v-show="PageType == 2">
+					<div class="get">
+						<img src="../img/farmImg/success.png"/>
+						<p v-text="successful"></p>
+					</div>
+					<div class='exchange_index' @click="goBack">返回农场</div>
+				</div>
+			</div>
+			<div v-cloak v-else class="noFriends" v-show="PageStatus">	
+				<p>赶快去添加一些好友吧~~</p>
+				<div class="friend_bottom"  @click.stop="invitationFriend" v-bind:data-obj="friedsInfo" >邀请好友</div>
+			</div>
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>

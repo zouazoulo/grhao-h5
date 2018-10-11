@@ -831,11 +831,11 @@ body {
 	font-size: 32px;
 	color: #333333;
 }
-.get p:last-child{
+/*.get p:last-child{
 	margin-top: 30px;
 	font-size: 24px;
 	color: #999999;
-}
+}*/
 /*
 农场弹出优化
  * */
@@ -1128,6 +1128,7 @@ body {
     transition: transform .6s,-webkit-transform .6s
 }
 .storehouse  .dl_wrap .goods_msg{
+	display: none;
 	width:100%;
 	height:100%;
 	background-color: #09233a;
@@ -1148,8 +1149,8 @@ body {
 }
 /*翻转动画部分*/
 .viewport-flip {  
-    /*-webkit-perspective: 1000px;  
-    perspective: 1000px;  */
+    -webkit-perspective: 1000px;  
+    perspective: 1000px;  
     position: absolute;  
 }  
 .flip {  
@@ -1305,7 +1306,6 @@ body {
 .select_friends .select_wrap .select_content{
 	padding-top:50px;
 	height:204px;
-	width:1000px;
 }
 .select_friends dl{
 	position: relative;
@@ -1321,6 +1321,7 @@ body {
 }
 .select_friends dl dd{
 	margin-top:20px;
+	text-align: center;
 }
 .select_friends dl:after{
 	content: "";
@@ -1410,4 +1411,18 @@ body {
 }
 .frame .month_sign .received{
 	color:#adadad;
+}
+/*赠送好友 没有好友状况*/
+.noFriends{
+	font-size: 28px;
+	text-align: center;
+}
+.noFriends p{
+	margin-top:200px;
+}
+.noFriends .friend_bottom{
+	position: absolute;
+	bottom: 0;
+	width: 660px;
+	margin: 0 30px 60px;
 }
