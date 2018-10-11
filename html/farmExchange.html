@@ -62,10 +62,10 @@
 							<span><img v-bind:src="fruit.logo"/></span>
 						</div>
 						<div class="coin_wrap">
-							<div class=" exchange_msg_top" v-text="fruit.rate +'份' + fruit.name +'可兑换1个果币'"></div>
+							<div class=" exchange_msg_top" v-text="fruit.score +'份' + fruit.name +'可兑换1个果币'"></div>
 								<ul class="ex_num">
 									<li>兑换数量</li>
-									<li class="right" v-if="fruit.num > fruit.rate" >
+									<li class="right" v-if="fruit.num >= fruit.score" >
 										<span @click="minus" ><img src="../img/farmImg/minus.png"/></span>
 										<input v-model="coinNum"></input>
 										<span  @click="add"><img src="../img/farmImg/add.png"/></span>
@@ -77,18 +77,17 @@
 								</ul>
 								<ul class="ex_coin">
 									<li>可获得果币</li>
-									<li class="coin_num" v-text="coinNum/fruit.rate" v-if="fruit.num > fruit.rate"></li>
+									<li class="coin_num" v-text="coinNum/fruit.score" v-if="fruit.num >= fruit.score"></li>
 									<li v-else>--</li>
 								</ul>
 						</div>
 					</div>
-					<div class='exchange_b ' :class="{'active':fruit.num > fruit.rate}" @click="exchangeCoin">确认兑换</div>
+					<div class='exchange_b ' :class="{'active':fruit.num >= fruit.score}" @click="exchangeCoin">确认兑换</div>
 				</div>
 				<div v-cloak class="main exchange_success" v-show="PageType == 2">
 					<div class="get">
 						<img src="../img/farmImg/success.png"/>
-						<p>提交成功</p>
-						<p>注：预计在7个工作日内你会收到商品</p>
+						<p v-text="successful">提交成功</p>
 					</div>
 					<div class='exchange_index' @click="goBack">返回农场</div>
 				</div>
