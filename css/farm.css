@@ -3,7 +3,7 @@
 
 /*共同部分*/
 
-body {
+body[name = 'farm'] {
 	overflow-y: hidden;
 }
 
