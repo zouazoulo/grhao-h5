@@ -817,6 +817,7 @@ body {
 	color: #FFFFFF;
 	font-size: 32px;
 	text-align: center;
+	z-index: 100;
 }
 .exchange_success .exchange_index{
 	background-color: #2696f6;

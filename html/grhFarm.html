@@ -222,7 +222,7 @@
 					<div class="gift_progress" >
 						<div class='gift_in_progress' v-bind:style="{width:((670/invite_cfg.maxCount)*invite_cfg.total)+'px'}">
 							<span class="circle" v-for="(item,index) in invite_cfg.detail" v-bind:data-content="item.count+'人'" v-bind:style="{left:((670/invite_cfg.maxCount)*item.count)+'px'}" @click="getGift(item)" >
-								<img class="gift1" v-bind:src="'../img/farmImg/gift'+(index+2)+'.png'" />
+								<img class="gift1" v-bind:src="item.isGetted == 1 ? '../img/farmImg/gift0.png' : '../img/farmImg/gift'+(index+2)+'.png'" />
 							</span>
 						</div>
 					</div>

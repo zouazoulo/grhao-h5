@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Security-Policy" content=" script-src 'self' 'unsafe-inline' 'unsafe-eval' http://api.grhao.com/server/api.do http://61.164.113.168:8090/grh_api/server/api.do; style-src 'self' 'unsafe-inline' 'unsafe-eval'  " >
 <meta name="viewport" content="width=720,user-scalable=0"/>
 <meta content="telephone=no, address=no" name="format-detection" />    	
-<link rel="stylesheet" href="../css/base.min.css?v=20180720" />
+
+<link rel="stylesheet" href="../css/base.min.css?v=20180929" />
 </head>
 	<body module-id="0" class="my" class="animation-fadeIn">
 		<div class="main_wrap main_wo_wrap">
@@ -63,30 +64,35 @@
 					</dl>
 				</div>
 			    <div class="main_bottom">
-			    	<dl>			    		
+			    	<dl class="icon_address">			    		
 			    		<dd class="zs_personal" data-url="address_management.html?addr=addr">收货地址</dd>
 			    	</dl>
-			    	<dl>			    		
+			    	<dl class="icon_shop">			    		
 			    		<dd class="zs_personal" data-url="scoreShop.html">果币商城</dd>
 			    	</dl>
-			    	<dl>			    		
+			    	<dl class="icon_rechange">			    		
 			    		<dd class="zs_personal" data-url="month_recharge.html?search=recharge">在线充值</dd>
 			    	</dl>
-			    	<dl class="bind_item">			    		
+			    	<dl class="icon_chat">			    		
+			    		<dd class="zs_personal zs_onlineChat" data-url="im.html" data-title = "在线客服">在线客服</dd>
+			    	</dl>
+			    	<dl class="icon_bind bind_item">			    		
 			    		<dd class="zs_personal bind_mobile" data-url="bindUser.html">绑定原有账号</dd>
 			    	</dl>
-			    	<dl>			    		
+			    	<dl class="icon_password">			    		
 			    		<dd class="zs_personal" data-url="pwd_change.html">修改密码</dd>
 			    	</dl>
-			    	<dl>			    		
+			    	<dl class="icon_help">			    		
 			    		<dd class="zs_personal" data-url="help.html">帮助中心</dd>
 			    	</dl>
-			    	<dl>			    		
+			    	<dl class="icon_set">
 			    		<dd class="zs_personal" style="border: none;" data-url="my_settlement.html">设置</dd>
 			    	</dl>
+
 			    	<dl>			    		
 			    		<dd class="zs_personal" style="border: none;" data-url="grhFarm.html">果然好农场</dd>
 			    	</dl>
+
 			    </div>
 			    <div class="exit">退出</div>
 			</div>
@@ -102,7 +108,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20180720"></script>
+	<script src="../seajs-config.js?v=20180929"></script>
 	<script>
 		seajs.use(['personal'], function(zs){
 			zs.init();	

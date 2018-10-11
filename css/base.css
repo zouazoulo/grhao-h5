@@ -1,8 +1,8 @@
 html { height:100%;font-family:"微软雅黑", "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
 body { margin: 0; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
-
-article, aside, details, figcaption, figure, footer, header, main, nav, section, summary { display: block; }
  
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary { display: block; }
+  
 a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; }
 a:active { outline: 0; }
 a:active { color: #006699; }
@@ -48,7 +48,7 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
 
 
 [contenteditable = "true"], input, textarea {
-    -webkit-user- select: auto!important;
+    -webkit-user-select: auto!important;
     -khtml-user-select: auto!important;
     -moz-user-select: auto!important;
     -ms-user-select: auto!important;
@@ -473,7 +473,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .month_card_recharge_item.bg_select {background-position: -124px 32px;}
 
 .mcr_left{width:200px;padding-left:60px;line-height:100px;font-size:26px;}
-.month_card_recharge_item:nth-child(3){border-bottom:1px solid #FFFFFF;}
+/*.month_card_recharge_item:nth-child(3){border-bottom:1px solid #FFFFFF;}*/
 
 .month_card_recharge_item:nth-child(1) .mcr_left{background-position:0 -100px;}
 .month_card_recharge_item:nth-child(2) .mcr_left{background-position:0 -200px;}
@@ -748,7 +748,7 @@ html,body{margin: 0;padding: 0;height:100%;width: 100%;background: #f0f0f0;}
 .set_charge_contact_right li.actived{background-position:-756px 34px;}
 
 .set_charge_con {width:100%;margin-top:20px;background:#FFFFFF; display: none;}
-.set_charge_address{width:100%;padding:20px 40px 20px 20px;display: block;background:#ffffff url(../img/arrow_right.png) no-repeat 660px center;}
+.set_charge_address{width:100%;padding:20px 40px 20px 20px;display: block;background:#ffffff url(../img/arrow_right.png) no-repeat 674px center;}
 .set_charge_address2{width:100%;padding:20px 40px 20px 20px;display: block;background: #ffffff;} 
 .set_charge_address1 .set_address_select {display:none;}
 .set_address_select {width:100%;height:150px;font-size:46px;line-height:150px;text-align:center;}
@@ -1019,8 +1019,9 @@ body.locked{overflow-y:hidden;}
 .main_bottom dl:nth-child(2){background-position:0 -379px;}
 .main_bottom dl:nth-child(3){background-position:0 -479px;}
 .main_bottom dl:nth-child(4){background-position:0 -579px;}
-.main_bottom dl:nth-child(5){background-position:0 -679px;}
-.main_bottom dl:nth-child(6){background-position:0 -779px;}
+.main_bottom dl:nth-child(5){background-position:0 -579px;}
+.main_bottom dl:nth-child(6){background-position:0 -679px;}
+.main_bottom dl:nth-child(7){background-position:0 -779px;}
 .main_bottom dl dd{width:620px;height:87px;border-bottom:1px solid #b2b2b2;background-position: 572px -930px;}
 .exit{width:550px;height:80px;margin:50px auto;font-size:30px;color:white;background:#93c01d;text-align:center;line-height:80px;border-radius:20px;display: none;}
 /*门店页面*/
@@ -1181,7 +1182,6 @@ body.locked{overflow-y:hidden;}
 .pay_style_box.skin2 #get_verify_code{background: #E5892B;}
 
 /*第三套皮肤*/
-
 /*个人中心页面未登录状态下的登录按钮*/
 .main_top_login.skin3{background: #35af64;}
 /*登录页面登录按钮*/
@@ -1549,7 +1549,7 @@ body.locked{overflow-y:hidden;}
 .mod_game.fixed {display: none;z-index: 600;position: fixed;left: 50%;top: 50%;margin: auto;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);}
 .mod_game.show{display: block;}
 .mod_game .close{width: 48px;height: 48px;display: block;position: absolute;top: 20px;right: 20px;background: url(../img/gameTigerClose.png) no-repeat center;}
-.mod_game .icon_box{width: 200px;height: 200px;margin: 0 auto;background: url(../img/pic_logo_load.png) no-repeat center;background-size:100% ;};
+.mod_game .icon_box{width: 200px;height: 200px;margin: 0 auto;background: url(../img/pic_logo_load.png) no-repeat center;background-size:100% ;}
 
 
 .mod_game .icon_box img{width: 100%;height: 100%;}
@@ -1587,4 +1587,44 @@ body.locked{overflow-y:hidden;}
 #person_area{height: auto;min-height: 87px;line-height: 87px; background: url(../img/arrow_right.png) no-repeat right center; color:#999 ; }
 .readtext .name {color: #333;line-height: 50px;}
 .readtext .address {color: #666;line-height: 40px;font-size: 24px;}
+
+ 
+
+/*帮助中心新增客服*/
+.main_tel{width:550px;height:80px;border-radius:10px;padding-left:210px;background:#93c01d url(../img/icon_cellphone.png) no-repeat 150px center;}
+.help_content{margin:120px auto;font-size:30px;line-height:80px;}
+.help_item{width:550px;height:80px;margin: 20px auto;border-radius:10px;background-color:#93C01D ;background-position-y:center ;background-repeat: no-repeat;color: #FFF;}
+.help_item.help_tel{background-image:url(../img/icon_cellphone.png) ;background-position-x: 150px;padding-left: 210px;}
+.help_item.help_chat{background-image:url(../img/icon_chat.png) ;background-position-x: 170px;padding-left: 230px;}
+.help_content .msg{text-align: center;font-size: 24px;color: #999;}
+
+
+/*
+ Vue改版充值
+ 充值卡充值
+ * */
+.vuePageBox{max-width: 720px;margin: 0 auto;}
+
+.month_pay_style .month_card_recharge_item:nth-last-child{border-bottom:1px solid #FFFFFF;}
+/*
+.month_card_recharge_item[pay-way='1']{}
+*/
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='2'] .mcr_left{background-position:0 -100px;}
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='3'] .mcr_left{background-position:0 -300px;}
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='4'] .mcr_left{background-position:0 -200px;}
+
+#pay-way-box .month_card_recharge_item.month_card_recharge_item[pay-way='5'] .mcr_left{background: url(../img/icon_rechange_card.png) no-repeat left center;}
+.month_pay_style dl dd input{padding-left: 16px;}
+/*
+ my页面nav
+*/
+.main_bottom dl.icon_address{background-position:0 -279px;}
+.main_bottom dl.icon_shop{background-position:0 -379px;}
+.main_bottom dl.icon_rechange{background-position:0 -479px;}
+.main_bottom dl.icon_chat{background: url(../img/icon_chat1.png) no-repeat left center ;}
+.main_bottom dl.icon_bind{background: url(../img/icon_bind.png) no-repeat left center;}
+.main_bottom dl.icon_password{background-position:0 -579px;}
+.main_bottom dl.icon_help{background-position:0 -679px;}
+.main_bottom dl.icon_set{background-position:0 -779px;}
+
 
