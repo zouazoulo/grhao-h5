@@ -1408,6 +1408,9 @@ body[name = 'farm'] {
 	height:30px;
 	background-image: url("../img/farmImg/tick1.png");
 }
+.frame .month dl.sign_ture .sign_right{
+	background-color:#CCE2FC ;
+}
 .frame .month_sign{
 	display:flex;
 	justify-content: space-between;
@@ -1439,7 +1442,7 @@ body[name = 'farm'] {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .7);
     color: #FFFFFF;
     font-size: 36px;
     line-height: 60px;
@@ -1479,3 +1482,18 @@ body[name = 'farm'] {
 .guide5 .guide_content{text-align: right;padding-right:92px;}
 
 .guide5 .guide_line{padding-right: 30px;}
+
+/*赠送好友 没有好友状况*/
+.noFriends{
+	font-size: 28px;
+	text-align: center;
+}
+.noFriends p{
+	margin-top:200px;
+}
+.noFriends .friend_bottom{
+	position: absolute;
+	bottom: 0;
+	width: 660px;
+	margin: 0 30px 60px;
+}

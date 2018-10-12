@@ -91,14 +91,14 @@
 				<div v-cloak id="frame" class="frame" v-show="signCalendar.SignInCfgDate.length != 0">
 					<span class="close" data-obj='siginIn' @click.stop="closeMask" ></span>
 					<div class="month ">
-						<dl v-for="(item,index) in signCalendar.SignInCfgDate" v-bind:class="item.sign == 2 ? 'actived' : item.sign == 1 ? 'sign_ture' : ''" @click="getSignIn(item,1)">
+						<dl v-for="(item,index) in signCalendar.SignInCfgDate" v-bind:class="item.sign == 2 ? 'actived' : item.sign == 1 ? 'sign_ture' : ''" @click="getSignIn(item,1,1)">
 							<dt class="day " v-text="index+1"></dt>
 							<dd><img v-bind:src="item.sign != 1 ? '../img/farmImg/gift1.png' : '../img/farmImg/gift0.png'" /></dd>
 						</dl>
 					</div>
 					<div class="month_sign">
 						<p>本月累计签到</p>
-						<div class="clearfloat " v-for="(item,index) in signCalendar.SignInCfgCount" v-bind:class="{'received':item.state == 1}" @click="getSignIn(item,2)">
+						<div class="clearfloat " v-for="(item,index) in signCalendar.SignInCfgCount" v-bind:class="{'received':item.state == 1}" @click="getSignIn(item,2,index+2)">
 							<span class="float_left " v-text="item.signInCount+'天'"></span>
 							<img class="float_left" v-bind:src="item.state == 1 ? '../img/farmImg/gift0.png' : index == 0 ? '../img/farmImg/gift2.png' : index == 1 ? '../img/farmImg/gift3.png' : index == 2 ? '../img/farmImg/gift4.png' : index == 3 ? '../img/farmImg/gift2.png' : index == 4 ? '../img/farmImg/gift3.png' : '' "/>
 						</div>
@@ -149,11 +149,9 @@
 								<dl class="goods_msg clearfloat flip out">
 									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
 									<dd class="float_left" v-html="item.desc.replace(/\r\n/g, '<br/>')"></dd>
-									<!--<dd class="float_left" v-html="item.desc"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
-									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>-->
 								</dl>
-								<dl v-bind:data-id="item.id" class="flip">
-									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
+								<dl v-bind:data-id="item.id" class="flip flip_flase">
+									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span><img @click="turn_back"  src="../img/farmImg/msg.png" alt="" /></span></dt>
 									<dd class="ccsl name" v-text="item.name"></dd>
 									<dd><img v-bind:src="item.logo"/></dd>
 									<dd><span class="button" v-bind:data-index="index" @click.stop = "clickGiveFriends">赠送</span><span class="button" @click.stop="clickStorehoseUse" v-bind:data-id="item.id" v-bind:data-index="index" v-text="button_exchange(index)"></span></dd>
@@ -164,10 +162,9 @@
 							<div class="dl_wrap float_left viewport-flip "  v-for="(item,index) in storehouseInfo.list[1].dataArr">
 								<dl  class=" goods_msg clearfloat flip out">
 									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
-									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
-									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+									<dd class="float_left" v-html="item.desc.replace(/\r\n/g, '<br/>')"></dd>
 								</dl>
-								<dl v-bind:data-id="item.id" class="flip">
+								<dl v-bind:data-id="item.id" class="flip flip_flase">
 									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
 									<dd class="ccsl name" v-text="item.name"></dd>
 									<dd><img v-bind:src="item.logo"/></dd>
@@ -179,10 +176,9 @@
 							<div class="dl_wrap float_left viewport-flip "   v-for="(item,index) in storehouseInfo.list[2].dataArr">
 								<dl  class="goods_msg clearfloat flip out">
 									<dt class="float_right" @click="turn_back"><img  src="../img/farmImg/turn.png" alt="" /></dt>
-									<dd class="float_left"><p>预计总成长周期:</p><p>4d 23h 35m</p></dd>
-									<dd class="float_left"><p>预计产量:</p><p>苹果x200</p></dd>
+									<dd class="float_left" v-html="item.desc.replace(/\r\n/g, '<br/>')"></dd>
 								</dl>
-								<dl v-bind:data-id="item.id" class="flip">
+								<dl v-bind:data-id="item.id" class="flip flip_flase">
 									<dt class="num_msg"><span class="num" v-text="'x'+item.num"></span><span @click="turn_back" ><img src="../img/farmImg/msg.png" alt="" /></span></dt>
 									<dd class="ccsl name" v-text="item.name"></dd>
 									<dd><img v-bind:src="item.logo"/></dd>
@@ -205,7 +201,7 @@
 						<div class="right clearfloat"  v-bind:style="{width:getFriedsWidth}">
 							<dl class="float_left" v-for="(item,index) in friedsInfo" v-bind:data-id="item.id" :class="{'crown':index==0,'pick':item.canSteal}" @click.stop="goToFarm(item)" >
 								<dt><img v-bind:src="item.faceImg" class="border_blue"/></dt>
-								<dd class='name ellipsis' v-text="item.petName"></dd>
+								<dd class='name ellipsis' v-html="item.id == userInfo.farmId ? '我' : item.petName"></dd>
 								<dd class='no' v-text="'No.'+(index+1)"></dd>
 							</dl>
 							<div v-show="ajaxState == 'wait'" class="page_status">
@@ -221,7 +217,7 @@
 					<p class="gift_state" v-text="'累积邀请('+invite_cfg.total+'人)'"></p>
 					<div class="gift_progress" >
 						<div class='gift_in_progress' v-bind:style="{width:((670/invite_cfg.maxCount)*invite_cfg.total)+'px'}">
-							<span class="circle" v-for="(item,index) in invite_cfg.detail" v-bind:data-content="item.count+'人'" v-bind:style="{left:((670/invite_cfg.maxCount)*item.count)+'px'}" @click="getGift(item)" >
+							<span class="circle" v-for="(item,index) in invite_cfg.detail" v-bind:data-content="item.count+'人'" v-bind:style="{left:((670/invite_cfg.maxCount)*item.count -12)+'px'}" @click="getGift(item,index+1)" >
 								<img class="gift1" v-bind:src="item.isGetted == 1 ? '../img/farmImg/gift0.png' : '../img/farmImg/gift'+(index+2)+'.png'" />
 							</span>
 						</div>
@@ -241,9 +237,12 @@
 								<dd><span class="button" @click="buyGood(item)">购买</span></dd>
 							</dl>
 						</div>
-						<!--<div v-show="ajaxState == 'wait'" class="page_status">
+						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
-						</div>-->
+						</div>
+						<div v-show="ajaxState == 'success' && store.length == 0" class="page_status" v-html="'暂无商品'">
+							
+						</div>
 					</div>
 				</div>
 				<!--
