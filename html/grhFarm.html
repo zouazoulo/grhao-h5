@@ -127,10 +127,13 @@
 						<li class="float_left" v-show="landInfo.landList" v-for="item in landInfo.landList" @click.stop="goToLand(item)" >
 							<!---->
 							<dl :class="{active:farmLand.id == item.id}">
+								<img :src="item.logo" />
 								<dt v-if="!item.id"></dt>
 								<dd v-if="!item.id"><p>暂未开通</p><p v-text="item.desc"></p></dd>
+								<dd v-if="item.id && item.desc"><p class="name" v-text="item.desc"></p></dd>
+								
 							</dl>
-							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="item.id ? item.desc : item.no+'号土地'"></p>
+							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="item.id == farmLand.id? '当前土地' : item.no+'号土地'"></p>
 						</li>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
@@ -301,15 +304,13 @@
 			<!--<div class="main_view" v-show="PageStatus == 2">
 				
 			</div>-->
+			<div id="msg"><span></span><p></p></div>
 			<!--
 				场景转换使用-----覆盖在所有的层级上方
 			-->
-			<div class="canver_change_scene" v-show="PageStatus == 3">
-				
-			</div>
+			<div class="canver_change_scene" v-show="PageStatus == 3"></div>
 			
 			<div id="image-preload" style="display: none;">
-				
 				<img src="../img/farmImg/cloud1.png" class="cloud1"/>
 				<img src="../img/farmImg/cloud2.png" class="cloud2"/>
 				<img src="../img/farmImg/cloud3.png" class="cloud3"/>
@@ -329,7 +330,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20181011"></script>
+	<script src="../seajs-config.js?v=20181012"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();
