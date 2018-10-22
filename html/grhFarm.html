@@ -9,7 +9,7 @@
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
 		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20180914"/>
+		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20181017"/>
 	</head>
 	<body name = 'farm'>
 		<div class="main" id="appVue">
@@ -58,13 +58,22 @@
 						</div>
 					</div>
 				</div>
-				<!-- 动态及好友信息展示 -->
+				<!-- 动态,好友及兑换记录信息展示 -->
 				<div v-cloak v-if="PageType == 1" class="side_nav" >
 					<div class="dynamic" :class="{'common_rash':dynamicInfo.isNoRead}" @click.stop="getDynamic" v-bind:data="dynamicInfo" >
 						<img src="../img/farmImg/dt.png" alt=""/>
 					</div>
 					<div class="friends" @click.stop="getFrieds" >
 						<img src="../img/farmImg/hy.png"/>
+					</div>
+					<div class="exchangeRecord" @click.stop="goExchangeRecord" >
+						<img src="../img/farmImg/icon_dhjl.png"/>
+					</div>
+				</div>
+				<!-- 回商城 -->
+				<div v-cloak v-if="PageType == 1" class="side_nav side_nav_right" >
+					<div class="goShop" @click.stop="goIndex" >
+						<img src="../img/farmImg/icon_goShop.png"/>
 					</div>
 				</div>
 				<!-- 底部  土地 仓库  --浇水 -->
@@ -109,7 +118,7 @@
 					<div class="common_title">动态<span class="common_close" data-obj='dynamicInfo' @click.stop="closeMask" ></span></div>
 					<div class="trends_wrap">
 						<ul class="trends_content">
-							<li v-for="item in dynamicInfo.dynamicList" data-type='item.type'>
+							<li v-for="item in dynamicInfo.dynamicList">
 								<p v-text="item.createTime"></p>
 								<p v-text="item.note"></p>
 							</li>
@@ -130,8 +139,7 @@
 								<img :src="item.logo" />
 								<dt v-if="!item.id"></dt>
 								<dd v-if="!item.id"><p>暂未开通</p><p v-text="item.desc"></p></dd>
-								<dd v-if="item.id && item.desc"><p class="name" v-text="item.desc"></p></dd>
-								
+								<!--<dd v-if="item.id && item.desc"><p class="name" v-text="item.desc"></p></dd>-->
 							</dl>
 							<p  class="color_a" :class="{color_b:farmLand.id == item.id,color_c:!item.id}" v-text="item.id == farmLand.id? '当前土地' : item.no+'号土地'"></p>
 						</li>
@@ -142,7 +150,8 @@
 				</div>
 				<!-- 仓库 -->
 				<div v-cloak id="storehouse" class="storehouse common_wrap storehouseInfo-box storehouse-wrapper-hide" >
-					<div class="common_title"><span class="text_left_btn" @click.stop="goExchangeRecord" >兑换记录</span> 仓库<span class="common_close" data-obj='storehouseInfo' @click.stop="closeMask" ></span></div>
+					<!--<span class="text_left_btn" @click.stop="goExchangeRecord" >兑换记录</span> -->
+					<div class="common_title">仓库<span class="common_close" data-obj='storehouseInfo' @click.stop="closeMask" ></span></div>
 					<ul class="menu">
 						<li v-for="(item,index) in storehouseInfo.list" v-text="item.name" :data-type = "index" :class="{'active':storehouseInfo.type == index}" @click.stop="!item.active && getStorehouse(item,index)" ></li>
 					</ul>
@@ -296,6 +305,8 @@
 						</div>
 					</div>
 				</div>
+				
+				<div id="msg"><span></span><p></p></div>
 			</div>
 			<!--
 				使用div做的主要操作视图区域
@@ -304,7 +315,7 @@
 			<!--<div class="main_view" v-show="PageStatus == 2">
 				
 			</div>-->
-			<div id="msg"><span></span><p></p></div>
+			
 			<!--
 				场景转换使用-----覆盖在所有的层级上方
 			-->
@@ -330,7 +341,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20181012"></script>
+	<script src="../seajs-config.js?v=2018101701"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();
