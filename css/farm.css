@@ -865,6 +865,7 @@ body[name = 'farm'] {
 	margin-top: 30px;
 	font-size: 24px;
 	color: #999999;
+	padding: 0 60px;
 }
 /*
 农场弹出优化
@@ -1015,6 +1016,7 @@ body[name = 'farm'] {
 	height:66px;
 	line-height:66px;
 	text-align: center;
+	color: #2696F6;
 }
 .exchange_nav li.active{
 	color: #fff;
@@ -1527,4 +1529,116 @@ body[name = 'farm'] {
 	bottom: 0;
 	width: 660px;
 	margin: 0 30px 60px;
+}
+/*售货机选择样式*/
+.selection{ 
+	background: #f0f0f0;
+    padding-bottom: 1px;
+    margin-top: 15px;
+}
+.selection .selection_list{
+	height: 124px;
+    width: 720px;
+    padding: 10px 0;
+    position: relative;
+    margin-top: 10px;
+    background: #fff;
+}
+.selection .selection_list img{
+	float: left;
+    margin-left: 16px;
+    width:150px;
+    height:102px;
+}
+.selection .selection_list .label{
+	width: 54px;
+    height: 79px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 18px;
+    background: url(../img/maker.png) no-repeat;
+    background-position: 0 -110px;
+   
+}
+.selection .selection_list .selection_dec{
+	    margin-left: 188px;
+}
+.selection .selection_name{
+	font-size: 28px;
+    color: #333;
+}
+.selection .selection_address{
+	font-size: 22px;
+    color: #999;
+}
+.selection .selection_name,
+.selection .selection_address{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-right: 120px;
+}
+.selection .selection_icon{
+	position: absolute;
+    top: 40px;
+    right: 0;
+    display: block;
+	width:120px;
+	height:40px;
+	background: url(../img/cart2.png) no-repeat;
+	background-position: 20px 2px;
+	font-size: 26px;
+	text-indent: 70px;
+}
+.selection_list.actived .selection_icon{
+	background-position: -744px 2px;
+}
+.selection_tipMgs{
+	height: 92px;
+    text-align: center;
+    line-height: 92px;
+    font-size: 28px;
+    background: #fff;
+    margin-bottom: 13px;
+}
+.exchange .address .bottom span:nth-child(2){
+	font-size: 30px;
+}
+.exchange .address .bottom p:first-child{
+	margin-bottom: 0px;
+}
+/*兑换记录*/
+.exchangeRecord_list{
+	height:130px;
+}	
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(1),
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(2){
+	line-height: 130px;
+}
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(3) span:before{
+	height:110px;
+	background-image: url(../img/farmImg/active1.png);
+}
+.exchangeRecordBox .exchangeRecord_list.active2 .exchangeRecord_item:nth-child(3) span:before{
+	height:110px;
+	background-image: url(../img/farmImg/active2.png);
+}.exchangeRecordBox .exchangeRecord_list.active3 .exchangeRecord_item:nth-child(3) span:before{
+	height:110px;
+	background-image: url(../img/farmImg/active3.png);
+}
+
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(3) span b{
+    width: 78px;
+    display: inline-block;
+}
+.exchangeRecordBox .exchangeRecord_list.active2 .exchangeRecord_item:nth-child(3) span b:nth-child(3){
+	border-radius: 18px;
+	border: 2px solid  #349df6;
+	color: #2696F6;
+}
+.exchangeRecordBox .exchangeRecord_list.active3 .exchangeRecord_item b{
+	color:#333333;
+	text-decoration:none;
 }

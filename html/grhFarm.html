@@ -225,7 +225,7 @@
 				<!--v-if="isWx"-->	<div class="friend_bottom"  @click.stop="invitationFriend" v-bind:data-obj="friedsInfo" >邀请好友</div>
 				<div class="gift">
 					<p class="gift_title">邀请有礼</p>
-					<div class="gift_word"><span>每成功邀请1人可获得礼包</span><img src="../img/farmImg/gift1.png" alt="礼包" /></div>
+					<div class="gift_word"><span>每邀请一个即有好礼，累计邀请好礼更丰厚</span></div>
 					<p class="gift_state" v-text="'累积邀请('+invite_cfg.total+'人)'"></p>
 					<div class="gift_progress" >
 						<div class='gift_in_progress' v-bind:style="{width:((670/invite_cfg.maxCount)*invite_cfg.total)+'px'}">

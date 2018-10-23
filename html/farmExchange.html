@@ -48,12 +48,11 @@
 								<p class="arrow" @click="goAddressList">请选择</p>
 							</div>
 							<div v-if="addressInfo.id" class="bottom">
-								<p><span v-text="addressInfo.consignee"></span> <span v-text="addressInfo.mobile"></span></p>
-								<p v-text="addressInfo.provinceName + addressInfo.cityName + addressInfo.countyName + addressInfo.address + addressInfo.addName + addressInfo.street"></p>
+								<p><span v-text="addressInfo.firmName"></span><span v-text="addressInfo.address"></span></p>
 							</div>
 						</div>
 					</div>
-					<div class='exchange_b' :class="{'active':fruitNum && !exchangeErrorMsg}" @click="exchangeFruit">确认兑换</div>
+					<div class='exchange_b' :class="{'active':fruitNum && !exchangeErrorMsg && addressInfo.id}" @click="exchangeFruit">确认兑换</div>
 				</div>
 				<div class="exchange_coin exchange_main" v-show="PageType ===1">
 					<div v-cloak class="exchange">

@@ -41,7 +41,7 @@
 							<p>选择要赠送的朋友</p>
 							<div class="select_wrap">
 								<div class="select_content clearfloat " v-bind:style="{width:getFriedsWidth}" >
-									<dl  class="float_left " v-for="(item,index) in friedsInfo" :id="item.id" :class="{select_item:index==num}" @click="selected(index)" >
+									<dl  class="float_left " v-for="(item,index) in friedsInfo" :id="item.id" :class="{select_item:index==num}" @click="selectedGiveFriends(index)" >
 										<dt><img :src="item.faceImg" class="border_blue"/></dt>
 										<dd class='name ellipsis' v-text="item.petName"></dd>
 									</dl>

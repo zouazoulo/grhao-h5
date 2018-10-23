@@ -31,13 +31,14 @@
 							<div class="exchangeRecord_item">兑换进度</div>
 						</div>
 						<div v-cloak class="exchangeRecordBox">
-							<div class="exchangeRecord_list" v-for="(item,index) in exchangeRecord.list" v-bind:class="{'active':item.status == 2}" @click="goOrderDetails(index)" @click.prevent>
+							<div class="exchangeRecord_list" v-for="(item,index) in exchangeRecord.list" v-bind:class="'active'+item.status"  @click.prevent>
 								<div class="exchangeRecord_item" v-text="item.createTime.split(' ')[0]"></div>
-								<div class="exchangeRecord_item" v-text="item.fruitName"></div>
+								<div class="exchangeRecord_item" v-text="item.fruitName+'x'+item.num"></div>
 								<div class="exchangeRecord_item">
 									<span>
 										<b>申请中</b><br />
-										<b>已处理</b>
+										<b @click="goOrderDetails(index)">去提货</b><br />
+										<b>已完成</b>
 									</span>
 								</div>
 							</div>
