@@ -48,7 +48,8 @@
 								<p class="arrow" @click="goAddressList">请选择</p>
 							</div>
 							<div v-if="addressInfo.id" class="bottom">
-								<p><span v-text="addressInfo.firmName"></span><span v-text="addressInfo.address"></span></p>
+								<p><span v-text="addressInfo.firmName"></span></p>
+								<p v-text="addressInfo.address"></p>
 							</div>
 						</div>
 					</div>
@@ -82,7 +83,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20181017"></script>
+	<script src="../seajs-config.js?v=20181023"></script>
 	<script>
 		seajs.use(['framOther'],function( zs ){
 			zs.init();

@@ -808,7 +808,8 @@ body[name = 'farm'] {
 	color: #666666;
 }
 .exchange .address .bottom p:first-child{
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	font-size: 28px;
 }
 .exchange .address .bottom p:last-child{
 	font-size: 24px;
@@ -940,7 +941,6 @@ body[name = 'farm'] {
 }
 .exchangeRecord_list{
 	display: flex;
-	height: 92px;
 }
 .exchangeRecord_list .exchangeRecord_item{
 	flex: 1;
@@ -1603,12 +1603,7 @@ body[name = 'farm'] {
     background: #fff;
     margin-bottom: 13px;
 }
-.exchange .address .bottom span:nth-child(2){
-	font-size: 30px;
-}
-.exchange .address .bottom p:first-child{
-	margin-bottom: 0px;
-}
+.
 /*兑换记录*/
 .exchangeRecord_list{
 	height:130px;
