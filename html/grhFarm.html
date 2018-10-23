@@ -123,7 +123,7 @@
 								<p v-text="item.note"></p>
 							</li>
 						</ul>
-						<p class="load_more" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click.stop="clickGetMoreDynamic" ></p>
+						<p class="load_more" v-show="ajaxState != 'wait'" v-text="dynamicInfo.isLast ? '没有更多数据了' : '点击加载更多'" @click.stop="clickGetMoreDynamic" ></p>
 						<div v-show="ajaxState == 'wait'" class="page_status">
 							加载中...
 						</div>
@@ -239,7 +239,7 @@
 				</div>
 				<!--商店-->
 				<div v-cloak id="store" class="store store-wrap common_wrap store-wrapper-hide">
-					<div class="common_title"><span class="my_coin" v-text="'我的果币：'+userAccountInfo.score"></span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
+					<div class="common_title"><span class="my_coin" v-text="'我的果币：'+(userAccountInfo.score ? userAccountInfo.score : 0)"></span> 商店<span class="common_close" data-obj='storeInfo' @click.stop="closeMask"></span></div>
 					<div class="wrap">
 						<div class="show clearfloat" v-bind:style="{width:getWidth}">
 							<dl class="float_left" v-for="(item,index) in store" >
