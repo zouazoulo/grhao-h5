@@ -3,10 +3,12 @@
 
 /*共同部分*/
 
-body {
+body[name = 'farm'] {
 	overflow-y: hidden;
 }
-
+#msg { display: none;position: absolute;max-width: 360px;font-size: 26px;}
+#msg span{padding:6px 20px ;border: 2px solid #67a6f6; border-radius: 8px;display: inline-block;background: #FFF;}
+#msg p{width: 100%;height: 20px;background: url(../img/farmImg/arrow_bottom.png) no-repeat top center; position: relative;top: -4px; }
 .common_wrap{
 	position: fixed;
     width: 100%;
@@ -112,7 +114,7 @@ body {
 	border-radius: 18px;
 	border: 2px solid #FFFFFF;
 	top: -14px;
-	right: -30px;
+	right: -10px;
 	background-color: #f72547;
 	font-size: 26px;
 	text-align: center;
@@ -208,6 +210,17 @@ body {
 	text-align: right;
 	font-size: 30px;
 }
+.content .top .sign span{
+	display: inline-block;
+	width: 100px;
+	height: 44px;
+	background: #f72548;
+	border-radius: 22px;
+	overflow: hidden;
+	text-align: center;
+	color: #FFFFFF;
+}
+
 .icon_rash span{
 	position: relative;
 }
@@ -282,8 +295,14 @@ body {
 	left: 0;
 	margin-left: 60px;
 }
+.side_nav.side_nav_right{
+	right: 0;
+	margin-right: 60px;
+	left: auto;
+	margin-left: 0;
+}
 
-.side_nav .dynamic {
+.side_nav .dynamic,.side_nav .friends {
 	margin-bottom: 30px;
 }
 
@@ -293,10 +312,10 @@ body {
 	position: absolute;
 	bottom: 60px;
 	width: 100%;
+	padding-left: 60px;
 }
 
 .bottom_nav .land {
-	margin-left: 60px;
 	margin-right: 30px;
 }
 
@@ -305,8 +324,9 @@ body {
 	text-align: right;
 	margin-right: 60px;
 }
-
-
+.bottom_nav .gohome{
+	margin-right: 30px;
+}
 /*土地*/
 
 .color_g {
@@ -371,7 +391,16 @@ body {
 .land_content li dl dd p:last-child {
 	font-size: 20px;
 }
-
+.land_content li dl dd p.name{
+	padding-top: 112px;
+}
+.land_content li dl img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .land_content li>p {
 	margin-top: 20px;
 	font-size: 24px;
@@ -529,7 +558,7 @@ body {
 	font-size: 28px;
 	text-align: center;
 	color: #333333;
-	z-index: 999;
+	z-index: 599;
 }
 
 .frame .icon {
@@ -816,6 +845,7 @@ body {
 	color: #FFFFFF;
 	font-size: 32px;
 	text-align: center;
+	z-index: 100;
 }
 .exchange_success .exchange_index{
 	background-color: #2696f6;
@@ -831,11 +861,11 @@ body {
 	font-size: 32px;
 	color: #333333;
 }
-/*.get p:last-child{
+.get p:last-child{
 	margin-top: 30px;
 	font-size: 24px;
 	color: #999999;
-}*/
+}
 /*
 农场弹出优化
  * */
@@ -994,7 +1024,6 @@ body {
 	color:red;
 }
 .coin_wrap{
-	padding:14px 30px 30px;	
 	background-color: #fff;
 }
 .coin_wrap .ex_num,
@@ -1128,13 +1157,13 @@ body {
     transition: transform .6s,-webkit-transform .6s
 }
 .storehouse  .dl_wrap .goods_msg{
-	display: none;
 	width:100%;
 	height:100%;
 	background-color: #09233a;
 	color: #fff;
 	font-size: 24px;
-	
+	text-align: left;
+	display: none;
 
 }
 .storehouse  .dl_wrap .goods_msg dt{
@@ -1168,6 +1197,20 @@ body {
     animation-duration: 175ms;  
 }  
 .flip.in {  
+    -webkit-animation-name: flipintoright;  
+    -webkit-animation-duration: 225ms;  
+    animation-name: flipintoright;  
+    animation-duration: 225ms;  
+}  
+.flip.out_end {  
+    -webkit-transform: rotateY(-90deg) scale(.9);  
+    -webkit-animation-name: flipouttoleft;  
+    -webkit-animation-duration: 175ms;  
+    transform: rotateY(-90deg) scale(.9);  
+    animation-name: flipouttoleft;  
+    animation-duration: 175ms;  
+}  
+.flip.in_end {  
     -webkit-animation-name: flipintoright;  
     -webkit-animation-duration: 225ms;  
     animation-name: flipintoright;  
@@ -1235,7 +1278,7 @@ body {
 	
 	width:100%;
 	height: 8px;
-	margin-top: 90px;
+	margin-top: 60px;
 	background-color: #cce1fc;
 }
 .gift_in_progress{
@@ -1275,14 +1318,14 @@ body {
 	color: #f33e20;
 	text-align: center;
 }
-.gift_in_progress .circle_1:after{
+/*.gift_in_progress .circle_1:after{
 	content: "3人";
 }
 .gift_in_progress .circle_2:after{
 	content: "5人";
-}
-.gift_in_progress .circle_3:after{
-	content: "10人";
+}	*/
+.gift_in_progress .circle:after{
+	content: attr(data-content);
 }
 .gift_in_progress img{
 	position: absolute;
@@ -1321,7 +1364,6 @@ body {
 }
 .select_friends dl dd{
 	margin-top:20px;
-	text-align: center;
 }
 .select_friends dl:after{
 	content: "";
@@ -1353,32 +1395,39 @@ body {
 .frame .month dl{
 	position: relative;
 	width:86px;
-	/*height:88px;*/
+	height:90px;
 	margin-bottom: 20px;
 	margin-left: 20px;
 	text-align: center;
 	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
 }
+.frame .month dl.actived{
+	border: 4px solid #559ef7;
+	border-radius: 10px;
+}
+
 .frame .month dl:nth-child(5n+1){
 	margin-left: 0px;
 }
 .frame .month dl dt{
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 	background-color: #559DF6;
 	line-height: 32px;
 	color: #FFFFFF;
 	font-size: 24px;
-	
 }
 .frame .month dl dd{
 	height:56px;
 	background-color: #fff;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	box-shadow: 0px 2px 5px #e6e6e6;
+	box-shadow: 0px 2px 6px #e6e6e6;
 }
-.frame .month dl .sign_right{
+.frame .month dl.actived dd{
+	box-shadow:0px 4px 16px #0a4ea2;
+}
+.frame .month dl.sign_ture dt{
 	background-color: #cce2fc;
 }
 .frame .month .sign_ture:after{
@@ -1389,6 +1438,9 @@ body {
 	width:30px;
 	height:30px;
 	background-image: url("../img/farmImg/tick1.png");
+}
+.frame .month dl.sign_ture .sign_right{
+	background-color:#CCE2FC ;
 }
 .frame .month_sign{
 	display:flex;
@@ -1412,6 +1464,56 @@ body {
 .frame .month_sign .received{
 	color:#adadad;
 }
+.guideAnimation{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    color: #FFFFFF;
+    font-size: 36px;
+    line-height: 60px;
+    z-index: 20;
+    text-align: right;
+    padding: 20px 30px;
+}
+.guideAnimation img{margin: 0 auto;}
+
+.guide_skip{width:100%;height: 88px;}
+.guide_skip_btn{display: inline-block;float: right;padding: 6px 24px; color: #000000;background: #FFFFFF;border-radius:6px ;overflow: hidden;}
+.guide_content{padding: 0 40px;}
+.guide_text{width: 470px;margin: 0 auto;padding: 12px 0;}
+.guide_next{text-align: center;padding-top: 20px;}
+.guide_next_btn{display: inline-block;margin: 0 auto; padding: 6px 16px;border: 3px solid #FFFFFF; border-radius: 30px;margin: 0 auto;}
+
+.guide1 .guide_content {padding-top: 32px;}
+.guide1 .guide_line{margin-top: 20px;}
+
+.guide2 {padding-top: 384px;}
+.guide2 .guide_content{text-align: left;}
+.guide2 .guide_content .float_right{float: left;}
+.guide2 .guide_content {padding-left: 30px;}
+.guide2 .guide_line{margin-top: 40px;}
+
+.guide3,.guide4,.guide5{position: absolute;bottom: 60px;width: 100%;}
+.guide3 .guide_content{text-align: left;padding-left:170px;}
+.guide3 .guide_line{padding-left: 35px;}
+
+.guide4 .guide_content{text-align: left;padding-left:314px;}
+
+
+.guide3 .guide_line,.guide4 .guide_line,.guide5 .guide_line{margin-top: 20px;margin-bottom: 20px;}
+.guide3 .guide_text,.guide4 .guide_text,.guide5 .guide_text{text-align: center;}
+
+
+.guide5 .guide_content{text-align: right;padding-right:92px;}
+
+.guide5 .guide_line{padding-right: 30px;}
+
 /*赠送好友 没有好友状况*/
 .noFriends{
 	font-size: 28px;
@@ -1425,4 +1527,113 @@ body {
 	bottom: 0;
 	width: 660px;
 	margin: 0 30px 60px;
+}
+/*售货机选择样式*/
+.selection{ 
+	background: #f0f0f0;
+    padding-bottom: 1px;
+    margin-top: 15px;
+}
+.selection .selection_list{
+	height: 124px;
+    width: 720px;
+    padding: 10px 0;
+    position: relative;
+    margin-top: 10px;
+    background: #fff;
+}
+.selection .selection_list img{
+	float: left;
+    margin-left: 16px;
+    width:150px;
+    height:102px;
+}
+.selection .selection_list .label{
+	width: 54px;
+    height: 79px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 18px;
+    background: url(../img/maker.png) no-repeat;
+    background-position: 0 -110px;
+   
+}
+.selection .selection_list .selection_dec{
+	    margin-left: 188px;
+}
+.selection .selection_name{
+	font-size: 28px;
+    color: #333;
+}
+.selection .selection_address{
+	font-size: 22px;
+    color: #999;
+}
+.selection .selection_name,
+.selection .selection_address{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-right: 120px;
+}
+.selection .selection_icon{
+	position: absolute;
+    top: 40px;
+    right: 0;
+    display: block;
+	width:120px;
+	height:40px;
+	background: url(../img/cart2.png) no-repeat;
+	background-position: 20px 2px;
+	font-size: 26px;
+	text-indent: 70px;
+}
+.selection .icon_selected{
+	background-position: -744px 2px;
+}
+.selection_tipMgs{
+	height: 92px;
+    text-align: center;
+    line-height: 92px;
+    font-size: 28px;
+    background: #fff;
+    margin-bottom: 13px;
+}
+.exchange .address .bottom span:nth-child(2){
+	font-size: 30px;
+}
+.exchange .address .bottom p:first-child{
+	margin-bottom: 0px;
+}
+/*兑换记录*/
+.exchangeRecord_list{
+	height:130px;
+}	
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(1),
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(2){
+	line-height: 130px;
+}
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(3) span:before{
+	
+	height:110px;
+	background-image: url(../img/farmImg/active1.png);
+}
+.exchangeRecordBox .exchangeRecord_list.active .exchangeRecord_item:nth-child(3) span:before{
+	height:110px;
+	background-image: url(../img/farmImg/active3.png);
+}
+.exchangeRecordBox .exchangeRecord_list .exchangeRecord_item:nth-child(3) span b{
+    width: 78px;
+    display: inline-block;
+}
+.exchangeRecordBox .exchangeRecord_list.active .exchangeRecord_item:nth-child(3) span b:nth-child(3){
+	border-radius: 18px;
+	border: 2px solid  #349df6;
+	color: #2696F6;
+}
+.exchangeRecordBox .exchangeRecord_list.active .exchangeRecord_item:nth-child(2){
+	color:#333333;
+	text-decoration:none;
 }

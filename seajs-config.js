@@ -8,6 +8,7 @@ seajs.config({
     'LAreaData':'LAreaData.min.js',
     'mobile-util' : 'mobile-util.min.js',
 
+
     'adderessManagement' : 'addressManagement.js?v=20180911',
     'addressfix' : 'addressfix.js?v=20180911',
     'common' : 'common.js?v=20180911',
@@ -32,13 +33,13 @@ seajs.config({
     'score':'score.js?v=20180911',
     'addMap':'addMapPicker.js?v=20180914',
     
-    
+    'im':"im.js?v=20180929",
     
     'pixi':'pixi.js?v=20180911',
-    'framView':'framView.js?v=20180914',
-    'farmCanves':'farmCanves.js?v=20180914',
-    'farm':'farm.js?v=20180914',
-    'framOther':'framOther.js?v=20180914',
+    'framView':'framView.js?v=2018101701',
+    'farmCanves':'farmCanves.js?v=2018101701',
+    'farm':'farm.js?v=2018101701',
+    'framOther':'framOther.js?v=2018101701',
   },
   preload: ['mobile-util']
 });

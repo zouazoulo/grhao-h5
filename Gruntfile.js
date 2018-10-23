@@ -7,9 +7,9 @@ module.exports = function (grunt) {
             my_target: {
                 files: [{
                     expand: true,
-                    cwd: 'lib',
-                    src: '**/*.js',
-                    dest: 'dest'
+                    cwd: 'lib',//模版文件夹
+                    src: '**/*.js',//收集所有的.js
+                    dest: 'dest',//src收集的文件存储到dest文件
                 }]
             }
         },
