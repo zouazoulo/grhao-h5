@@ -9,7 +9,7 @@
 		<meta content="telephone=no, address=no" name="format-detection" />
 		<link rel="stylesheet" href="../css/rest.css" />
 		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20181017"/>
+		<link rel="stylesheet" type="text/css" href="../css/farm.css?v=20181029"/>
 	</head>
 	<body name = 'farm'>
 		<div class="main" id="appVue">
@@ -101,6 +101,7 @@
 					<span class="close" data-obj='siginIn' @click.stop="closeMask" ></span>
 					<div class="month ">
 						<dl v-for="(item,index) in signCalendar.SignInCfgDate" v-bind:class="item.sign == 2 ? 'actived' : item.sign == 1 ? 'sign_ture' : ''" @click="getSignIn(item,1,1)">
+							<span v-if="item.sign == 2" class="sign_mask"></span>
 							<dt class="day " v-text="index+1"></dt>
 							<dd><img v-bind:src="item.sign != 1 ? '../img/farmImg/gift1.png' : '../img/farmImg/gift0.png'" /></dd>
 						</dl>
@@ -341,7 +342,7 @@
 		</div>
 	</body>
 	<script src="../seajs/2.1.1/sea.js"></script>
-	<script src="../seajs-config.js?v=20181023"></script>
+	<script src="../seajs-config.js?v=20181031"></script>
 	<script>
 		seajs.use(['fram'],function( zs ){
 			zs.init();

@@ -1396,28 +1396,50 @@ body[name = 'farm'] {
 }
 .frame .month dl{
 	position: relative;
-	width:86px;
+	width:84px;
 	height:90px;
 	margin-bottom: 20px;
 	margin-left: 20px;
 	text-align: center;
 	background-color: #fff;
-	border-radius: 10px;
-	overflow: hidden;
-}
-.frame .month dl.actived{
-	border: 4px solid #559ef7;
-	border-radius: 10px;
+	
 }
 
+.frame .month dl .sign_mask {
+	position: absolute;
+	width: 132px;
+	height: 132px;
+	background: url(../img/farmImg/sign_active.png) no-repeat center;
+	left: -20px;
+	top: -10px
+}
+.frame .month dl.actived{
+	border-radius: 10px;
+}
+.frame .month dl.actived dt{
+	position: absolute;
+	width: 84px;
+	height: 34px;
+	left: 4px;
+	top: 2px;
+}
+.frame .month dl.actived dd{
+	width: 84px;
+	height: 56px;
+	position: absolute;
+	left: 4px;
+	top: 32px;
+}
 .frame .month dl:nth-child(5n+1){
 	margin-left: 0px;
 }
 .frame .month dl dt{
 	background-color: #559DF6;
-	line-height: 32px;
+	line-height: 34px;
 	color: #FFFFFF;
 	font-size: 24px;
+	border-radius: 10px 10px 0 0;
+	overflow: hidden;
 }
 .frame .month dl dd{
 	height:56px;
@@ -1440,9 +1462,6 @@ body[name = 'farm'] {
 	width:30px;
 	height:30px;
 	background-image: url("../img/farmImg/tick1.png");
-}
-.frame .month dl.sign_ture .sign_right{
-	background-color:#CCE2FC ;
 }
 .frame .month_sign{
 	display:flex;
@@ -1475,7 +1494,7 @@ body[name = 'farm'] {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .9);
     color: #FFFFFF;
     font-size: 36px;
     line-height: 60px;
@@ -1490,7 +1509,7 @@ body[name = 'farm'] {
 .guide_content{padding: 0 40px;}
 .guide_text{width: 470px;margin: 0 auto;padding: 12px 0;}
 .guide_next{text-align: center;padding-top: 20px;}
-.guide_next_btn{display: inline-block;margin: 0 auto; padding: 6px 16px;border: 3px solid #FFFFFF; border-radius: 30px;margin: 0 auto;}
+.guide_next_btn{display: inline-block;margin: 0 auto; padding: 6px 16px;border: 3px solid #FFFFFF; border-radius: 39px;margin: 0 auto;}
 
 .guide1 .guide_content {padding-top: 32px;}
 .guide1 .guide_line{margin-top: 20px;}
@@ -1559,7 +1578,9 @@ body[name = 'farm'] {
     left: 18px;
     background: url(../img/maker.png) no-repeat;
     background-position: 0 -110px;
-   
+}
+.selection .selection_list .label.active{
+	 background-position: 0 -210px;
 }
 .selection .selection_list .selection_dec{
 	    margin-left: 188px;

@@ -86,20 +86,25 @@ module.exports = function (grunt) {
     grunt.registerTask('api','api adress',function( address ){
         var pathname = 'lib/common.js';
         var reg = /[\'|\"](http\:\/\/.+(\/server\/api\.do)[\'|\"]\,.*)/g;
-        
+        var reg1 = /[\'|\"](http\:\/\/.+(\/server\/farm\.do)[\'|\"]\,.*)/g;
         
         var json = {
-            dev : ["http://61.164.113.168:8090/grh_api/server/api.do",' 测试'],
+            dev : ["http://61.164.113.168:8090/grh_api/server/api.do","http://61.164.113.168:8090/grh_api/server/farm.do",' 测试'],
             //loc : ["http://192.168.1.8:8080/grh_api/server/api.do",' 本地'],
             // loc : ["http://192.168.0.135:8080/grh_api/server/api.do",' 本地'],
            	loc : ["http://192.168.0.184:/grh_api/server/farm.do",' 本地'],
-            pro : ["http://api.grhao.com/server/api.do",' 正式']
+            pro : ["http://api.grhao.com/server/api.do","http://api.grhao.com/server/farm.do",' 正式']
         };
         var commonJs = grunt.file.read( pathname, encoding );
             !address ? grunt.log.write( commonJs.match( reg ) ) : grunt.file.write(
-                   pathname, 
-                   commonJs.replace( reg, '\"' + json[address][0] + '\"\, \/\/' + json[address][1])
-               );
+               pathname, 
+               commonJs.replace( reg, '\"' + json[address][0] + '\"\, \/\/' + json[address][2])
+            );
+		var commonJs1 = grunt.file.read( pathname, encoding ); 
+            !address ? grunt.log.write( commonJs1.match( reg1 ) ) : grunt.file.write(
+               pathname, 
+               commonJs1.replace( reg1, '\"' + json[address][1] + '\"\, \/\/' + json[address][2])
+            );
         weixin(address)
     });
 	//更新每个HTML下面的seajs保证微信下清除缓存
