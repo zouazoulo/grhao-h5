@@ -16,7 +16,7 @@ seajs.config({
     'index' : 'index.js?v=20180911',
     'login' : 'login.js?v=20180911',
     'moregoods' : 'moregoods.js?v=20180911',
-    'order_management' : 'order_management.js?v=20180911',
+    'order_management' : 'order_management.js?v=20181107',
     'orderSettlement' : 'orderSettlement.js?v=20180911',
     'orderSettlement1' : 'orderSettlement1.js?v=20180911',
     'other' : 'other.js?v=20180911',
